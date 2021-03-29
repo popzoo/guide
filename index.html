@@ -84,6 +84,7 @@
             // document.getElementById("status_close").setAttribute("href",serverUrl+"/setstatus?status=0&nickName=admin");
             siteSignal();
             siteTime();
+            lazyLoadImg();
             changeImg();
         }).catch((error)=>{
             console.error("请求错误", error.message)
@@ -127,7 +128,18 @@
         var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes)
         var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds)
         document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
-    }        
+    }
+    function lazyLoadImg(){
+        let prefix = "https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/"; //"img/";
+        let bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];        
+        preLoadImg(0);
+        function preLoadImg(index){
+            $.get(prefix + bodyBgs[index]);
+            if(index<bodyBgs.length-1){
+                setTimeout(function(){preLoadImg(++index)},500);
+            }
+        }        
+    }
 	function changeImg(){
 		// let prefix = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/";
         let prefix = "https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/"; //"img/";
@@ -135,11 +147,7 @@
 		let rdIndex = Math.floor( Math.random() * bodyBgs.length );
 		let img1= document.getElementById('bgimg');
 		img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
-        setTimeout(function(){
-            for(let i=0;i<bodyBgs.length;i++){
-                $.get(prefix + bodyBgs[rdIndex]);
-            }
-        },2000);//图片预加载        
+
 	    window.setTimeout(function(){changeImg()},10000);
 	}
     function checkBrowser(obj){
