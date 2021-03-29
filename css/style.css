@@ -1,4 +1,4 @@
-﻿/* basic styles for black background and crosshair cursor */
+﻿ basic styles for black background and crosshair cursor */
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -39,18 +39,24 @@ blockquote:before,blockquote:after,q:before,q:after {
 	content: '';
 	content: none
 }
+/*双排六列*/
 .l-center {
 	/*width:80%;*/
-	width:936px;
+	width:900px;
     margin-top: 4%;
     padding-bottom: 40px;
 }
-@media screen and (max-width:936px) {
+/*四列*/
+@media screen and (max-width:954px) {
 	.l-center {
 	    width:600px;
 	}
 }
-@media screen and (max-width:768px) {
+/*三列*/
+@media screen and (max-width:618px) {
+	.l-center {
+	    width:550px;
+	}
 	#top_footer {
 		padding: 1px
 	}
@@ -58,11 +64,42 @@ blockquote:before,blockquote:after,q:before,q:after {
 		font-size: 8px;
 		letter-spacing: 0;
 		text-align: center
-	}
-/*	.l-center {
-	    margin-top: 0;
-	}*/
+	}		
 }
+/*双列*/
+@media screen and (max-width:570px) {
+	.l-center {
+	    width:400px;
+	}
+	#top_footer {
+		padding: 0px
+	}
+	#top_copyright {
+		font-size: 6px;
+		letter-spacing: 0;
+		text-align: center
+	}	
+}
+/*单列*/
+/*@media screen and (max-width:430px) {
+	.l-center {
+	    width:200px;  
+	}
+}*/
+
+/*@media screen and (max-width:768px) {
+	#top_footer {
+		padding: 1px
+	}
+	#top_copyright {
+		font-size: 8px;
+		letter-spacing: 0;
+		text-align: center
+	}		
+	.l-center {
+	    margin-top: 0;
+	}
+}*/
 input,textarea {
 	margin: 0;
 	padding: 0
@@ -167,7 +204,7 @@ b {
 
 #top {
 	width: 100%;
-	height: 98%;
+	height: 90%;
 	position: relative;
 	margin: auto;
 	z-index: 11
@@ -177,7 +214,7 @@ b {
 	height: 100%;
 	position: relative;
 	margin: 0 auto;
-	padding: 40px 0 10px 0
+	padding: 40px 0 0 0
 }
 
 #top_logo {
@@ -285,16 +322,14 @@ b {
 }
 
 #top_footer {
-	padding: 4px 10px 4px 10px;
-/*	background-color: #000;
-	background-color: rgba(0,0,0,0.9);*/
+	padding: 4px 4px;
 	color: #858585;
 	position: fixed;
 	bottom: 40px;
-	width: 500px;
-	margin: 0 auto 0;
-	left: 0;
-	right: 0;
+	/*width: 415px;*/
+	/*margin: 0 auto;*/
+	left: calc(50% - 207px);
+	/*right: 0;*/
 	z-index: 12;
 	-webkit-transition: .2s linear;
 	-moz-transition: .2s linear;
@@ -303,15 +338,10 @@ b {
 }
 #top_footer:hover{
 	border-radius: 6px;
-	background-color: #000;
+	/*background-color: #000;*/
 	background-color: rgba(0,0,0,0.5);
 	color: #fff;
 }
-/*#top_footer:hover{
-	background-color: #FFF;
-	background-color: rgba(255,255,255,0.8);
-	color: #000;
-}*/
 #top_copyright {
 	display: block;
 	-webkit-transition: .2s linear;
@@ -349,4 +379,3 @@ display: none;
 display:block;
 position:relative;
 }
-*/

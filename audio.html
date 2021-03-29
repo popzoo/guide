@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="bgimg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>音乐播放</title>
+<meta name="description" content="音乐播放">
+<meta name="keywords" content="音乐播放">
+<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+<link rel="shortcut icon" href="img/favicon.ico">
+<meta name="referrer" content="no-referrer" />
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1279318890'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1279318890%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+<div style="text-align:center;clear:both"></div>
+</head>
+<body style="background:url('https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/nier_0.jpg') no-repeat fixed;background-size:100% 100%;-moz-background-size:100% 100%;">
+  <h1 style="color: lime;text-align: center;">音乐脉冲炮</h1>
+<div id="top" style="text-align: center;margin: 40px;">
+    <audio id="audio_play" controls autoplay="autoplay" preload="auto" src="audio/glassbomb.mp3"/>
+        <!-- 您的浏览器不支持 video 标签！</audio> -->
+</div>
+<div style="text-align: center;color: blue;font-size: 25px;font-weight: 500;background-color: #FDFDFD;width: 300px;height:54px;line-height: 54px; margin: 0 auto 0;border-radius: 27px;">
+   播放间隔:<input id="control_time" type="text" name="" style="width:90px;height:30px;font-size: 25px;">(秒)
+</div>
+<p style="text-align: center;margin-top:10%;"><img src="https://cdn.jsdelivr.net/gh/popzoo/pop/images/homeGirl.gif" width="270px"></p>
+</body>
+<script>
+// control play 
+var serverUrl='http://127.0.0.1';//WARNING：访问地址必须为*.html,因为chrome浏览器禁用自动播放,测试必须本地网址才行
+getServerConfig();
+function getServerConfig(){
+    fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default',
+        credentials: 'omit'
+    }).then((res)=>{
+        return res.json()
+    }).then((json)=>{
+        // fireUrl = json.fireUrl!=undefined?window.atob(json.fireUrl):fireUrl;
+        // welfareUrl = json.welfareUrl!=undefined?window.atob(json.welfareUrl):welfareUrl;
+        serverUrl = json.serverUrl != undefined ? window.atob(json.serverUrl) :serverUrl;
+        runControl();
+    }).catch((error)=>{
+        console.error("网络异常", error)
+    });       
+}
+function runControl() {
+    // let curHour = parseInt(dateFormat("HH",new Date()));
+    // if(curHour>=3&&curHour<=6){//3~7点
+    var playGap = document.getElementById("control_time").value;
+    playGap = playGap > 0 ? parseInt(playGap) * 1000 : 1000 * 10; //默认10s
+    var timeGap = Math.floor(playGap * Math.random()) + playGap; //*60;// here should *60s 
+    fetch(serverUrl+'/audioName', {
+        method: 'GET',
+        mode: 'no-cors',
+        cache: 'default',
+        credentials: 'omit'
+    }).then((res) => {
+        return res.text();
+    }).then((txt) => {
+        document.getElementById('audio_play').setAttribute("src", "audio/" + txt); //play new audio name
+        document.getElementById('audio_play').play();
+        setTimeout(function(){runControl()}, timeGap);
+        console.info("播放文件【"+txt+"】-|+|-播放间隔【" + timeGap / 1000 + "s】-|+|-播放时间【" + new Date().toLocaleString() + "】");
+    }).catch(err => {
+        console.error('Audio文件访问失败', err);
+        let audioSrc = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/audio/glassbomb.mp3";
+        document.getElementById('audio_play').setAttribute("src", audioSrc);
+        document.getElementById('audio_play').play();
+        setTimeout(function(){runControl()}, timeGap);
+    })
+}
+
+(function() {
+    var OriginTitile = document.title,
+        titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '道友请留步(￢_￢)瞄~';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回家✿(。◕ᴗ◕。)✿';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+})();
+//date util
+function dateFormat(fmt, date) {
+    let ret;
+    let opt = {
+        "Y+": date.getFullYear().toString(),
+        "m+": (date.getMonth() + 1).toString(),
+        "d+": date.getDate().toString(),
+        "H+": date.getHours().toString(),
+        "M+": date.getMinutes().toString(),
+        "S+": date.getSeconds().toString()
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+    };
+    return fmt;
+}
+</script>
+</html>
