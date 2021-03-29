@@ -146,7 +146,7 @@ body{
 	height: 100%;
 	min-width: 300px;
 	z-index: 2;
-	cursor:url(img/default.cur), auto;
+	cursor:url(https://cdn.jsdelivr.net/gh/popzoo/guide/img/default.cur), auto;
 }
 body:before {
   content: ' ';
@@ -163,7 +163,7 @@ a {
 
 a:hover {
 	color: #00b3ba;
-	cursor:url(img/hand.cur),auto
+	cursor:url(https://cdn.jsdelivr.net/gh/popzoo/guide/img/hand.cur),auto
 }
 b {
 	background-color: rgba(0,179,186,0.4)
