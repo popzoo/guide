@@ -22,7 +22,7 @@
 <div id="top">
 <main id="top_main">
 <div id="top_logo"><img src="img/tx2.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="authCheck()" id="mainimg"></div>
-<div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/toptitle01.png">
+<div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png">
 	<!-- <br class="top_hr_style01"> -->
 </div>
 <div class="showcase-examples l-over l-center">
@@ -130,7 +130,7 @@
         document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
     }
     function lazyLoadImg(){
-        let prefix = "https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/"; //"img/";
+        let prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
         let bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];        
         preLoadImg(0);
         function preLoadImg(index){
@@ -142,7 +142,7 @@
     }
 	function changeImg(){
 		// let prefix = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/";
-        let prefix = "https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/"; //"img/";
+        let prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
 		let bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];
 		let rdIndex = Math.floor( Math.random() * bodyBgs.length );
 		let img1= document.getElementById('bgimg');
@@ -195,11 +195,11 @@
         }
     }
     function mouseOver(){
-        document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/tx.png";//鼠标悬浮时的旋转图标
+        document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
     }
     function mouseOut()
     {
-        document.getElementById('mainimg').src ="https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/tx2.png"//默认的旋转图标
+        document.getElementById('mainimg').src ="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx2.png"//默认的旋转图标
     }
     // date util
     function dateFormat(fmt, date) {
