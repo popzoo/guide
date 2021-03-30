@@ -78,10 +78,15 @@
             return res.json()
         }).then((json)=>{
             serverUrl = json.serverUrl!=undefined?window.atob(json.serverUrl):serverUrl;
-            // document.getElementById("own_audio").setAttribute("href",serverUrl+"/audio.html");
-            document.getElementById("own_fire").setAttribute("href",serverUrl+"/fire");
-            document.getElementById("own_form").setAttribute("href",serverUrl+"/form");
-            document.getElementById("own_data").setAttribute("href",serverUrl+"/bi");
+            if(document.domain.indexOf("popzoo.ga")==-1){
+                document.getElementById("own_fire").setAttribute("href",serverUrl+"/fire");
+                document.getElementById("own_form").setAttribute("href",serverUrl+"/form");
+                document.getElementById("own_data").setAttribute("href",serverUrl+"/bi");
+            }else{
+                document.getElementById("own_fire").setAttribute("href",document.domain+"/fire.html");
+                document.getElementById("own_form").setAttribute("href",document.domain+"/form.html");
+                document.getElementById("own_data").setAttribute("href",document.domain+"/bi.html");                
+            }
             // document.getElementById("status_open").setAttribute("href",serverUrl+"/setstatus?status=1&nickName=admin");
             // document.getElementById("status_close").setAttribute("href",serverUrl+"/setstatus?status=0&nickName=admin");
             siteSignal();
@@ -155,7 +160,7 @@
     function checkBrowser(obj){
         if(getCookie('auth')==null){
             // alert('非法请求，请登录后重试！');
-            location.href = serverUrl+"/illegal.html";
+            location.href = document.domain+"/illegal.html";
         }else{
             // if(obj.id == "own_audio"){
             //     window.open(serverUrl+"/audio.html");
