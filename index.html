@@ -33,11 +33,13 @@
   <a id="own_car" href="//popzoo.github.io/pop/motorcade.html" title="车队展" class="button button-rounded button-plain button-small-caps button-border" target="_blank" >车队展</a>
   <a id="own_fire" href="#" title="火力房" class="button button-rounded button-plain button-small-caps button-border" target="_blank">火力房</a>
   <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank" >报表单</a>
-  <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a>
   <a id="own_data" href="#" title="大数据" class="button button-rounded button-plain button-small-caps button-border" target="_blank">大数据</a>
+  <!-- <a id="own_audio" href="#" onclick="checkBrowser(this)" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" >音乐炮</a> -->
   <a id="own_renew" href="#" onclick="checkBrowser(this)" title="测节点" class="button button-rounded button-plain button-small-caps button-border" >测节点</a>
   <a id="own_plane" href="#" onclick="checkBrowser(this)" title="超音速" class="button button-rounded button-plain button-small-caps button-border" >撕丝热</a>
   <a id="own_vmiss" href="#" onclick="checkBrowser(this)" title="V仇杀" class="button button-rounded button-plain button-small-caps button-border" >嵬菟芮</a>
+  <!-- <a id="own_logout" href="#" onclick="logoutAuth(this)" title="一扫光" class="button button-rounded button-plain button-small-caps button-border" >一扫光</a> -->
+  <a id="own_backup" href="#" onclick="checkBrowser(this)" title="选备胎" class="button button-rounded button-plain button-small-caps button-border" >选备胎</a>
 <!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
   <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->  
 </div>
@@ -76,7 +78,7 @@
             return res.json()
         }).then((json)=>{
             serverUrl = json.serverUrl!=undefined?window.atob(json.serverUrl):serverUrl;
-            document.getElementById("own_audio").setAttribute("href",serverUrl+"/audio.html");
+            // document.getElementById("own_audio").setAttribute("href",serverUrl+"/audio.html");
             document.getElementById("own_fire").setAttribute("href",serverUrl+"/fire");
             document.getElementById("own_form").setAttribute("href",serverUrl+"/form");
             document.getElementById("own_data").setAttribute("href",serverUrl+"/bi");
@@ -151,26 +153,39 @@
 	    window.setTimeout(function(){changeImg()},10000);
 	}
     function checkBrowser(obj){
-        var info = new Browser();
-        if(info.browser.indexOf('360')>-1){
-            alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
-            // location.reload(); 
-        }else if(getCookie('auth')==null){
+        if(getCookie('auth')==null){
             // alert('非法请求，请登录后重试！');
             location.href = serverUrl+"/illegal.html";
         }else{
-            if(obj.id=="own_plane"){
-                window.open(serverUrl+"/plane");
-                // window.location.href = serverUrl+"/plane";
-            }else if(obj.id=="own_vmiss"){
-                window.open(serverUrl+"/vmiss");
-                // window.location.href = serverUrl+"/vmiss";
-            }else if(obj.id=="own_renew"){
-                // window.open(serverUrl+"/renew");
-                window.open('https://service-2k6qgxkd-1253626683.bj.apigw.tencentcs.com/test/planeVmiss');
+            // if(obj.id == "own_audio"){
+            //     window.open(serverUrl+"/audio.html");
+            if(obj.id == "own_backup"){
+                window.location.href = serverUrl;
+            }else{
+                var info = new Browser();
+                if(info.browser.indexOf('360')>-1){
+                    alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
+                }else{
+                    if(obj.id=="own_plane"){
+                        window.open(serverUrl+"/plane");
+                        // window.location.href = serverUrl+"/plane";
+                    }else if(obj.id=="own_vmiss"){
+                        window.open(serverUrl+"/vmiss");
+                        // window.location.href = serverUrl+"/vmiss";
+                    }else if(obj.id=="own_renew"){
+                        // window.open(serverUrl+"/renew");
+                        window.open('https://service-2k6qgxkd-1253626683.bj.apigw.tencentcs.com/test/planeVmiss');
+                    }                
+                }                
             }
         }
     }
+    // function logoutAuth(obj){
+    //     if(obj.id == "own_logout"){
+    //         delCookie('auth');
+    //         window.location.reload(true);
+    //     }
+    // }
     function authCheck(){
         let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
         if (pwd!=null && pwd!=""){
