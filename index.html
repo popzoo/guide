@@ -11,7 +11,8 @@
 <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/buttons.css">
 <link rel="stylesheet" type="text/css" href="https://www.bootcss.com/p/buttons/css/showcase.css">
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/home.css"/>
+<!-- <link type="text/css" rel="stylesheet" href="css/home.css"/> -->
 <meta name="referrer" content="no-referrer" />
 <!-- music player -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
@@ -20,26 +21,27 @@
 </head>
 <body>
 <div id="top">
+
 <main id="top_main">
+<div><a id="login_show">❤️</a></div>
 <div id="top_logo"><img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx2.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="authCheck()" id="mainimg"></div>
 <div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png">
-	<!-- <br class="top_hr_style01"> -->
+	<!-- <br class="top_hr_style01">  float:right;margin: -15px 30px 0 0; -->
 </div>
 <div class="showcase-examples l-over l-center">
   <a id="own_time" href="//popzoo.github.io/zoo/" title="时光轴" class="button button-rounded button-plain button-small-caps button-border" target="_blank">时光轴</a>
   <a id="own_danmu" href="//popzoo.github.io/danmu/" title="云弹幕" class="button button-rounded button-plain button-small-caps button-border"target="_blank" >云弹幕</a>
-  <a id="own_person" href="//popzoo.github.io/zoo/personal.html" title="定制版" class="button button-rounded button-plain button-small-caps button-border"target="_blank" >定制版</a>
+<!--   <a id="own_person" href="//popzoo.github.io/zoo/personal.html" title="定制版" class="button button-rounded button-plain button-small-caps button-border"target="_blank" >定制版</a> -->
   <a id="own_gift" href="//popzoo.github.io/pop/giftshow.html" title="礼物秀" class="button button-rounded button-plain button-small-caps button-border" target="_blank" >礼物秀</a>
   <a id="own_car" href="//popzoo.github.io/pop/motorcade.html" title="车队展" class="button button-rounded button-plain button-small-caps button-border" target="_blank" >车队展</a>
   <a id="own_fire" href="#" title="火力房" class="button button-rounded button-plain button-small-caps button-border" target="_blank">火力房</a>
   <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank" >报表单</a>
   <a id="own_data" href="#" title="大数据" class="button button-rounded button-plain button-small-caps button-border" target="_blank">大数据</a>
-  <!-- <a id="own_audio" href="#" onclick="checkBrowser(this)" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" >音乐炮</a> -->
-  <a id="own_renew" href="#" onclick="checkBrowser(this)" title="测节点" class="button button-rounded button-plain button-small-caps button-border" >测节点</a>
-  <a id="own_plane" href="#" onclick="checkBrowser(this)" title="超音速" class="button button-rounded button-plain button-small-caps button-border" >撕丝热</a>
-  <a id="own_vmiss" href="#" onclick="checkBrowser(this)" title="V仇杀" class="button button-rounded button-plain button-small-caps button-border" >嵬菟芮</a>
-  <!-- <a id="own_logout" href="#" onclick="logoutAuth(this)" title="一扫光" class="button button-rounded button-plain button-small-caps button-border" >一扫光</a> -->
-  <a id="own_backup" href="#" onclick="checkBrowser(this)" title="选备胎" class="button button-rounded button-plain button-small-caps button-border" >选备胎</a>
+  <a id="own_pcsub" href="#" onclick="checkBrowser(this)" title="电脑端" class="button button-rounded button-plain button-small-caps button-border" >电脑端</a>
+  <a id="own_mbsub" href="#" onclick="checkBrowser(this)" title="手机端" class="button button-rounded button-plain button-small-caps button-border" >手机端</a>
+  <a id="own_ping" href="#" title="GPing" class="button button-rounded button-plain button-small-caps button-border" >平结果</a>
+  <a id="own_renew" href="https://disk.popzoo.ga/"  title="云网盘" class="button button-rounded button-plain button-small-caps button-border" >云网盘</a>
+  <a id="own_ping" href="https://seek.popzoo.ga/" title="GPing" class="button button-rounded button-plain button-small-caps button-border" >搜引擎</a>
 <!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
   <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->  
 </div>
@@ -47,12 +49,12 @@
 </div>
 <footer id="top_footer">
     <span id="top_copyright">
-        This website has running: <span id='site-signal'>❤️</span><span id='site-time'>加载中</span><br>
-        <a href="https://icp.gov.moe" target="_blank">萌ICP备</a><a href="https://icp.gov.moe/?keyword=20210112" target="_blank">20210112号</a>
+        Site has running:<span id='site-signal'>❤️</span><span id='site-time'>加载中</span><br>
+        <a href="https://icp.gov.moe" target="_blank">萌ICP</a><a href="https://icp.gov.moe/?keyword=20210112" target="_blank">2020号</a>
         『江涵秋影枯万界,寒江孤舟驶星河』<span id='site-emoji'></span>
-        <br>Copyright Reserved ©2020-2021 JadeBone.Powered by npm
-        <br>侵权删除/违法举报/咨询事宜等请给站长
-            <a href="mailto:lvlanxing@gmail.com?subject=邮件主题&amp;body=邮件内容" rel="nofollow" style="color:green;text-decoration:none;font-weight:bold;">发送邮件</a>，或者使用<a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3474800140" style="color:green;font-weight:bold;">QQ联络</a>
+        <br>Copyright Reserved ©2020.Powered & CDN by Vercel
+        <br>侵权删除/违法举报/咨询事宜等请
+            <a href="mailto:lvlanxing@gmail.com?subject=邮件主题&amp;body=邮件内容" rel="nofollow" id="contact_mail" >发送邮件</a>，或使用<a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3474800140" id="contact_qq">QQ联络</a>
     </span>
 </footer>
 </body>
@@ -66,7 +68,7 @@
 <script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/Browser.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/snowy.js"></script>
-<script>
+<script type="text/javascript">
     var serverUrl = "http://l27.0.0.1";
     (function getServerConfig(){
         fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
@@ -77,20 +79,15 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            serverUrl = json.serverUrl!=undefined?window.atob(json.serverUrl):serverUrl;
-            if(document.domain.indexOf("popzoo.ga")==-1){
-                document.getElementById("own_fire").setAttribute("href",serverUrl+"/fire");
-                document.getElementById("own_form").setAttribute("href",serverUrl+"/form");
-                document.getElementById("own_data").setAttribute("href",serverUrl+"/bi");
-            }else{
-                document.getElementById("own_fire").setAttribute("href","https://"+document.domain+"/fire.html");
-                document.getElementById("own_form").setAttribute("href","https://"+document.domain+"/form.html");
-                document.getElementById("own_data").setAttribute("href","https://"+document.domain+"/bi.html");                
-            }
+            serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
+            document.getElementById("own_fire").setAttribute("href",serverUrl+"/fire");
+            document.getElementById("own_form").setAttribute("href",serverUrl+"/form");
+            document.getElementById("own_data").setAttribute("href",serverUrl+"/bi");
+            document.getElementById("own_ping").setAttribute("href",serverUrl+"/ping");
             // document.getElementById("status_open").setAttribute("href",serverUrl+"/setstatus?status=1&nickName=admin");
             // document.getElementById("status_close").setAttribute("href",serverUrl+"/setstatus?status=0&nickName=admin");
-            siteSignal();
-            siteTime();
+            loginRender();
+            isMobileDevice();
             lazyLoadImg();
             changeImg();
         }).catch((error)=>{
@@ -99,6 +96,52 @@
         });
         console.info('\n' + ' %c Author GitHub ' +  ' %c https://github.com/lvlanxingapp ' + '\n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;');        
     })();
+    function checkBrowser(obj){
+        if(getCookie('auth')==null){
+            // alert('非法请求，请登录后重试！');
+            location.href = "//"+document.domain+"/illegal.html";
+        }else{
+            if(obj.id == "own_backup"){
+                window.location.href = serverUrl;
+            }else{
+                var info = new Browser();
+                if(info.browser.indexOf('360')>-1){
+                    alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
+                }else{
+                    if(obj.id=="own_pcsub"){
+                        window.open(serverUrl+"/finesub");
+                    }else if(obj.id=="own_mbsub"){
+                        window.open(serverUrl+"/quantum");
+                    // }else if(obj.id=="own_renew"){
+                        // window.open(serverUrl+"/renew");
+                    }                
+                }                
+            }
+        }
+    }
+    function loginRender(){
+        if(getCookie('auth')==null){
+            document.getElementById("login_show").innerText = "登录账户";
+            document.getElementById("login_show").addEventListener('click',authCheck);
+
+        }else{
+            document.getElementById("login_show").innerText = "注销账户";
+            document.getElementById("login_show").addEventListener('click',logoutAcc);
+        }
+    }
+    function logoutAcc(){
+        delCookie("auth");
+        document.getElementById("login_show").innerText = "登录账户";
+    }
+    function isMobileDevice(){
+        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            document.getElementById('top_footer').setAttribute('style','display:none');
+        } else {
+            siteSignal();
+            siteTime();
+        }
+
+    }
     function siteSignal(){
         window.setTimeout("siteSignal()", 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
         document.getElementById("site-signal").innerHTML = "💔";
@@ -147,44 +190,16 @@
             }
         }        
     }
-	function changeImg(){
-		// let prefix = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/";
+    function changeImg(){
+        // let prefix = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/";
         let prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
-		let bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];
-		let rdIndex = Math.floor( Math.random() * bodyBgs.length );
-		let img1= document.getElementById('bgimg');
-		img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
+        let bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];
+        let rdIndex = Math.floor( Math.random() * bodyBgs.length );
+        let img1= document.getElementById('bgimg');
+        img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
 
-	    window.setTimeout(function(){changeImg()},10000);
-	}
-    function checkBrowser(obj){
-        if(getCookie('auth')==null){
-            // alert('非法请求，请登录后重试！');
-            location.href = "//"+document.domain+"/illegal.html";
-        }else{
-            // if(obj.id == "own_audio"){
-            //     window.open(serverUrl+"/audio.html");
-            if(obj.id == "own_backup"){
-                window.location.href = serverUrl;
-            }else{
-                var info = new Browser();
-                if(info.browser.indexOf('360')>-1){
-                    alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
-                }else{
-                    if(obj.id=="own_plane"){
-                        window.open(serverUrl+"/plane");
-                        // window.location.href = serverUrl+"/plane";
-                    }else if(obj.id=="own_vmiss"){
-                        window.open(serverUrl+"/vmiss");
-                        // window.location.href = serverUrl+"/vmiss";
-                    }else if(obj.id=="own_renew"){
-                        // window.open(serverUrl+"/renew");
-                        window.open('https://service-2k6qgxkd-1253626683.bj.apigw.tencentcs.com/test/planeVmiss');
-                    }                
-                }                
-            }
-        }
-    }
+        window.setTimeout(function(){changeImg()},10000);
+    }    
     // function logoutAuth(obj){
     //     if(obj.id == "own_logout"){
     //         delCookie('auth');
@@ -216,6 +231,7 @@
     }
     function mouseOver(){
         document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
+        // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
     }
     function mouseOut()
     {
@@ -247,7 +263,6 @@
         exp.setTime(exp.getTime() + 365*24*60*60*1000); 
         document.cookie = name + "="+ escape (value) + "; path=/; expires=" + exp.toGMTString();
     }
-    // setCookie("auth","9da64484-5ca0-d2e7-888a-c857a03946bf");
     // get cookie
     function getCookie(name){
         //document.cookie.setPath("/");
@@ -260,23 +275,13 @@
         exp.setTime(exp.getTime() - 1);
         var cval=getCookie(name);
         if(cval!=null) document.cookie= name + "="+cval+"; path=/; expires="+exp.toGMTString();
-    }     
-    // function getCookie(name){
-    //     //document.cookie.setPath("/");
-    //     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
-    // 　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
-    // }
-    // function visibilityControl(){
-    //  if(getCookie("adminUser")!=null && getCookie("adminUser").length===36){
-    //    document.getElementById('renew_node').style.display="inline";
-    //    document.getElementById('plane_node').style.display="inline";
-    //    document.getElementById('vmiss_node').style.display="inline";
-    //  }
-    // }
-    // visibilityControl();
+    }
+    function isValidIP(ip) {
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+        return reg.test(ip);
+    }      
 	// createSnow('src/', 150);
 </script>
-<style type="text/css">
-.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style>
+<!-- <style type="text/css">.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style> -->
 <div class="snow-container"></div>
 </html>
