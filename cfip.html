@@ -70,7 +70,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>
 <script type="text/javascript">
     var sortNodeList = [];// judge= 'kissyourvigina';
-    var serverUrl = document.location.protocol+"//"+document.domain;
+    // var serverUrl = document.location.protocol+"//"+document.domain;
+    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
@@ -87,25 +88,25 @@
         localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
         window.location.reload();
     }     
-    getServerConfig(); 
-    function getServerConfig(){
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            let serverAddr = window.atob(json.serverUrl);
-            authCheck(serverAddr);
-        }).catch((error)=>{
-            console.error("请求错误", error.message)
-        });
-    }     
-    function authCheck(serverAddr){
+    // getServerConfig(); 
+    // function getServerConfig(){
+    //     fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    //         method: 'GET',
+    //         mode: 'cors',
+    //         cache: 'default',
+    //         credentials: 'omit'
+    //     }).then((res)=>{
+    //         return res.json()
+    //     }).then((json)=>{
+    //         let serverAddr = window.atob(json.serverUrl);
+    //         authCheck(serverAddr);
+    //     }).catch((error)=>{
+    //         console.error("请求错误", error.message)
+    //     });
+    // }     
+    (function authCheck(){
         if(getCookie("auth")!=null){
-            initProgram(serverAddr);
+            initProgram();
         }else{
             let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
             if (pwd!=null && pwd!=""){
@@ -129,12 +130,12 @@
                 })        
             }
         }   
-    }     
+    })();  
     // get cos sek
-    function initProgram(serverAddr){
+    function initProgram(){
         document.getElementById("show_table").style.visibility="visible";
         document.getElementById("show_title").style.visibility="visible";
-        document.getElementsByClassName('nav-link')[3].setAttribute('href',serverAddr+':55555/gui.html');
+        document.getElementsByClassName('nav-link')[3].setAttribute('href',serverUrl+':55555/gui.html');
         document.getElementsByClassName('nav-link')[4].setAttribute('href',serverUrl+'/finesub');
         document.getElementsByClassName('nav-link')[5].setAttribute('href',serverUrl+'/quantum');
         getNodeList();
