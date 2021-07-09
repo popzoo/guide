@@ -13,7 +13,7 @@ $(function() {
     var cos = "",
         envFlag = true; //false test, true product
     var serverUrl = document.location.protocol+"//"+document.domain;
-    var authStr = envFlag ? '' : '9da64484-5ca0-d2e7-888a-c857a03946bf';
+    var authStr = envFlag ? '' : '666';
     //============================================================ 
     //========================= 加载等待效果 ====================== 
     //============================================================     
@@ -57,7 +57,7 @@ $(function() {
         }).then((res) => {
             return res.json()
         }).then((json) => {
-            // serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
+            serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
             let secId = json.secId != undefined ? window.atob(json.secId) : secId;
             let secKy = json.secKy != undefined ? window.atob(json.secKy) : secKy;
             authStr = window.atob(json.token.substr(3,json.token.length));
@@ -84,10 +84,10 @@ $(function() {
             alert("网络请求失败，请刷新页面重试");
         });
     }
-    // function isValidIP(ip) {
-    //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-    //     return reg.test(ip);
-    // }  
+    function isValidIP(ip) {
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+        return reg.test(ip);
+    }  
     function authCheck() {
         if (getCookie("auth") != null) {
             let signOut = document.querySelector('.signOut');
