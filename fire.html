@@ -76,7 +76,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>  
 <script type="text/javascript">
-	var serverUrl = document.location.protocol+"//"+document.domain;
+	// var serverUrl = document.location.protocol+"//"+document.domain;
+    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
     var fireUrl = "/getfire?auth="; 
     var welfareUrl = "/getlotto?auth=";
     var fireDayUrl = "/getdayfire?auth=";
@@ -102,23 +103,23 @@
         localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
         window.location.reload();
     }    
-    (function getServerConfig(){
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            // serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
-            authCheck();
-            // initProgram();
-        }).catch((error)=>{
-            console.error("网络异常", error)
-        });       
-    })();
-    function authCheck(){
+    // (function getServerConfig(){
+    //     fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    //         method: 'GET',
+    //         mode: 'cors',
+    //         cache: 'default',
+    //         credentials: 'omit'
+    //     }).then((res)=>{
+    //         return res.json()
+    //     }).then((json)=>{
+    //         // serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
+    //         authCheck();
+    //         // initProgram();
+    //     }).catch((error)=>{
+    //         console.error("网络异常", error)
+    //     });       
+    // })();
+    (function authCheck(){
         if(getCookie("auth")!=null){
             initProgram();
         }else{
@@ -144,7 +145,7 @@
                 })        
             }
         }   
-    }       
+    })();       
     // init script
     function initProgram(){
         let radioNode = document.getElementById(radioObj);

@@ -101,42 +101,42 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            // let serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
-            let serverUrl = document.location.protocol+"//"+document.domain;
+            // let serverUrl = document.location.protocol+"//"+document.domain;
             let secId = json.secId!=undefined?window.atob(json.secId):secId;
             let secKy = json.secKy!=undefined?window.atob(json.secKy):secKy;
             cos = new COS({SecretId: secId, SecretKey: secKy});     
-            authCheck(serverUrl);
+            authCheck();
         }).catch((error)=>{
             console.error("网络异常", error.message)
             alert("网络请求失败，请刷新页面重试");
         });
     })();     
-    function authCheck(serverUrl){
+    function authCheck(){
         if(getCookie("auth")!=null){
             initProgram();
         }else{
-            let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
-            if (pwd!=null && pwd!=""){
-                fetch(serverUrl+'/getauth?auth='+pwd.trim(),{
-                    method: 'GET',
-                    mode: 'cors', 
-                    cache: 'no-store', 
-                    credentials: 'omit', 
-                }).then(res => {
-                    return res.json();
-                }).then(json => {
-                    if(json.msg=="success"){
-                        setCookie('auth',json.auth);
-                        initProgram();
-                    }else{
-                        delCookie("auth");
-                        alert("密码错误，请刷新页面后重新输入");
-                    }                    
-                }).catch(err => {
-                    console.error('请求错误', err);
-                })        
-            }
+            location.href=document.location.protocol+"//"+document.domain+'/illegal.html';
+            // let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
+            // if (pwd!=null && pwd!=""){
+            //     fetch(serverUrl+'/getauth?auth='+pwd.trim(),{
+            //         method: 'GET',
+            //         mode: 'cors', 
+            //         cache: 'no-store', 
+            //         credentials: 'omit', 
+            //     }).then(res => {
+            //         return res.json();
+            //     }).then(json => {
+            //         if(json.msg=="success"){
+            //             setCookie('auth',json.auth);
+            //             initProgram();
+            //         }else{
+            //             delCookie("auth");
+            //             alert("密码错误，请刷新页面后重新输入");
+            //         }                    
+            //     }).catch(err => {
+            //         console.error('请求错误', err);
+            //     })        
+            // }
         }   
     }     
     // get cos sek
