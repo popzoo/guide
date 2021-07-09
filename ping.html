@@ -105,7 +105,7 @@
             console.error("请求错误", error.message)
         });
     })();
-    (function authCheck(){
+    function authCheck(){
         if(getCookie("auth")!=null){
             initProgram();
         }else{
@@ -132,7 +132,7 @@
             //     })        
             // }
         }   
-    })();
+    }
     // get cos sek
     function initProgram(){
         document.getElementById("show_table").style.visibility="visible";
