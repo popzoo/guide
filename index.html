@@ -73,8 +73,8 @@
 <script type="text/javascript">
     localStorage.setItem("modelId",0)
     localStorage.setItem("modelTexturesId",0);    
-    // var serverUrl = document.location.protocol+"//"+document.domain;
-    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
+    var serverUrl = document.location.protocol+"//"+document.domain;
+    // var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
@@ -99,7 +99,7 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            // serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
+            serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
             loginRender();
             isMobileDevice();
             lazyLoadImg();
