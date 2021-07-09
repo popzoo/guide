@@ -422,7 +422,7 @@
                     break;
                   default://dynamic
                     if(giftList[i].himg.indexOf('/https/')>-1){
-                        giftList[i].himg = giftList[i].himg.substr(giftList[i].himg.indexOf('/https/')+7);
+                        giftList[i].himg ='https://'+ giftList[i].himg.substr(giftList[i].himg.indexOf('/https/')+7);
                     }                   
                     content = "<a href='"+giftList[i].himg+"' target='_blank'><img src='"+giftList[i].himg+"'/></a><p>名称:<strong style='color:red;'>"+giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>";
                     content += giftList[i].id+"</strong></p><p>经验:<strong style='color:red;'>"+giftList[i].exp+"</strong>&nbsp;连击等待:<strong style='color:red;'>"+giftList[i].hit_interval/1000+"s</strong></p>";

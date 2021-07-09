@@ -181,7 +181,7 @@
         for(let i=count*60;i<Math.min((count+1)*60, fleetList.length);i++){
             // console.info(fleetList[i]); encodeURIComponent(fleetList[i].mcId)
             if(fleetList[i].icon.indexOf('/https/')>-1){
-                fleetList[i].icon = fleetList[i].icon.substr(fleetList[i].icon.indexOf('/https/')+7);
+                fleetList[i].icon = 'https://'+ fleetList[i].icon.substr(fleetList[i].icon.indexOf('/https/')+7);
             }            
             let div = $('<div></div>').addClass('item');
             var content = "<a href='https://msg.douyu.com/motorcade/#/motorcade/search?keyword="+fleetList[i].number+"' target='_blank'><img src='"+fleetList[i].icon+"'/></a>";
