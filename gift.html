@@ -94,7 +94,8 @@
 <script type="text/javascript">
     var count = 0;
     var giftList = new Array();
-    var serverUrl = document.location.protocol+"//"+document.domain;
+    // var serverUrl = document.location.protocol+"//"+document.domain;
+    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
     //===============================================================
     //++++++++ listenning radio onchange and reload page ++++++++++++
     //===============================================================
@@ -193,8 +194,7 @@
       //===============================================================
       function getDyanmicGiftDomestic(){
           // fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/dynamic_gift.json',{
-          // fetch(serverUrl+'/getgift',{
-          fetch('http://47.93.190.201/getgift',{
+          fetch(serverUrl+'/getgift',{
               method: 'GET',
               mode: 'cors', 
               cache: 'default', 
