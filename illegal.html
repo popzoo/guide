@@ -8,11 +8,10 @@
   <link rel="shortcut icon" href="img/favicon.ico">
   <link rel="stylesheet" href="https://www.bootcss.com/p/buttons/css/buttons.css">
   <link rel="stylesheet" id="patternfly-adjusted-css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/illegal.css" type="text/css" media="all">
-  <link href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
   <!-- <script type="text/javascript" src="Scripts/jquery.js"></script> -->
   <!-- <script type="text/javascript" src="Scripts/bootstrap.min.js"></script> -->
-  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-  <style>
+  <style type="text/css">
 	body{
 		font: 500 .875em PingFang SC,Lantinghei SC,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
         background-color: #07040e;
@@ -82,12 +81,12 @@ img#qq {
         <div class="navbar-collapse collapse">
           <ul id="menu-primary" class="nav navbar-nav navbar-right">
          
-            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown">
+<!--             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown">
               <a href="https://popzoo.github.io/guide" class="dropdown-toggle">
                返回主站
               </a>
             </li>
-<!-- 			<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown">
+ --><!-- 			<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown">
               <a href="http://user.qzone.qq.com/1246548142" class="dropdown-toggle">
                 QQ空间
               </a>
@@ -127,12 +126,16 @@ img#qq {
 		  <a href="https://popzoo.github.io/guide/404.html" class="button button-glow button-border button-rounded button-primary">一错到底</a>&nbsp&nbsp&nbsp&nbsp
 		  <a href="https://popzoo.github.io/guide" class="button button-glow button-border button-rounded button-primary">滚回登陆</a>&nbsp&nbsp&nbsp&nbsp
 		  <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3474800140" class="button button-glow button-border button-rounded button-primary">咨询大神</a><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		  <div style=" width: 100%;bottom: 30px;box-sizing: border-box;left: 0;">© 2020-2021 popzoo.ga & All Rights Reserved. </div>
+		  <div style=" width: 100%;bottom: 30px;box-sizing: border-box;left: 0;">© 2020-2021 popzoo & All Rights Reserved. </div>
         </div>
       </div>
     </div>
   <canvas id="canvas" width="100%" height="100%"></canvas>
   </div>
-<script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/hovertreewelcome.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/hovertreewelcome.js"></script>
+<script type="text/javascript">
+  document.getElementsByClassName('button-primary')[0].href= document.location.protocol+"//"+document.domain + '/404.html';
+  document.getElementsByClassName('button-primary')[1].href= document.location.protocol+"//"+document.domain;
+</script>
 </body>
 </html>

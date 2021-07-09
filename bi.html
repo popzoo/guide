@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="Access-Control-Allow-Origin" content="*" />
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 <title>薅羊毛统计</title>
 <link rel="shortcut icon" href="img/favicon.ico">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/reset.css" />
@@ -12,9 +12,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/jquery.shCircleLoader.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.shCircleLoader-min.js"></script>
-<!-- <script type="text/javascript" src="https://lvlanxing.coding.net/p/dataview/d/dataview/git/raw/master/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://lvlanxing.coding.net/p/dataview/d/dataview/git/raw/master/js/jquery.shCircleLoader-min.js"></script> -->
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 </head>
 <body>
 	<div id="loader"></div>
@@ -22,7 +19,7 @@
 		$('#loader').shCircleLoader({color: "#00deff"});//加载圆圈特效
 	</script>
 	<!--Top Start!-->
-	<div class="scanboardWp animsition">
+	<div class="scanboardWp animsition" style="visibility:hidden">
 		<div id="top">
 			<div class="wp clearfix">
 				<div class="left pageTit">
@@ -38,14 +35,13 @@
 						<div class="company fr">
 							<h3>羊毛目录</h3>
 							<div class="dropdown">
-        						<a href="https://popzoo.github.io/zoo/" target="_blank">时光轴</a>
-        						<a href="https://popzoo.github.io/pop/" target="_blank">火力房</a>
-        						<a href="https://popzoo.github.io/danmu/" target="_blank">云弹幕</a>
-        						<a href="https://popzoo.github.io/pop/giftshow.html" target="_blank">礼物秀</a>
-        						<a href="https://popzoo.github.io/pop/motorcade.html" target="_blank">车队展</a>
-        						<a href="https://popzoo.github.io/form/" target="_blank">数据板</a>
-        						<a href="https://github.com/popzoo/seekProxy/blob/master/README.md" target="_blank">GitHub</a>
-        						<a href="https://kefu.douyu.com/nx/prize.html" target="_blank">红包查询</a>
+        						<a id="own_time" href="https://popzoo.github.io/zoo/" target="_blank">时光轴</a>
+        						<a id="own_fire" href="https://popzoo.github.io/pop/" target="_blank">火力房</a>
+        						<a id="own_danmu" href="https://popzoo.github.io/danmu/" target="_blank">云弹幕</a>
+        						<a id="own_gift" href="https://popzoo.github.io/pop/giftshow.html" target="_blank">礼物秀</a>
+        						<a id="own_car" href="https://popzoo.github.io/pop/motorcade.html" target="_blank">车队展</a>
+        						<a id="own_form" href="https://popzoo.github.io/form/" target="_blank">报表单</a>
+        						<a href="https://kefu.douyu.com/nx/prize.html" target="_blank">查红包</a>
 							</div>
 						</div>
 					</div>
@@ -256,4 +252,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.animsition.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.nicescroll.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/echarts.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script> -->
 </html>

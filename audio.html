@@ -9,10 +9,9 @@
 <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
 <link rel="shortcut icon" href="img/favicon.ico">
 <meta name="referrer" content="no-referrer" />
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278032070'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278032070%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 <div style="text-align:center;clear:both"></div>
 </head>
-<body style="background:url('https://cdn.jsdelivr.net/gh/popzoo/seekProxy/img/nier_0.jpg') no-repeat fixed;background-size:100% 100%;-moz-background-size:100% 100%;">
+<body style="background:url('https://cdn.jsdelivr.net/gh/popzoo/guide/img/nier_0.jpg') no-repeat fixed;background-size:100% 100%;-moz-background-size:100% 100%;">
   <h1 style="color: lime;text-align: center;">音乐脉冲炮</h1>
 <div id="top" style="text-align: center;margin: 40px;">
     <audio id="audio_play" controls autoplay="autoplay" preload="auto" src="audio/glassbomb.mp3"/>
@@ -25,25 +24,25 @@
 </body>
 <script>
 // control play 
-var serverUrl='http://127.0.0.1';//WARNING：访问地址必须为*.html,因为chrome浏览器禁用自动播放,测试必须本地网址才行
-getServerConfig();
-function getServerConfig(){
-    fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'default',
-        credentials: 'omit'
-    }).then((res)=>{
-        return res.json()
-    }).then((json)=>{
-        // fireUrl = json.fireUrl!=undefined?window.atob(json.fireUrl):fireUrl;
-        // welfareUrl = json.welfareUrl!=undefined?window.atob(json.welfareUrl):welfareUrl;
-        serverUrl = json.serverUrl != undefined ? window.atob(json.serverUrl) :serverUrl;
-        runControl();
-    }).catch((error)=>{
-        console.error("网络异常", error)
-    });       
-}
+var serverUrl = document.location.protocol+"//"+document.domain;//WARNING：访问地址必须为*.html,因为chrome浏览器禁用自动播放,测试必须本地网址才行
+// getServerConfig();
+// function getServerConfig(){
+//     fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+//         method: 'GET',
+//         mode: 'cors',
+//         cache: 'default',
+//         credentials: 'omit'
+//     }).then((res)=>{
+//         return res.json()
+//     }).then((json)=>{
+//         // fireUrl = json.fireUrl!=undefined?window.atob(json.fireUrl):fireUrl;
+//         // welfareUrl = json.welfareUrl!=undefined?window.atob(json.welfareUrl):welfareUrl;
+//         serverUrl = json.serverUrl != undefined ? window.atob(json.serverUrl) :serverUrl;
+//         runControl();
+//     }).catch((error)=>{
+//         console.error("网络异常", error)
+//     });       
+// }
 function runControl() {
     // let curHour = parseInt(dateFormat("HH",new Date()));
     // if(curHour>=3&&curHour<=6){//3~7点
