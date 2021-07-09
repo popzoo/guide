@@ -101,7 +101,7 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            // serverUrl = isValidIP(document.domain) ? window.atob(json.serverUrl) : 'https://'+document.domain;
+            serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
             loginRender();
             isMobileDevice();
             lazyLoadImg();
@@ -120,7 +120,7 @@
                 alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
             }else{
                 if(obj.id=="own_ping"){
-                    window.open(serverUrl+"/ping.html");
+                    window.open(document.location.protocol+"//"+document.domain+"/ping.html");
                 }else if(obj.id=='own_find'){
                     window.open('https://line.firenet.workers.dev/');
                 }else if(obj.id=='own_deit'){
@@ -291,10 +291,10 @@
         var cval=getCookie(name);
         if(cval!=null) document.cookie= name + "="+cval+"; path=/; expires="+exp.toGMTString();
     }
-    // function isValidIP(ip) {
-    //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-    //     return reg.test(ip);
-    // }      
+    function isValidIP(ip) {
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+        return reg.test(ip);
+    }      
 	// createSnow('src/', 150);
 </script>
 <!-- <style type="text/css">.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style> -->
