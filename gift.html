@@ -94,8 +94,7 @@
 <script type="text/javascript">
     var count = 0;
     var giftList = new Array();
-    // var serverUrl = document.location.protocol+"//"+document.domain;
-    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
+    var serverUrl = document.location.protocol+"//"+document.domain;
     //===============================================================
     //++++++++ listenning radio onchange and reload page ++++++++++++
     //===============================================================
@@ -113,8 +112,27 @@
       function backBtnListen(){
           localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
           window.location.reload();
-      }      
-      (function initScript(){
+      }   
+      (function getServerConfig(){
+          fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+              method: 'GET',
+              mode: 'cors',
+              cache: 'default',
+              credentials: 'omit'
+          }).then((res)=>{
+              return res.json()
+          }).then((json)=>{
+              serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
+              initProgram();
+          }).catch((error)=>{
+              console.error("请求错误", error.message)
+          });
+      })();
+      function isValidIP(ip) {
+          var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+          return reg.test(ip);
+      }          
+      function initProgram(){
           let radioObj = sessionStorage.getItem("radioGift")!=null ? sessionStorage.getItem("radioGift") : "dynamic_gift";
           let radioNode = document.getElementById(radioObj);
           radioNode.setAttribute("checked","checked");
@@ -136,7 +154,7 @@
           }else if(radioObj == "immortal_info"){
               getImmortalInfo();              
           }
-      })();
+      }
       // listenning radio onchange event
       function radioFunc(msg){
           if(msg == "dynamic_gift"){
@@ -402,7 +420,10 @@
                     content = "<a href='#' target='_blank'><img src='"+giftList[i].userAvatar+"'/></a><p>幻神头衔:<strong style='color:red;'>【";
                     content += giftList[i].preNobleName+"】</strong></p><p>用户ID:<strong style='color:blue;'>"+giftList[i].userId+"</strong></p><p>开启时间:<strong style='color:green;'>"+(new Date(1000*giftList[i].beginTime)).toLocaleDateString()+"</strong></p>";
                     break;
-                  default:
+                  default://dynamic
+                    if(giftList[i].himg.indexOf('/https/')>-1){
+                        giftList[i].himg = giftList[i].himg.substr(giftList[i].himg.indexOf('/https/')+7);
+                    }                   
                     content = "<a href='"+giftList[i].himg+"' target='_blank'><img src='"+giftList[i].himg+"'/></a><p>名称:<strong style='color:red;'>"+giftList[i].name+"</strong>&nbsp;礼物ID:<strong style='color:red;'>";
                     content += giftList[i].id+"</strong></p><p>经验:<strong style='color:red;'>"+giftList[i].exp+"</strong>&nbsp;连击等待:<strong style='color:red;'>"+giftList[i].hit_interval/1000+"s</strong></p>";
                     content += "<p>价格:<strong style='color:red;'>"+giftList[i].price_name+"</strong>&nbsp;显示时常:<strong style='color:red;'>"+giftList[i].stay_time/1000 +"s</strong></p><p>简介:<strong style='color:red;'>"+giftList[i].intro+"</strong></p>";

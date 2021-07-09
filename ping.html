@@ -73,8 +73,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>
 <script type="text/javascript">
     var sortNodeList = [];// judge= 'kissyourvigina';
-    // var serverUrl = document.location.protocol+"//"+document.domain;
-    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
+    var serverUrl = document.location.protocol+"//"+document.domain;
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
@@ -91,47 +90,47 @@
         localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
         window.location.reload();
     }     
-    // getServerConfig(); 
-    // function getServerConfig(){
-    //     fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
-    //         method: 'GET',
-    //         mode: 'cors',
-    //         cache: 'default',
-    //         credentials: 'omit'
-    //     }).then((res)=>{
-    //         return res.json()
-    //     }).then((json)=>{
-    //         let serverAddr = window.atob(json.serverUrl);
-    //         authCheck(serverAddr);
-    //     }).catch((error)=>{
-    //         console.error("请求错误", error.message)
-    //     });
-    // }     
+    (function getServerConfig(){
+        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'omit'
+        }).then((res)=>{
+            return res.json()
+        }).then((json)=>{
+            serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
+            authCheck();
+        }).catch((error)=>{
+            console.error("请求错误", error.message)
+        });
+    })();
     (function authCheck(){
         if(getCookie("auth")!=null){
             initProgram();
         }else{
-            let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
-            if (pwd!=null && pwd!=""){
-                fetch(serverUrl+'/getauth?auth='+pwd.trim(),{
-                    method: 'GET',
-                    mode: 'cors', 
-                    cache: 'no-store', 
-                    credentials: 'omit', 
-                }).then(res => {
-                    return res.json();
-                }).then(json => {
-                    if(json.msg=="success"){
-                        setCookie('auth',json.auth);
-                        initProgram();
-                    }else{
-                        delCookie("auth");
-                        alert("密码错误，请刷新页面后重新输入");
-                    }                    
-                }).catch(err => {
-                    console.error('请求错误', err);
-                })        
-            }
+            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
+            // let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
+            // if (pwd!=null && pwd!=""){
+            //     fetch(serverUrl+'/getauth?auth='+pwd.trim(),{
+            //         method: 'GET',
+            //         mode: 'cors', 
+            //         cache: 'no-store', 
+            //         credentials: 'omit', 
+            //     }).then(res => {
+            //         return res.json();
+            //     }).then(json => {
+            //         if(json.msg=="success"){
+            //             setCookie('auth',json.auth);
+            //             initProgram();
+            //         }else{
+            //             delCookie("auth");
+            //             alert("密码错误，请刷新页面后重新输入");
+            //         }                    
+            //     }).catch(err => {
+            //         console.error('请求错误', err);
+            //     })        
+            // }
         }   
     })();
     // get cos sek
@@ -347,10 +346,10 @@
         };
         return fmt;
     }
-    // function isValidIP(ip) {
-    //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-    //     return reg.test(ip);
-    // }    
+    function isValidIP(ip) {
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+        return reg.test(ip);
+    }    
 </script>
 </div>
 </body>

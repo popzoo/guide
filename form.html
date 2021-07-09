@@ -101,7 +101,7 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            // let serverUrl = document.location.protocol+"//"+document.domain;
+            // let serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
             let secId = json.secId!=undefined?window.atob(json.secId):secId;
             let secKy = json.secKy!=undefined?window.atob(json.secKy):secKy;
             cos = new COS({SecretId: secId, SecretKey: secKy});     
@@ -115,7 +115,7 @@
         if(getCookie("auth")!=null){
             initProgram();
         }else{
-            location.href=document.location.protocol+"//"+document.domain+'/illegal.html';
+            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
             // let pwd =window.prompt("郑重警告：此页面保密级别为【*绝密*】，仅供特勤人员专用，闲杂人等禁止入内，否则上门查水表!","");
             // if (pwd!=null && pwd!=""){
             //     fetch(serverUrl+'/getauth?auth='+pwd.trim(),{

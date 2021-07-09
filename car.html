@@ -73,8 +73,7 @@
 <script type="text/javascript">
     var count = 0;
     var fleetList = new Array();
-    // var serverUrl = document.location.protocol+"//"+document.domain;
-    var serverUrl = "https://line.firenet.workers.dev/http/47.93.190.201/";
+    var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
     //=================== Script init ======================
     //======================================================
@@ -92,8 +91,27 @@
     function backBtnListen(){
         localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
         window.location.reload();
-    }      
-    (function initProgram(){
+    }
+    (function getServerConfig(){
+        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'omit'
+        }).then((res)=>{
+            return res.json()
+        }).then((json)=>{
+            serverUrl = isValidIP(document.domain) ? serverUrl : window.atob(json.staticUrl);
+            initProgram();
+        }).catch((error)=>{
+            console.error("请求错误", error.message)
+        });
+    })();
+    function isValidIP(ip) {
+        var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+        return reg.test(ip);
+    }            
+    function initProgram(){
         let radioObj = sessionStorage.getItem("motorcadeStatus")!=null ? sessionStorage.getItem("motorcadeStatus") : "no_limit";
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");
@@ -110,7 +128,7 @@
                 urlTail = 5;break;
         }
         getMotorcadeData(urlTail);
-    })(); 
+    }
     // add Event Listener of radio onchange
     function radioEventListener(){
         var anchor1 = document.getElementById("no_limit");
@@ -162,6 +180,9 @@
         var boxes = new Array;
         for(let i=count*60;i<Math.min((count+1)*60, fleetList.length);i++){
             // console.info(fleetList[i]); encodeURIComponent(fleetList[i].mcId)
+            if(fleetList[i].icon.indexOf('/https/')>-1){
+                fleetList[i].icon = fleetList[i].icon.substr(fleetList[i].icon.indexOf('/https/')+7);
+            }            
             let div = $('<div></div>').addClass('item');
             var content = "<a href='https://msg.douyu.com/motorcade/#/motorcade/search?keyword="+fleetList[i].number+"' target='_blank'><img src='"+fleetList[i].icon+"'/></a>";
             content += "<p>车名:<strong style='color:red;'>"+fleetList[i].name+"</strong>&nbsp;人数:<strong style='color:red;'>";
