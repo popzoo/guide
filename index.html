@@ -36,14 +36,14 @@
   <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank">报表单</a>
   <a id="own_data" href="#" title="看板台" class="button button-rounded button-plain button-small-caps button-border" target="_blank">看板台</a>
   <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a>
-  <a id="own_cfip" href="#" onclick="checkBrowser(this)" title="CF-IP" class="button button-rounded button-plain button-small-caps button-border" target="_blank">加速点</a>
-  <a id="own_ping" href="#" onclick="checkBrowser(this)" title="GPing" class="button button-rounded button-plain button-small-caps button-border">平节点</a>
   <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a>  
   <a id="own_disk" href="https://disk.popzoo.ga/"  title="OneDrive网盘" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云网盘</a>
-<!--   <a id="own_seek" href="https://seek.popzoo.ml/" title="Whoogle Search" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
-  <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" class="button button-rounded button-plain button-small-caps button-border">云引擎</a>
-  <!-- <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Vercel" class="button button-rounded button-plain button-small-caps button-border">云解析</a> -->
-  <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" class="button button-rounded button-plain button-small-caps button-border">云解析</a>
+  <a id="own_seek" href="https://seek.popzoo.ml/" title="Whoogle Search" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a>
+  <a id="own_tire" href="https://popzoo.vercel.app/" title="vercle" class="button button-rounded button-plain button-small-caps button-border">云备胎</a> 
+  <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云引擎</a>
+  <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云解析</a>
+  <a id="own_cfip" href="#" onclick="checkBrowser(this)" title="CF-IP" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">加速点</a>
+  <a id="own_ping" href="#" onclick="checkBrowser(this)" title="GPing" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">平节点</a>    
 <!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
   <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->
 </div>
@@ -110,6 +110,12 @@
             setTimeout(getServerConfig,1000*5);
         });
     })();
+    if(getCookie('auth')!=null){
+        document.getElementById('own_cfip').style.visibility='inherit';
+        document.getElementById('own_ping').style.visibility='inherit';
+        document.getElementById('own_find').style.visibility='inherit';
+        document.getElementById('own_deit').style.visibility='inherit';        
+    }    
     function checkBrowser(obj){
         if(getCookie('auth')==null){
             location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
