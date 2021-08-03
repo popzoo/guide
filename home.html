@@ -117,19 +117,27 @@
         }else{
             var info = new Browser();
             if(info.browser.indexOf('360')>-1){
-                alert('请不要用360浏览器查看此页面，强烈建议使用chrome浏览器！');
+                alert('不兼容360浏览器查看此页面，请使用chrome、firefox、safari等原生浏览器！');
+            }else if(info.browser.indexOf('QQ')>-1){
+                alert('不兼容QQ浏览器查看此页面，请使用chrome、firefox、safari等原生浏览器！');
+            }else if(info.browser.indexOf('Wechat')>-1){
+                alert('不兼容微信浏览器查看此页面，请使用chrome、firefox、safari等原生浏览器！');
+            }else if(info.browser.indexOf('baidu')>-1){
+                alert('不兼容百度浏览器查看此页面，请使用chrome、firefox、safari等原生浏览器！');    
             }else{
                 if(obj.id=="own_ping"){
-                    window.open(document.location.protocol+"//"+document.domain+"/ping.html");
+                    window.open(serverUrl+"/ping.html");
+                }else if(obj.id=='own_cfip'){
+                    window.open(serverUrl+"/cfip.html");
                 }else if(obj.id=='own_find'){
                     window.open('https://line.firenet.workers.dev/');
                 }else if(obj.id=='own_deit'){
-                    window.open('https://more.firenet.workers.dev/');
-                    // window.open('https://popset.vercel.app/');
+                    window.open('https://seed.firenet.workers.dev/');
+                    // window.open('https://popzoo.vercel.app/');
                 }        
             }                
         }
-    }
+    }	
     function loginRender(){
         if(getCookie('auth')==null){
             document.getElementById("login_show").innerText = "登录";
