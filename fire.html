@@ -262,6 +262,9 @@
                     // console.info(roomList[j].avatar);
                 let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
                 let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
+                if(roomList[j].avatar.indexOf('/https/')>-1){
+                    roomList[j].avatar = 'https://'+ roomList[j].avatar.substr(roomList[j].avatar.indexOf('/https/')+7);
+                }                 
                 content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].avatar+"'/></a>";
                 content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>";
                 content += leftTime + "</strong>s&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
@@ -307,6 +310,9 @@
                 let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
                 let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
                 let endTime = dateFormat("HH:MM:SS", new Date(Number(roomList[j].endTime)*1000));
+                if(roomList[j].avatar.indexOf('/https/')>-1){
+                    roomList[j].avatar = 'https://'+ roomList[j].avatar.substr(roomList[j].avatar.indexOf('/https/')+7);
+                }                 
                 content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].avatar+"'/></a>";
                 content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>";
                 content += endTime + "</strong></p>";
