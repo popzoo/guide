@@ -252,45 +252,47 @@
     //+++++++++++++++++ 模拟滚动条滚动时随机添加内容 +++++++++++++++++
     //===============================================================            
     function makeEffectBoxes(){
-      	var boxes = new Array;
-      	for(let j=0;j<roomList.length;j++){
-      		let div = $('<div></div>').addClass('item');
-      		var content="";
-      		if(radioObj==="effect_fire"){// ++countNum;
-            	let leftTime = parseInt((roomList[j].endTime - new Date().getTime())/1000);
-            	if(leftTime>=0){
-            	    let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
-            	    let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
-            	    content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='https://apic.douyucdn.cn/upload/"+roomList[j].anchorImg+"'/></a>";
-            	    content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>";
-            	    content += leftTime + "</strong>s&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
-            	    content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"</strong>&nbsp;";
-            	    content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong></p>";
-            	    content += "<p>中率:<strong style='color:#CD00CD;'>"+ roomList[j].winRate +"</strong>&nbsp;";
-            	    content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
-            	    content += "人数:<strong style='color:blue;'>"+ roomList[j].peopleNum +"</strong></p>";
-            	    content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";
-            	}
+        var boxes = new Array;
+        for(let j=0;j<roomList.length;j++){
+            let div = $('<div></div>').addClass('item');
+            var content="";
+            if(radioObj==="effect_fire"){// ++countNum;
+                let leftTime = parseInt((roomList[j].endTime - new Date().getTime())/1000);
+                // if(leftTime>=0){//https://apic.douyucdn.cn/upload/
+                    // console.info(roomList[j].avatar);
+                let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
+                let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
+                content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].avatar+"'/></a>";
+                content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>";
+                content += leftTime + "</strong>s&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
+                content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"</strong>&nbsp;";
+                content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong></p>";
+                // content += "<p>持续:<strong style='color:#CD00CD;'>"+ roomList[j].duration +"s</strong>&nbsp;";
+                content += "<p>粉丝:<strong style='color:#CD00CD;'>"+ roomList[j].fans +"</strong>&nbsp;";
+                content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
+                content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";
+                content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";
+                // }
             }else if(radioObj==="effect_welfare"){
-            	let leftTime = roomList[j].endTime - parseInt(new Date().getTime()/1000);
-            	if(leftTime>=0){
-            	    let joinType = roomList[j].joinType==0?'全部':(roomList[j].joinType==1?'关注':'粉丝');
-            	    let joinCondition = roomList[j].joinConditionName+'|'+roomList[j].joinConditionPrice+'×'+roomList[j].joinConditionNum+'份';
-            	    let title = roomList[j].anchorName!=""?roomList[j].anchorName:"木有标题";
-                    if(roomList[j].roomImg.indexOf('/https/')>-1){
-                        roomList[j].roomImg ='https://'+ roomList[j].roomImg.substr(roomList[j].roomImg.indexOf('/https/')+7);
-                    }
-            	    content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].roomImg+"'/></a>";
-            	    content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>"+leftTime+"</strong>s</p>";;
-            	    content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"</strong>&nbsp;份数:<strong style='color:blue;'>"+ roomList[j].prizeNum +"</strong></p>";
-            	    content += "<p>需送:<strong style='color:green;'>"+joinCondition+"</strong></p>";                    
-            	    content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;标题:<strong style='color:blue;'>"+ title +"</strong></p>";
-            	}            	
+                let leftTime = roomList[j].endTime - parseInt(new Date().getTime()/1000);
+                // if(leftTime>=0){
+                let joinType = roomList[j].joinType==0?'全部':(roomList[j].joinType==1?'关注':'粉丝');
+                let joinCondition = roomList[j].joinConditionName+'|'+roomList[j].joinConditionPrice+'×'+roomList[j].joinConditionNum+'份';
+                let title = roomList[j].anchorName!=""?roomList[j].anchorName:"木有标题";
+                if(roomList[j].roomImg.indexOf('/https/')>-1){
+                    roomList[j].roomImg ='https://'+ roomList[j].roomImg.substr(roomList[j].roomImg.indexOf('/https/')+7);
+                }
+                content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].roomImg+"'/></a>";
+                content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>"+leftTime+"</strong>s</p>";;
+                content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"</strong>&nbsp;份数:<strong style='color:blue;'>"+ roomList[j].prizeNum +"</strong></p>";
+                content += "<p>需送:<strong style='color:green;'>"+joinCondition+"</strong></p>";                    
+                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;标题:<strong style='color:blue;'>"+ title +"</strong></p>";
+                // }                
             }
-           	div.append(content);
-           	boxes.push(div);
-           	countNum++; 
-      	}
+            div.append(content);
+            boxes.push(div);
+            countNum++; 
+        }
         setInterval(refreshRemainTime,1000);
         $('#loading').text('全部加载完毕，有效节点总数:'+ countNum);
         return boxes;
@@ -299,32 +301,34 @@
     function makeAllBoxes(){
         var boxes = new Array;
         for(let j=count*50;j<Math.min((count+1)*50, roomList.length);j++){ 
-        	var content="";
-        	let div = $('<div></div>').addClass('item');
-        	if(radioObj==="daily_fire"){
-        	    let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
-        	    let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
-        	    content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='https://apic.douyucdn.cn/upload/"+roomList[j].anchorImg+"'/></a>";
-        	    content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>";
-        	    content += dateFormat('HH:MM:SS',new Date(roomList[j].endTime)) + "</strong></p>";
-        	    content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"×"+roomList[j].num+"份</strong>&nbsp;";
-        	    content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong></p>";
-        	    content += "<p>中率:<strong style='color:#CD00CD;'>"+ roomList[j].winRate +"</strong>&nbsp;";
-        	    content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
-        	    content += "人数:<strong style='color:blue;'>"+ roomList[j].peopleNum +"</strong></p>";
-        	    content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";            		
-        	}else if(radioObj==="daily_welfare"){
-        	    joinType = roomList[j].joinType==0?'全部':(roomList[j].joinType==1?'关注':'粉丝');
-        	    let joinCondition = roomList[j].joinConditionName+'|'+roomList[j].joinConditionPrice+'×'+roomList[j].joinConditionNum+'份';
-        	    let title = roomList[j].anchorName!=""?roomList[j].anchorName:"木有标题";
+            var content="";
+            let div = $('<div></div>').addClass('item');
+            if(radioObj==="daily_fire"){
+                let joinCondition = roomList[j].condition==0?'全部':(roomList[j].condition==1?'关注':'粉丝');
+                let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
+                let endTime = dateFormat("HH:MM:SS", new Date(Number(roomList[j].endTime)*1000));
+                content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].avatar+"'/></a>";
+                content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>";
+                content += endTime + "</strong></p>";
+                content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"</strong>&nbsp;";
+                content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong>&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
+                // content += "<p>持续:<strong style='color:#CD00CD;'>"+ roomList[j].duration +"s</strong>&nbsp;";
+                content += "<p>粉丝:<strong style='color:#CD00CD;'>"+ roomList[j].fans +"</strong>&nbsp;";
+                content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
+                content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";
+                content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";                
+            }else if(radioObj==="daily_welfare"){
+                joinType = roomList[j].joinType==0?'全部':(roomList[j].joinType==1?'关注':'粉丝');
+                let joinCondition = roomList[j].joinConditionName+'|'+roomList[j].joinConditionPrice+'×'+roomList[j].joinConditionNum+'份';
+                let title = roomList[j].anchorName!=""?roomList[j].anchorName:"木有标题";
                 if(roomList[j].roomImg.indexOf('/https/')>-1){
                     roomList[j].roomImg = 'https://'+ roomList[j].roomImg.substr(roomList[j].roomImg.indexOf('/https/')+7);
                 }                
-        	    content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].roomImg+"'/></a>";
-        	    content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>"+ dateFormat('HH:MM:SS',new Date(roomList[j].endTime*1000))+"</strong></p>";;
-        	    content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"×"+roomList[j].prizeNum+"份</strong></p>";
-        	    content += "<p>需送:<strong style='color:green;'>"+joinCondition+"</strong></p>";                    
-        	    content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;标题:<strong style='color:blue;'>"+ title +"</strong></p>";
+                content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].roomImg+"'/></a>";
+                content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>"+ dateFormat('HH:MM:SS',new Date(roomList[j].endTime*1000))+"</strong></p>";;
+                content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"×"+roomList[j].prizeNum+"份</strong></p>";
+                content += "<p>需送:<strong style='color:green;'>"+joinCondition+"</strong></p>";                    
+                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;标题:<strong style='color:blue;'>"+ title +"</strong></p>";
             }else if(radioObj==="daily_red"){
                 let startTime = dateFormat("HH:MM:SS", new Date(Number(roomList[j].startTime)*1000));
                 let joinType = roomList[j].joinc==0?'全部': (roomList[j].joinc==1?'关注': (roomList[j].joinc==2?'粉丝':'关+粉'));
@@ -334,10 +338,10 @@
                 content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].vsrc+"'/></a>";
                 content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>"+startTime+"</strong></p>";
                 content += "<p>主播:<strong style='color:blue;'>"+roomList[j].nn+"</strong>&nbsp;鱼翅:<strong style='color:blue;'>"+ roomList[j].yc/100 +"</strong></p>";
-                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;土豪:<strong style='color:blue;'>"+ roomList[j].uname +"</strong></p>";            	
+                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;土豪:<strong style='color:blue;'>"+ roomList[j].uname +"</strong></p>";                
             }       
-        	div.append(content);
-        	boxes.push(div);
+            div.append(content);
+            boxes.push(div);
         }
         roomList.length<50 || count*50>=roomList.length ? $('#loading').text('全部加载完毕，今日节点总数:'+ roomList.length) : false;
         count++;
