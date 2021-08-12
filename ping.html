@@ -46,9 +46,10 @@
                 <th id="id">ID</th>
                 <th id="protocol">Protocol</th>
                 <th id="loss">Loss(%)</th>
-                <th id="ping">Ping(ms)</th>
-                <th id="gping">Google(ms)</th>
-                <th id="speed">Speed(MB/s)</th>
+<!--                 <th id="ping">Ping(ms)</th>
+                <th id="gping">Google(ms)</th> -->
+                <th id="speed">AvgSpeed</th>
+                <th id="speed">MaxSpeed</th>
                 <th id="udpnat">UDP&Nat</th>
                 <th id="isp">ISP</th>
                 <th id="location">Location</th>
@@ -58,7 +59,7 @@
         </thead>
         <tbody id = "render_table_cell">
             <tr>
-                <td colspan="11">正在加载中……</td>
+                <td colspan="10">正在加载中……</td>
             </tr>
         </tbody>
     </table>
@@ -74,7 +75,7 @@
 <script type="text/javascript">
     var sortNodeList = [];// judge= 'kissyourvigina';
     var serverUrl = document.location.protocol+"//"+document.domain;
-    var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
+    var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "speed";
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
@@ -147,13 +148,13 @@
     function rankEventListener(){
         // var anchor1 = document.getElementById("id");
         var anchor2 = document.getElementById("loss");
-        var anchor3 = document.getElementById("ping");
-        var anchor4 = document.getElementById("gping");
+        // var anchor3 = document.getElementById("ping");
+        // var anchor4 = document.getElementById("gping");
         var anchor5 = document.getElementById("speed");
         // anchor1.addEventListener("click",(function(){radioFunc('id')})); 
         anchor2.addEventListener("click",(function(){radioFunc('loss')}));
-        anchor3.addEventListener("click",(function(){radioFunc('ping')}));
-        anchor4.addEventListener("click",(function(){radioFunc('gping')}));
+        // anchor3.addEventListener("click",(function(){radioFunc('ping')}));
+        // anchor4.addEventListener("click",(function(){radioFunc('gping')}));
         anchor5.addEventListener("click",(function(){radioFunc('speed')}));
     }
     // listenning radio onchange event
@@ -182,17 +183,17 @@
             nodeList.sort(function(a,b){
                 return a.loss - b.loss;
             });
-        }else if(radioObj=="ping"){
-            nodeList.sort(function(a,b){
-                return a.ping - b.ping;
-            });            
-        }else if(radioObj=="gping"){
-            nodeList.sort(function(a,b){
-                return a.gping - b.gping;
-            });      
+        // }else if(radioObj=="ping"){
+        //     nodeList.sort(function(a,b){
+        //         return a.ping - b.ping;
+        //     });            
+        // }else if(radioObj=="gping"){
+        //     nodeList.sort(function(a,b){
+        //         return a.gping - b.gping;
+        //     });      
         }else if(radioObj=="speed"){
             nodeList.sort(function(a,b){
-                return a.speed - b.speed;
+                return b.rankSpeed - a.rankSpeed;
             });                     
         }
         sortNodeList = [].concat(nodeList);//获取排序数组，提供复制链接使用
@@ -225,14 +226,18 @@
             }else{
                 outTr.innerHTML += "<td>"+nodeItem.loss+"</td>";
             }            
-            outTr.innerHTML += "<td>"+nodeItem.ping+"</td>";
-            // outTr.innerHTML += "<td>"+nodeItem.gping+"</td>";
-            if(nodeItem.gping<1000){
-                outTr.innerHTML += "<td style='color:green;font-weight:bold'>"+nodeItem.gping+"</td>";
+            // outTr.innerHTML += "<td>"+nodeItem.ping+"</td>";
+            // if(nodeItem.gping<1000){
+            //     outTr.innerHTML += "<td style='color:green;font-weight:bold'>"+nodeItem.gping+"</td>";
+            // }else{
+            //     outTr.innerHTML += "<td>"+nodeItem.gping+"</td>";
+            // }            
+            if(nodeItem.rankSpeed>2000){
+                outTr.innerHTML += "<td style='color:green;font-weight:bold'>"+nodeItem.speed+"</td>";
             }else{
-                outTr.innerHTML += "<td>"+nodeItem.gping+"</td>";
-            }            
-            outTr.innerHTML += "<td>"+nodeItem.speed+"</td>";
+                outTr.innerHTML += "<td>"+nodeItem.speed+"</td>";
+            } 
+            outTr.innerHTML += "<td>"+nodeItem.maxspeed+"</td>";
             // outTr.innerHTML += "<td>"+nodeItem.udpnat+"</td>";
             if(nodeItem.udpnat=="Blocked"){
                 outTr.innerHTML += "<td style='color:#FF00FF;'>"+nodeItem.udpnat+"</td>";
