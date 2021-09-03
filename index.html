@@ -102,7 +102,7 @@
             isMobileDevice();
             lazyLoadImg();
             changeImg();
-            activeHerok();
+            // activeHerok();
         }).catch((error)=>{
             console.error("请求错误", error.message)
             // setTimeout(getServerConfig,1000*5);
@@ -163,21 +163,21 @@
         }
 
     }
-    function activeHerok(){
-        let requrl = serverUrl+'audioName';
-        fetch(requrl, {
-            method: 'GET',
-            mode: 'cors', //请求模式为跨域
-            cache: 'no-cache', //no-cache
-            credentials: 'omit', // 同源则加入凭据头,cookies
-        }).then((res) => {
-            return res.text();
-        }).then((text) => {
-            console.debug(text);
-        }).catch((error) => {
-            console.error("bad request", error.message)
-        });
-    }
+    // function activeHerok(){
+    //     let requrl = serverUrl+'audioName';
+    //     fetch(requrl, {
+    //         method: 'GET',
+    //         mode: 'cors', //请求模式为跨域
+    //         cache: 'no-cache', //no-cache
+    //         credentials: 'omit', // 同源则加入凭据头,cookies
+    //     }).then((res) => {
+    //         return res.text();
+    //     }).then((text) => {
+    //         console.debug(text);
+    //     }).catch((error) => {
+    //         console.error("bad request", error.message)
+    //     });
+    // }
     function siteSignal(){
         window.setTimeout("siteSignal()", 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
         document.getElementById("site-signal").innerHTML = "💔";
