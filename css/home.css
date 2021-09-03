@@ -344,7 +344,7 @@ b {
 	color: #858585;
 	/*position: fixed;*/
 	position: inherit;
-	bottom: 40px;
+	bottom: 50px;
 	width: 400px;
 	/*margin: 40px auto;*/
 	left: calc(50% - 200px);
