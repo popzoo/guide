@@ -29,21 +29,28 @@
 </div>
 <div class="showcase-examples l-over l-center">
   <a id="own_time" href="#" title="时光轴" class="button button-rounded button-plain button-small-caps button-border" target="_blank">时光轴</a>
-  <a id="own_danmu" href="#" title="云弹幕" class="button button-rounded button-plain button-small-caps button-border"target="_blank">云弹幕</a>
   <a id="own_gift" href="#" title="礼物秀" class="button button-rounded button-plain button-small-caps button-border" target="_blank">礼物秀</a>
   <a id="own_car" href="#" title="车队展" class="button button-rounded button-plain button-small-caps button-border" target="_blank">车队展</a>
   <a id="own_fire" href="#" title="火力房" class="button button-rounded button-plain button-small-caps button-border" target="_blank">火力房</a>
   <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank">报表单</a>
+  <a id="own_novel" href="#" title="小说集" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小说集</a>  
   <a id="own_data" href="#" title="看板台" class="button button-rounded button-plain button-small-caps button-border" target="_blank">看板台</a>
-  <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a>
-  <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a>  
+  <a id="own_danmu" href="#" title="云弹幕" class="button button-rounded button-plain button-small-caps button-border"target="_blank">云弹幕</a>
+<!--   <a id="own_fuli" href="#" onclick="javascript:{window.open(document.location.protocol+'//'+document.domain+'/novel.html')}" title="novel" class="button button-rounded button-plain button-small-caps button-border">小说集</a> -->
+  <!-- <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a> -->
+<!--   <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a> -->  
   <a id="own_disk" href="https://disk.popzoo.ga/" title="OneDrive" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云网盘</a>
-  <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a>
-  <a id="own_tire" href="https://popzoo.vercel.app/" title="vercle" class="button button-rounded button-plain button-small-caps button-border">镜像站</a> 
+  <!-- <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
+  <a id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/" title="夸克搜索" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a>
+  <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
+  <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="福利姬" class="button button-rounded button-plain button-small-caps button-border">福利姬</a>
+  <a id="own_tire" href="https://www.popzoo.ga/" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">主网站</a> 
   <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云引擎</a>
   <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云解析</a>
   <a id="own_cfip" href="#" onclick="checkBrowser(this)" title="CFIP" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云火炬</a>
   <a id="own_ping" href="#" onclick="checkBrowser(this)" title="Speed" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云测速</a>  
+<!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
+  <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> --> 
 </div>
 </main>
 </div>
@@ -115,28 +122,24 @@
     }    
     function checkBrowser(obj){
         if(getCookie('auth')==null){
-            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
+            location.href = serverUrl + "/illegal.html";
         }else{
             var info = new Browser();
-            if(info.browser.indexOf('360')>-1){
-                location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
-            }else if(info.browser.indexOf('QQ')>-1){
-                location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
-            }else if(info.browser.indexOf('Wechat')>-1){
-                location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
-            }else if(info.browser.indexOf('baidu')>-1){
-                location.href = document.location.protocol+"//"+document.domain+"/illegal.html";    
+            if(info.browser.indexOf('360')>-1 || info.browser.indexOf('QQ')>-1 || info.browser.indexOf('Wechat')>-1 || info.browser.indexOf('baidu')>-1 || info.browser.indexOf('sougou')>-1){
+                location.href = serverUrl + "/illegal.html";
             }else{
-                if(obj.id=="own_ping"){
-                    window.open(document.location.protocol+"//"+document.domain+"/ping.html");
+                if(obj.id=="own_fuli"){
+                    window.open(document.location.protocol+'//rouman5.com');
+                }else if(obj.id=='own_ping'){    
+                    window.open(serverUrl+"/ping.html");
                 }else if(obj.id=='own_cfip'){
-                    window.open(document.location.protocol+"//"+document.domain+"/cfip.html");                    
+                    window.open(serverUrl+"/cfip.html");
                 }else if(obj.id=='own_find'){
                     window.open(document.location.protocol+'//line.firenet.'+'workers.dev/');
                 }else if(obj.id=='own_deit'){
                     window.open(document.location.protocol+'//seed.firenet.'+'workers.dev/');
                 }        
-            }                
+            }
         }
     }
     function loginRender(){
