@@ -122,14 +122,14 @@
     }    
     function checkBrowser(obj){
         if(getCookie('auth')==null){
-            location.href = serverUrl + "/illegal.html";
+            location.href = document.location.protocol+"//"+document.domain + "/illegal.html";
         }else{
             var info = new Browser();
             if(info.browser.indexOf('360')>-1 || info.browser.indexOf('QQ')>-1 || info.browser.indexOf('Wechat')>-1 || info.browser.indexOf('baidu')>-1 || info.browser.indexOf('sougou')>-1){
                 location.href = serverUrl + "/illegal.html";
             }else{
                 if(obj.id=="own_fuli"){
-                    window.open(document.location.protocol+'//rouman5.com');
+                    window.open(document.location.protocol+'//rouman5.com/home');
                 }else if(obj.id=='own_ping'){    
                     window.open(serverUrl+"/ping.html");
                 }else if(obj.id=='own_cfip'){
