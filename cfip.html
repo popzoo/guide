@@ -86,7 +86,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>
 <script type="text/javascript">
     var sortNodeList = [];// judge= 'kissyourvigina';
-    var isDomain = false;
     var serverUrl = document.location.protocol+"//"+document.domain;
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
     (function ctrlBackEffect(){
@@ -97,7 +96,14 @@
             document.body.appendChild(scriptNode);
         }
     })();
-    (function getServerConfig(){
+    (function authCheck(){
+        if(getCookie("auth")!=null){
+            getConfig();
+        }else{
+            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
+        }   
+    })();        
+    function getConfig(){
         fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
             method: 'GET',
             mode: 'cors',
@@ -107,23 +113,13 @@
             return res.json()
         }).then((json)=>{
             let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)==-1){
-                serverUrl = window.atob(json.serverUrl);
-            }else{
+            if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
-                isDomain = true;
             }
-            authCheck();
+            initProgram();
         }).catch((error)=>{
             console.error("请求错误", error.message)
         });
-    })();  
-    function authCheck(){
-        if(getCookie("auth")!=null){
-            initProgram();
-        }else{
-            location.href = serverUrl+"/illegal.html";
-        }   
     }     
     // get cos sek
     function initProgram(){
@@ -135,9 +131,6 @@
     }
     function getNodeList() {
         let reqUrl = serverUrl+'/getcfip?auth='+getCookie('auth');
-        if(isDomain){
-            reqUrl = serverUrl+'?path=getcfip&auth='+getCookie('auth');
-        }
         fetch(reqUrl, {
             method: 'GET',
             mode: 'cors',

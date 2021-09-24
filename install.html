@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+  <head>
+    <title>脚本安装</title>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content="油猴脚本"/>
+    <meta name="description" content="火力全开自动脚本"/>
+    <meta name="robots" content="index,follow"/>
+    <meta name="author" content="lvlanxing"/>
+    <meta name="google" value="notranslate"/>
+    <!-- 网页控制 -->
+    <meta name="referrer" content="no-referrer"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <link rel="shortcut icon" href="/img/favicon.ico"/>
+    <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+    <!-- iphone suitable -->
+    <meta name="theme-color" content="#000000"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.6"/>
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
+    <meta name="apple-mobile-web-app-title" content="POPZOO"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <!-- css style -->    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/scripts.css"/>
+  </head>
+  <body>
+    <a id="left_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);z-index: 10;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <a id="right_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;z-index: 100;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <div class="layui-container" style="padding: 30px 30px;">
+      <div class="layui-row">
+        <div class="layui-main layui-col-xs12 layui-col-sm12 layui-col-md10 layui-col-md-offset1">
+          <h1 align="center">斗鱼自动开火——脚本安装
+            <span class="title-tip" style="vertical-align: top;">正式版</span>
+          </h1>
+          <div class="layui-elem-quote offset2rem">🔔温馨提示：用户使用此JS脚本，需要预先安装Tampermokey(油猴)或violentmonkey(暴力猴)浏览器插件。</div>          
+          <!-- <blockquote> -->
+          <div class="layui-elem-quote offset2rem">  
+            <span>作者：lvlanxing</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>更新时间：2020-09-23</span><br/>
+            <span>最新版本：V3.4.4</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>许可协议：GPL-3.0</span>
+            </div>
+          <!-- </blockquote> -->
+          <div class="offset2rem">
+            <a href="#" onclick="installScript()" class="install-link">安装脚本</a><a target="_blank" href="https://greasyfork.org/zh-CN/help/installing-user-scripts" class="install-link-help">?</a>
+          </div>
+          <div>
+            <h2>脚本描述</h2>
+            <div class="desc" id="desc">
+              <h1 align="center">【斗鱼自动火力全开】
+                <span class="title-tip" style="vertical-align: top;">正式版</span>
+              </h1>
+              <blockquote>
+                <p>本脚本可安装于支持 Tampermonkey 或 暴力猴扩展的浏览器，包括但不限于Chrome，360，QQ，UC等。</p>
+              </blockquote>
+              <p align="center">
+                <img src="https://camo.githubusercontent.com/9cd15767dc45dd1a09a15c0751f65623b4040bc28f13875a3803250e3d95e167/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f7675652e7376673f73616e6974697a653d74727565" alt="release">
+                <img src="https://camo.githubusercontent.com/ed551d2fcbd0b47de39b0b4b2a3aad186c2147c2ec901ddc2162737802288e7e/687474703a2f2f6e706d2e7061636b6167657175616c6974792e636f6d2f736869656c642f686f6c6465726a732e737667" alt="Package Quality">
+                <img src="https://img.shields.io/badge/tamperMonkey-v4.8-brightgreen.svg" alt="tampermonkey">
+                <img src="https://img.shields.io/badge/chrome%20x64-v76.0-brightgreen.svg" alt="chrome">
+                <img src="https://img.shields.io/badge/safari%20-v12.0-brightgreen.svg" alt="safari">
+                <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Mac%20%7C%20Android-blue.svg" alt="platform">
+              </p>
+              <h2>📱 运行环境</h2>
+              <p>Tampermokey(油猴)或violentmonkey(暴力猴)浏览器插件的下载地址，建议首选去Google商店(自备梯子)或
+                <a href="https://www.crx4chrome.com/">
+                  <strong style="color: red">Crx4Chrome</strong>
+                </a>(国内可用)搜索安装Tampermokey，然后进入下载界面，选择Download crx file from crx4chrome，下载到本地后，打开chrome或360的插件扩展，勾选开发者模式（这步必须要有），直接把crx插件丢进去（有的丢不进去的话，把插件后缀名.crx改为.zip，然后解压到一个文件夹中，把文件夹丢进去）,还不行的话自行百度，装完插件后，点击此页面上的安装按钮即可把脚本安装到您本地了。</p>
+              <h2>🔧 插件功能</h2>
+              <details>
+                <summary>展开</summary>
+                <ul>
+                  <li>✅ 自动搜索火力全开/福利社房间</li>
+                  <li>✅ 随机发云端或AI弹幕</li>
+                  <li>✅ 不绑定手机发弹幕</li>
+                  <li>✅ 一键打卡所有粉丝房间</li>
+                  <li>✅ 一键清空背包</li>
+                  <li>✅ 今日弹幕数量</li>
+                  <li>✅ 今日跳转次数</li>
+                  <li>✅ 主播当前信用值</li>
+                  <li>✅ 主播开播时间</li>
+                  <li>✅ 自定义私有弹幕</li>
+                  <li>✅ 新页面是否自动播放(记忆上次操作)</li>
+                  <li>✅ 新页面是否开滚屏弹幕(记忆上次操作)</li>
+                  <li>✅ 自定义结束等待时间</li>
+                  <li>✅ 自定义跳转延迟</li>
+                  <li>✅ 是否关闭AI弹幕</li>
+                  <li>✅ 匿名使用脚本</li>
+                  <li>✅ 自定义鱼丸权重</li>
+                  <li>✅ 自动健康观影增积分</li>
+                  <li>❎
+                    <del>鱼吧收藏列表自动签到</del>
+                  </li>
+                  <li>❎
+                    <del>车队页面签到领加油卡</del>
+                  </li>
+                  <li>❎
+                    <del>极速签到手速王</del>
+                  </li>
+                  <li>❎
+                    <del>幻神弹幕特效(本机)</del>
+                  </li>
+                  <li>❎
+                    <del>主播今日礼物收益</del>
+                  </li>
+                  <li>❎
+                    <del>房间今日弹幕数量</del>
+                  </li>
+                  <li>❎
+                    <del>房间在线真实人数</del>
+                  </li>
+                </ul>
+              </details>
+              <h2>💡 使用说明</h2>
+              <blockquote>
+                <p>本脚本完全由原生的JS编写，直接复制需要的本代码在控制台执行试用下效果图如下所示。</p>
+              </blockquote>
+              <p>
+                <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/mainInstruction.jpg" width="100%">
+              </p>
+              <blockquote>
+                <p>本脚本的使用方法特别简单，因为可供操作的区域都集中在房间标题附近，下面分图是各个图标按钮的详细功能说明</p>
+              </blockquote>
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/fnRadio.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/switchTip.png" width="100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/fnPeople.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/fnJump.png" width="100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/redIncome.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/ballBenefit.png" width="100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/sendBack.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/donateBar.png" width="100%">
+                  </td>
+                </tr>
+              </table>
+              <p>1.非油猴控制台的使用方式：</p>
+              <ul>
+                <li>打开房间，等待网页加载完毕</li>
+                <li>拷贝代码，在浏览器（推荐chrome）中按F12打开控制台</li>
+                <li>在console中粘贴代码，按回车执行脚本</li>
+                <li>再按F12关闭控制台等待脚本加载</li>
+              </ul>
+              <p>2.使用注意：被斗鱼屏蔽发言的场景，一般满足频繁房间跳转+频繁发弹幕（二者兼备才行）则搜索跳转超过一定次数后就很有可能被斗鱼屏蔽弹幕（跳转上限与等级的对应规律请查看脚本的隐藏教程），针对这个限制我们可以想办法规避：</p>
+              <ul>
+                <li>方案一：自动搜索限制每天跳转次数，也是本脚本所做的，而且自动搜索和自动发弹幕二者功能可以相互分离，可以设置跳转延迟等，这样很大程度上避免了被关小黑屋的可能性；</li>
+                <li>方案二：自动跳转的延迟/等待时间间隔，每个新房间都停留个一两分钟以上再跳转，这样就不属于短时间频繁房间跳转，但坏处显而易见，太浪费时间了，所以这个方法作为备胎选用。</li>
+              </ul>
+              <h2>💠
+                <a href='https://popzoo.github.io/guide/time.html'  target="_blank">版本迭代(点击查看详情)</a>
+              </h2>
+              <h2>🏮 最新功能</h2>
+              <ul>
+                <li>新增
+                  <a href="https://popzoo.github.io/danmu" style=" color:red; text-decoration:none;font-weight:bold;" target="_blank">云弹幕词库</a>功能，大家可以从这里查看云弹幕的一些常用普通弹幕和部分精选弹幕，脚本自动从云端抽取符合房间类别的热门弹幕，不用再为发啥子弹幕而愁了，就是这么牛，奏是这么的方便，奏是这么滴憨憨~；</li>
+                <table>
+                  <tr>
+                    <td>
+                      <a href="https://popzoo.vercel.app/danmu.html" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/gh/popzoo/danmu/pics/cloudBarrage.gif" width="95%">
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+                <li>幻神弹幕特效实现，含泪呀，拖了二个多月，别人家都做出来，博主一直懒得搞，这回好了，直接抓特效就好了，以后人人都是幻神了，有牌面，有气场，有神范，有木有……</li>
+                <li>重磅推出——人工智能AI聊天机器人-
+                  <strong style="color: red">小思</strong>，拥有亿级别的实体属性关系，机器人具备的功能有：中文分词、词性标注、命名实体识别、关键词提取、文本摘要、新词发现、情感分析等。已经过滤比较弱智的回答，在此特别感谢小思AI之父——
+                  <strong style="color: red">思裕大佬</strong>的大力相助与热情解惑；</li>
+                <table>
+                  <tr>
+                    <td>
+                      <a href="https://www.ownthink.com/">
+                        <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/xiaosi.jpg" width="65%">
+                      </a>
+                    </td>
+                    <td>  </td>
+                </table>
+              </ul>
+              <h2>❓ 常见问题</h2>
+              <blockquote>
+                <p>问题No.1</p>
+              </blockquote>当弹幕速度过快的时候(一般发送弹幕间隔时间小于2s)或网速延迟过高，会出现幻神弹幕特效出现在屏幕左侧移动缓慢的情况，这是个潜在的bug，还在探索解决中，但不影响脚本其他功能的使用;
+              <blockquote>
+                <p>问题No.2</p>
+              </blockquote>浏览器经常崩溃，这种情况是最为常见的，基本上是由于浏览器内存不足造成的，即用户打开的页面太多了，所以建议您用多个不同浏览器满足多个页面打开的需求，不建议用一个浏览器打开过多的页面，只要是chrome内核的浏览器就可以，如360、搜狗，不过非chrome内核浏览器，如FireFox没有适配;
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/updateScript.jpg" width="88%">
+                  </td>
+                </tr>
+              </table>
+              <blockquote>
+                <p>问题No.3</p>
+              </blockquote>如何快速更新脚本？ 由于tamperMonkey自带的脚本更新功能很low，所以建议大家抽空手动更新下脚本，方法特别简单，如下图，方法一，适用所有脚本更细，先勾选所有，然后选择触发一次更新，再点击开始即可；方法二适合单个脚本更新，即直接点击“最后更新”栏下对应脚本的时间,前提是此脚本在greaseFork发布过(即那个叉子图标)；当然还有方法三，直接来greaseFork重新安装脚本便可；
+              <blockquote>
+                <p>问题No.4</p>
+              </blockquote>被关‘小黑屋’。屏幕滚屏弹幕区和聊天弹幕区都不显示自己发送的弹幕，说明您已经触发了斗鱼的风控系统被自动屏蔽发言了，若出现这种情况，如果您是首次或您开了贵族，可以向客服反映，若是多次被封，那就等不到一个星期左右正常观影，就可以解封，或者直接充大于￥10的软妹币就立马解封。
+              <strong style="color: red;">
+                <a style=";text-decoration:none;" href="https://github.com/popsee/firepower/issues/2" target="_blank">-->详细探讨</a>
+              </strong>
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/thankAdmin.png" width="100%"></td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/thankDonator.png" width="100%">
+                  </td>
+                </tr>
+              </table>
+              <blockquote>
+                <p>问题No.5</p>
+              </blockquote>如何开启隐藏功能？ 目前隐藏功能包含的内容有：自定义跳转次数+是否自动取关+关闭幻神特效+是否与AI弹幕混用+用户匿名使用+自定义延迟跳转时间+自定义结束等待时间+自定义弹幕发送间隔+自定义鱼丸权重。隐藏功能
+              <a href="https://popzoo.vercel.app/hiddenManual.html" style="text-decoration: none;">
+                <strong style="color: red;">传送门</strong>
+              </a>，来获取隐藏功能开启密码和使用方法，在此感谢斗鱼铁杆水友
+              <strong>溜小溜丶</strong>对礼物答谢功能开发的大力协助；
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/noemoji.png" width="100%"></td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/containemoji.png" width="100%">
+                  </td>
+                </tr>
+              </table>
+              <blockquote>
+                <p>问题No.6</p>
+              </blockquote>为何我安装脚本后显示的图片为乱码或框框？ 因为作者大大本着好维护的原则直接采用的emoji原生会文字，目前iphone,android,win 10都已原生支持emoji小图标了，但是win7及以下用户可能不支持，见左上图，需要下载文字补丁包，虽然安装上也挺丑的，见右上图，win7的emoji补丁包
+              <strong style="color: red;">
+                <a href="https://support.microsoft.com/zh-cn/help/2729094/an-update-for-the-segoe-ui-symbol-font-in-windows-7-and-in-windows-ser" target="_blank">传送门</a>
+              </strong>；
+              <blockquote>
+                <p>问题No.7</p>
+              </blockquote>使用本脚本最好放不要隐藏tab标签页面(最好保持在前台)，否则可能页面元素无法加载，从而导致脚本无法运行，大家可以把需要执行脚本的页面单独从浏览器里拖拽出来，然后放到后面即可，但请别最小化窗口。如果感觉碍眼，可以用win10的多窗口功能，ctrl+win+D,创建一个新的窗口，然后再用ctrl+win+左右箭头，来切换窗口，非常方便，可以添加很多窗口来执行多账号多开页面需求，如果需要chrome浏览器多开账号功能的，请自行百度chorme多开账号功能；
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://cdn.jsdelivr.net/gh/popsee/firepower/pics/manyWindows.jpg" width="100%"></td>
+                </tr>
+              </table>
+              <h2>📜 反馈说明</h2>
+              <blockquote>
+                <p>插件有问题请及时反馈，如果你有好的建议或想法，欢迎提供；</p>
+                <p>反馈时请给予“
+                  <strong>Good</strong>！”评价，详细的文字说明，并附上截图，以及你所期望的需求！</p>
+              </blockquote>
+              <h2>👩‍👧‍👦 QQ交流群</h2>
+              <h3>一群：
+                <strong>158267839</strong>水友社区
+                <!-- <a href="http://shang.qq.com/wpa/qunwpa?idkey=7fc3fef0db96421305e65c41cc081ffeca507fdc23cab93d731277be829985ec">
+                <strong>一键加群</strong></a> --></h3>
+              <h3>二群：
+                <strong>977387881</strong>斗鱼EX插件
+                <!-- <a href="https://shang.qq.com/wpa/qunwpa?idkey=dd0275fbf9149b71e4f2f4e44902b552c846e9a2234f68eaca35a442510f061b">
+                <strong>一键加群</strong></a> --></h3>
+              <blockquote>
+                <p>有问题可以加群反馈或在网站留言，修复更及时</p>
+              </blockquote>
+              <h2>🎁 礼物车队</h2>
+              <blockquote>
+                <p>礼物展示</p>
+              </blockquote>
+              <strong style="color: red;">
+                <a style="text-decoration:none;" href="https://popzoo.github.io/guide/gift.html" target="_blank">斗鱼礼物大全</a>
+              </strong>的图谱展示功能（包含动态礼物和静态礼物）已经开发完毕，大家可以涨涨见识撒，土豪的可以找找自己喜欢的礼物模板记住id，然后去斗鱼定制私人火箭，相当有牌面！用浏览器的搜索功能ctrl+F，能搜到自己熟悉的礼物图片，来个团团的“母猪冲撞”有木有撒；
+              <blockquote>
+                <p>车队展示</p>
+              </blockquote>
+              <strong style="color: red;">
+                <a style="text-decoration:none;" href="https://popzoo.github.io/guide/car.html" target="_blank">斗鱼全部车队</a>
+              </strong>条件筛选功能已经制作结束，由于斗鱼官方车队搜索反穷人设计理念，以至于大家找个限制门槛低点的车队要鼠标来回点个几百次才能找到，只好自动动手丰衣足食，以方便大家进车队周转丸子或抢红包（注：现在抢丸子机器人太多，周转先试水哦）。这里涵盖的斗鱼的已建立的全部车队，包括车队标致，车队logo图片，车队号码，车队名称。车队筛选条件包括加入车队无限制(白嫖客的福音)、等级限制、贵族限制和粉丝限制；
+              <table>
+                <tr>
+                  <td>
+                    <a href="https://pop.popzoo.xyz/giftshow.html" target="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/popzoo/pop/images/giftShow.jpg" width="100%"></a>
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <a href="https://pop.popzoo.xyz/motorcade.html" target="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/popzoo/pop/images/motorcadeShow.jpg" width="100%">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <h2>🔊
+                <a style=" color:red; text-decoration:none; background-color:yellow">作者声明</a>
+              </h2>
+              <ul>
+                <li>
+                  <strong>本脚本仅供编程爱好者参考、学习和交流使用，请勿做商业用途或大规模恶意滥用，如有侵犯了您的权益，请立马联系作者进行处理；本脚本的二次分发代码需经作者同意，谢谢理解；</strong>
+                </li>
+                <li>
+                  <strong>关于本网页推荐的第三方网站的链接，比如透过本网页以及所著工具而得到的第三方链接及得到的资讯、产品、工具及服务等产生的纠纷，算到本站头上的概不认账撒(非要赖账也行，前提你是能包养我的富婆哈~)；</strong>
+                </li>
+                <li>
+                  <strong>本脚本账号切换的鱼吧签到Bug问题由胖头鱼大佬修复解决，鱼吧签到alert阻断，被xiaoyao大牛修复，在此竭诚拜谢二位大神的鼎力相助，目前脚本除了这两处的参考，其他均为作者原创；</strong>
+                </li>
+              </ul>
+              <h2>🔏
+                <a style="color:red; text-decoration:none; background-color:yellow">用户隐私</a>
+              </h2>
+              <ul>
+                <li>
+                  <strong>本脚本从不恶意收集、窥探、分发、买卖（或其他不法商业行为）用户的个人信息或跑挖矿程序等，本着公开透明的原则，懂代码的大佬可以直接看源码注释，每个函数都有明确的功能说明；</strong>
+                </li>
+                <li>
+                  <strong>对于小白用户我们也相当的友好，这里公开透明的例举了脚本使用或收集大家的哪些个人信息，下面是详细说明，如果您使用此脚本，则默认您同意下面的条款(不同意且会改代码的大佬，可以把此话当放屁~)；</strong>
+                  <ul>
+                    <li>使用并收集了用户的昵称信息(收集昵称默认采用半匿名方式，如“大王***”，隐藏教程有全匿名的使用方法)，主要用途是区别自己已发弹幕的幻神图标去重，判断火力全开中奖列表是否含有自己，礼物致谢去重感谢自己的礼物，区分不同用户的每日跳转次数等；</li>
+                    <li>使用并收集了用户的UID信息(一串数字标识)，主要是通过用户的uid区别不同用户的使用配置参数，如切换账号后检测新账号是否鱼吧车队签到、跳转次数等；</li>
+                    <li>收集了火力/抽奖房间节点信息，方便寻找匹配的火力房间，并统计直播间的火力频率，然后再回馈大家，功能已经开发完毕，薅羊毛导航首页可进，快去尝鲜吧，少年！</li>
+                    <li>收集了用户的每日跳转次数和采用脚本后的中奖收益，统计用户每日的跳转量，探索斗鱼对跳转规则的限制规律，希望能找到一种每天超量跳转(N次)还不被关小黑屋的方法，目前已有一定规律，想详细了解请参考隐藏教程；</li>
+                    <li>使用了站长统计，主要统计云弹幕接口的访问频次（日均约10000+次），目前已经放弃了采用Github的接口(因为在特殊时期不稳定)，通过使用国外CDN加速+国内云盘存储加速访问，满足大家的对速度和稳定需求，主要靠捐助维持，希望大佬们多多抬手，在此小编大拜谢恩~；</li>
+                    <li>对着乔碧罗殿下发誓，真的木有了……；</li>
+                  </ul>
+                </li>
+                <li>
+                  <strong>本着职业道德和扫黑除恶的契约精神，本脚本绝不收集用户的敏感信息，诸如账户鱼丸鱼翅数目、绑定手机号、绑定银行卡、账号登陆cookie等个人隐私，如一经发现作者侵犯了您的这些权益，请立马举报作者！或派遣一大波儿正义的美少女战士，把作者大大埋没在波涛胸涌的浪潮中吧😍！</strong>
+                </li>
+              </ul>
+              <h2>💖 特别推荐</h2>
+              <ul>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://greasyfork.org/zh-CN/scripts/380546">Greasy丶H2P</a>
+                  </strong>群头的斗鱼房间清爽脚本(可自定义清爽模式，去除广告的或无用标题模块)配合本脚本的抢丸子功能，可以无缝清爽抢丸子，优化页面风格，提高舒适度；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://www.obrua.com" target="_blank">胖头鱼的机器人</a>
+                  </strong>，斗鱼机器人界的元老级大神，QQ群(158267839)很活跃，群内高人辈出，开发的程序有9999斗鱼助手、斗鱼抢红包助手、斗鱼房间批量签到等一系列斗鱼辅助精品工具，一直在精心维护，这里特别推荐下，也感谢胖头鱼大佬对本脚本鱼吧签到bug的修复，做出的杰出贡献；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://github.com/nws0507/DYRoomCheckIn" target="_blank">小丑签到工具</a>
+                  </strong>，斗鱼批量签到关注列表的phyton脚本工具，主要功能是自动批量签到关注列表的房间和抢占90%房间的签到手速王，这里特别推荐下，此外小丑大神的webSocket连接斗鱼弹幕系统进行收发弹幕功能脚本也已开发完毕，想要尝鲜的朋友可以参考大神Github主页或加入Q群与之交流探讨；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://github.com/Curtion/douyu-gift" target="_blank">斗鱼自动送荧光棒</a>
+                  </strong>这里推荐下Curtion野草大佬的斗鱼自动送荧光棒客户端工具，挂到PC上自动给每个牌子赠送一个荧光棒，只要找个空闲的机器挂机就可以免去每日挨个房间打卡的烦恼，这里也特别感谢curtion大佬对本人采用云函数实现续牌打卡功能的提点和指定，在此深表感谢；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="http://www.obsapp.com/apps/danmupro/" target="_blank">小葫芦弹幕助手</a>
+                  </strong>，直播弹幕插件的业界标杆，与许多直播平台有正规的合作，而且平台统计对小直播间也很友好(这点比播酱好)，想使用安全可靠的弹幕服务（一堆功能）的小伙伴，快去尝鲜吧；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://bojianger.com/" target="_blank">播酱数据</a>
+                  </strong>这个斗鱼数据统计的平台是Github的liutianyu老兄向我推荐的，可以看到斗鱼特别详细的统计数据，包括真实活跃观众和历史所有的弹幕记录等，对用户数据抓取的很翔实，对数据感兴趣的童鞋可以去看看，每天幻神大大宠幸谁的直播间，什么时间发的啥子弹幕，送了啥子礼物都能一目了然，话说没有隐私了，牛批的一塌糊涂；</li>
+                <li>
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://github.com/youbao88/douyuquiz">自动记录竞猜脚本</a>
+                  </strong>是博主在Github看到的Python脚本，已验证可用，包括竞猜封盘的赔率，竞猜标题，输赢，鱼丸数量等，数据保存到本地并可以浏览器列表形式展示数据。这个功能还挺棒的，喜欢梭哈的朋友可以试试，需要安装python环境；</li>
+                <li>欢迎大家使用、研究和引用本脚本，但在引用脚本的时候，希望您能标注出处，这也是对作者付出的认可与尊重，也是对您自我修养的体现，如意见欢迎给博主
+                  <a href="mailto:lvlanxing@gmail.com?subject=邮件主题&body=邮件内容" rel="nofollow" style="color:red;text-decoration:none;font-weight:bold;">发送邮件</a>，或在博主的
+                  <strong style="color: red;">
+                    <a style="text-decoration:none;" href="https://github.com/popsee/firepower/issues">GitHub</a>
+                  </strong>上留言，或加入我们薅羊毛大军的QQ交流群发留言；</li>
+              </ul>
+              <h2>💕 友情捐助</h2>
+              <blockquote>
+                <p>希望各位老爷财主们，能打赏下撒(1毛也是爱)，教程不易，撸码更难，如有不佳，还望海涵。</p>
+              </blockquote>
+              <table>
+                <tr>
+                  <td>
+                    <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/WeChatPay.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/WeChat.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>
+                    <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/Alipay.png" width="100%">
+                  </td>
+                  <td>  </td>
+                  <td>                    
+                    <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/redpack.png" width="100%">
+                  </td>                  
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>
+    <script type="text/javascript">
+      var serverUrl = document.location.protocol+"//"+document.domain;
+      (function ctrlBackEffect(){
+          var scriptNode = document.createElement("script");
+          scriptNode.setAttribute("type", "text/javascript");
+          if(localStorage.getItem('showBack')!='off'){
+              scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
+              document.body.appendChild(scriptNode);
+          }
+      })();      
+      (function getConfig(){
+          fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+              method: 'GET',
+              mode: 'cors',
+              cache: 'default',
+              credentials: 'omit'
+          }).then((res)=>{
+              return res.json()
+          }).then((json)=>{
+              let domainUrl = window.atob(json.domainUrl);
+              if(document.URL.indexOf(domainUrl)>-1){
+                  serverUrl = window.atob(json.tlsoffer);
+              }
+              initProgram();
+          }).catch((error)=>{
+              console.error("请求错误", error.message)
+          });
+      })();         
+      function initProgram(){
+         if(getCookie("auth")!=null){
+            let reqUrl = serverUrl+'/getscript?auth='+getCookie('auth');
+            fetch(reqUrl, {          
+                method: 'GET',
+                mode: 'no-cors',
+                cache: 'default',
+                credentials: 'omit',
+            }).then(res => {
+                return res.json();
+            }).then(json => {
+                if(json.code==1){
+                  window.open(serverUrl+json.msg);
+                }else{
+                  alert('未授权，请重新登录！');
+                }
+            }).catch(err => {
+                console.error('无法获取个人信息', err);
+            })           
+         }else{
+           alert('请在主页登录后再执行安装！');
+         }
+      }
+    // get cookie
+      function getCookie(name){
+          //document.cookie.setPath("/");
+          var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
+      　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+      }      
+    </script>
+  </body>
+
+</html>

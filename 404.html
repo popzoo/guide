@@ -59,10 +59,6 @@
           document.body.appendChild(scriptNode);
       }
   })();
-  function backBtnListen(){
-      localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
-      window.location.reload();
-  }   
   document.getElementsByClassName('button-primary')[0].href = document.location.protocol+"//"+document.domain;
   document.getElementsByClassName('button-primary')[1].addEventListener('click',closeTabPage);
   function closeTabPage(){
