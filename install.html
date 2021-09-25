@@ -469,7 +469,7 @@
             let reqUrl = serverUrl+'/getscript?auth='+getCookie('auth');
             fetch(reqUrl, {          
                 method: 'GET',
-                mode: 'no-cors',
+                mode: 'cors',
                 cache: 'default',
                 credentials: 'omit',
             }).then(res => {
