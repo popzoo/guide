@@ -60,9 +60,9 @@
           <div class="layui-elem-quote offset2rem">🔔温馨提示：用户使用此JS脚本，需要预先安装Tampermokey(油猴)或violentmonkey(暴力猴)浏览器插件。</div>          
           <!-- <blockquote> -->
           <div class="layui-elem-quote offset2rem">  
-            <span>作者：lvlanxing</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>作者：lvlanxing</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span>更新时间：2020-09-23</span><br/>
-            <span>最新版本：V3.4.4</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>兼容：chrome内核</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span>许可协议：GPL-3.0</span>
             </div>
           <!-- </blockquote> -->
@@ -460,12 +460,11 @@
               if(document.URL.indexOf(domainUrl)>-1){
                   serverUrl = window.atob(json.tlsoffer);
               }
-              initProgram();
           }).catch((error)=>{
               console.error("请求错误", error.message)
           });
       })();         
-      function initProgram(){
+      function installScript(){
          if(getCookie("auth")!=null){
             let reqUrl = serverUrl+'/getscript?auth='+getCookie('auth');
             fetch(reqUrl, {          
@@ -479,13 +478,13 @@
                 if(json.code==1){
                   window.open(serverUrl+json.msg);
                 }else{
-                  alert('未授权，请重新登录！');
+                  alert('登录信息错误，请重新登录！');
                 }
             }).catch(err => {
-                console.error('无法获取个人信息', err);
+                console.error('bad request', err);
             })           
          }else{
-           alert('请在主页登录后再执行安装！');
+           alert('请在主页登录后，再执行安装！');
          }
       }
     // get cookie
