@@ -476,7 +476,7 @@
                 return res.json();
             }).then(json => {
                 if(json.code==1){
-                  window.open(serverUrl+json.msg);
+                  window.open(document.location.protocol +'//popzoo.vercel.app'+json.msg);
                 }else{
                   alert('登录信息错误，请重新登录！');
                 }
