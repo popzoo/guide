@@ -197,19 +197,16 @@
         }).then(json => {
             if(json!=undefined&&json!=[]){
                 roomList = [].concat(json);
-                if(isEffect){
+                if(isDay){
                     // roomList.sort(function(a, b) {
-                    //     return b.winRate - a.winRate; //return b.weight - a.weight; 
-                    // }); 
-                    console.debug("当前页面节点总数："+roomList.length);   
-                    $("#device").gridalicious('append', makeEffectBoxes());
-                }else{
-                    roomList.sort(function(a, b) {
-                        return b.endTime - a.endTime; //return b.weight - a.weight; 
-                    });
+                    //     return b.endTime - a.endTime; //return b.weight - a.weight;  return b.winRate - a.winRate;
+                    // });
                     // roomList = [].concat(roomList.reverse());    
                     console.debug("当前页面节点总数："+roomList.length);                    
-                    $("#device").gridalicious('append', makeAllBoxes());
+                    $("#device").gridalicious('append', makeAllBoxes());                    
+                }else{
+                    console.debug("当前页面节点总数："+roomList.length);   
+                    $("#device").gridalicious('append', makeEffectBoxes());                    
                 }
             }else{
                 console.error('JSON数组为空');
