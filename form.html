@@ -116,8 +116,8 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            let secId = json.secId!=undefined?window.atob(json.secId):secId;
-            let secKy = json.secKy!=undefined?window.atob(json.hookAddr.substr(4)):secKy;
+            let secId = json.secId!=undefined ? window.atob(json.secId):secId;
+            let secKy = json.secKy != undefined ? window.atob(json.secKy.substr(4)):secKy;
             cos = new COS({SecretId: secId, SecretKey: secKy});     
             initProgram();
         }).catch((error)=>{
