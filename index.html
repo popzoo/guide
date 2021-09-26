@@ -187,6 +187,7 @@
     }
     function logoutAcc(){
         delCookie("auth");
+        window.name='';
         location.reload(true);
     }
     function isMobileDevice(){
