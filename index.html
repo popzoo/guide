@@ -152,6 +152,7 @@
         isMobileDevice();
         lazyLoadImg();
         changeImg();
+        sessionCheck();
     }
     function checkBrowser(obj){
         if(getCookie('auth')==null){
@@ -281,6 +282,30 @@
             })        
         }
     }
+    function sessionCheck(){
+        if(getCookie('auth')!=null){
+            let reqUrl = serverUrl+'/checkauth?auth='+getCookie('auth');
+            fetch(reqUrl, {               
+                method: 'GET',
+                mode: 'cors', 
+                cache: 'no-store', 
+                credentials: 'omit', 
+            }).then(res => {
+                return res.json();
+            }).then(json => {
+                if(json.code==1){
+                    console.debug('Session秘钥验证正确!');
+                }else{
+                    delCookie("auth");
+                    window.name = '';
+                    alert('当前秘钥已经过期，请重新登录！');
+                    window.location.reload();
+                }                    
+            }).catch(err => {
+                console.error('请求错误', err);
+            })        
+        }
+    }    
     function mouseOver(){
         document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
         // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
