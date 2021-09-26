@@ -35,7 +35,7 @@
         <audio id="audio_play" controls autoplay="autoplay" preload="auto" src="audio/glassbomb.mp3"/>
             <!-- 您的浏览器不支持 video 标签！</audio> -->
     </div>
-    <div style="text-align: center;color: blue;font-size: 25px;font-weight: 500;background-color: #FDFDFD;width: 300px;height:54px;line-height: 54px; margin: 0 auto 0;border-radius: 27px;">播放间隔:<input id="control_time" type="text" name="" style="width:90px;height:30px;font-size: 25px;">(秒)
+    <div style="text-align: center;color: blue;font-size: 25px;font-weight: 500;background-color: #FDFDFD;width: 300px;height:54px;line-height: 54px; margin: 0 auto 0;border-radius: 27px;">播放间隔:<input id="control_time" type="text" name="audioTime" value="10" style="width:90px;height:30px;font-size: 25px;">(秒)
     </div>
     <p style="text-align: center;margin-top:10%;"><img src="https://cdn.jsdelivr.net/gh/popzoo/pop/images/homeGirl.gif" width="270px"></p>
     <script text="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>
@@ -51,12 +51,10 @@
             return res.json()
         }).then((json)=>{
             let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)==-1){
-                serverUrl = window.atob(json.serverUrl);
-            }else{
+            if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
-            authCheck();
+            runControl();
         }).catch((error)=>{
             console.error("请求错误", error.message)
         });
@@ -68,6 +66,7 @@
         playGap = playGap > 0 ? parseInt(playGap) * 1000 : 1000 * 10; //默认10s
         var timeGap = Math.floor(playGap * Math.random()) + playGap; //*60;// here should *60s 
         let reqUrl = serverUrl+'/audioName';
+        // console.debug(reqUrl);
         fetch(reqUrl, {           
             method: 'GET',
             mode: 'no-cors',
@@ -76,13 +75,13 @@
         }).then((res) => {
             return res.text();
         }).then((txt) => {
-            document.getElementById('audio_play').setAttribute("src", "audio/" + txt); //play new audio name
+            document.getElementById('audio_play').setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/guide@master/audio/" + txt); //play new audio name
             document.getElementById('audio_play').play();
             setTimeout(function(){runControl()}, timeGap);
             console.info("播放文件【"+txt+"】-|+|-播放间隔【" + timeGap / 1000 + "s】-|+|-播放时间【" + new Date().toLocaleString() + "】");
         }).catch(err => {
             console.error('Audio文件访问失败', err);
-            let audioSrc = "https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/audio/glassbomb.mp3";
+            let audioSrc = "https://cdn.jsdelivr.net/gh/popzoo/guide@master/audio/glassbomb.mp3";
             document.getElementById('audio_play').setAttribute("src", audioSrc);
             document.getElementById('audio_play').play();
             setTimeout(function(){runControl()}, timeGap);
