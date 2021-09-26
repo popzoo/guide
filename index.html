@@ -136,10 +136,6 @@
         });
     })();   
     function initProgram(){
-        loginRender();
-        isMobileDevice();
-        lazyLoadImg();
-        changeImg();
         if(window.name!='' || getCookie('auth')!=null){
             document.getElementById('own_cfip').style.visibility='inherit';
             document.getElementById('own_ping').style.visibility='inherit';
@@ -151,7 +147,11 @@
         }
         if(window.name!=''&& getCookie('auth')==null){
             setCookie('auth',window.name);
-        }
+        }        
+        loginRender();
+        isMobileDevice();
+        lazyLoadImg();
+        changeImg();
     }
     function checkBrowser(obj){
         if(getCookie('auth')==null){
