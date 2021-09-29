@@ -61,6 +61,7 @@
                 <th>用户头像</th>
                 <th>用户昵称</th>
                 <th>用户等级</th>
+                <th id="user_credit">用户信用</th>
                 <th id="user_exp">用户经验</th>
                 <th id="user_follow">用户关注</th>
                 <th>插件版本</th>
@@ -77,7 +78,7 @@
         </thead>
         <tbody id = "render_table_cell">
             <tr>
-                <td colspan="14">正在加载中……</td>
+                <td colspan="16">正在加载中……</td>
             </tr>
         </tbody>
     </table>
@@ -187,7 +188,7 @@
             for(let m=0;m<userPartList.length;m++){// console.info(nodeList[m].Key);
                 let tempList = userPartList[m].Key.split("@");
                 // if(tempList.length>=7){//&& nodeList[m].indexof("#")>-1
-                var tempJson = {userAvatar:0,uid:0,uname:'**',jumpCount:0,fishBallIncome:0,cashIncome:0,danmuCount:0,version:0,accountBall:0,accountWing:0,userLevel:0,userExp:0,userFollow:0,activeTime:0,danmuError:0,fishFood:0};
+                var tempJson = {userAvatar:0,uid:0,uname:'***',jumpCount:0,fishBallIncome:0,cashIncome:0,danmuCount:0,version:0,accountBall:0,accountWing:0,userLevel:0,userExp:0,userFollow:0,activeTime:0,danmuError:0,fishFood:0,creditScore:0};
                 for(let n=0; n<tempList.length; n++){
                     // switch tempList[n]
                     if(tempList[n].indexOf("uid")>-1){
@@ -222,6 +223,8 @@
                         tempJson.danmuError = parseInt(tempList[n].split("#")[1]);
                     }else if(tempList[n].indexOf("fishFood")>-1){
                         tempJson.fishFood = parseInt(tempList[n].split("#")[1]);
+                    }else if(tempList[n].indexOf("creditScore")>-1){
+                        tempJson.creditScore = parseInt(tempList[n].split("#")[1]);
                     }
                 }
                 userList.push(tempJson);
@@ -231,7 +234,7 @@
             }else{
                 console.info("用户未去重数目："+userList.length);
                 userList = [].concat(distinctUserList(userList));
-                console.info(userList);
+                console.debug(userList);
                 // renderDataToTable(userList);
                 requestUserAvatar(userList);
             }           
@@ -261,27 +264,28 @@
             if(num==userList.length){
                 renderDataToTable(userList);
             }else{
+                loopGetAvatar(++num);
                 // console.info(userList[num]);
-                if( userList[num].userAvatar==undefined || userList[num].userAvatar==0 || userList[num].userAvatar == "https://apic.douyucdn.cn/upload/0"){
-                    fetch('https://bojianger.com/data/api/common/search.do?keyword='+userList[num].uid, {
-                        method: 'GET',
-                        mode: 'cors',
-                        cache: 'default',
-                        credentials: 'omit'
-                    }).then(result => {
-                        return result.text();
-                    }).then(txt => {
-                        let json = JSON.parse(txt);
-                        userList[num].userAvatar = json.data.audienceVo.audience_avator;
-                        userList[num].userLevel = json.data.audienceVo.level;
-                        loopGetAvatar(++num);
-                    }).catch(err => {
-                        console.warn('播酱数据获取失败');
-                        loopGetAvatar(++num);
-                    })                
-                }else{
-                    loopGetAvatar(++num);
-                }                  
+                // if( userList[num].userAvatar==undefined || userList[num].userAvatar==0 || userList[num].userAvatar == "https://apic.douyucdn.cn/upload/0"){
+                //     fetch('https://bojianger.com/data/api/common/search.do?keyword='+userList[num].uid, {
+                //         method: 'GET',
+                //         mode: 'cors',
+                //         cache: 'default',
+                //         credentials: 'omit'
+                //     }).then(result => {
+                //         return result.text();
+                //     }).then(txt => {
+                //         let json = JSON.parse(txt);
+                //         userList[num].userAvatar = json.data.audienceVo.audience_avator;
+                //         userList[num].userLevel = json.data.audienceVo.level;
+                //         loopGetAvatar(++num);
+                //     }).catch(err => {
+                //         console.warn('播酱数据获取失败');
+                //         loopGetAvatar(++num);
+                //     })                
+                // }else{
+                //     loopGetAvatar(++num);
+                // }                  
             }
         }
     }   
@@ -374,6 +378,11 @@
             outTr.innerHTML = "<td><img src='"+userItem.userAvatar+"' width='50'></td>";
             outTr.innerHTML += "<td>"+userItem.uname+"</td>";
             outTr.innerHTML += "<td>Lv."+userItem.userLevel+"</td>";
+            if(userItem.creditScore<100){
+                outTr.innerHTML += "<td style='color:orange;'>"+userItem.creditScore+"分</td>";
+            }else{
+                outTr.innerHTML += "<td style='color:green;'>"+userItem.creditScore+"分</td>";
+            }
             outTr.innerHTML += "<td>"+userItem.userExp+"点</td>";
             if(userItem.userFollow>6000){
                 outTr.innerHTML += "<td style='color:green;'>"+userItem.userFollow+"个</td>";
@@ -403,6 +412,7 @@
             userNum+=1;
             totalVersion.add(userItem.version);
             totalLevel+=userItem.userLevel;
+            totalCredit+=userItem.creditScore;
             totalExp +=userItem.userExp;
             totalFollow +=userItem.userFollow;
             jumpCount +=userItem.jumpCount;
@@ -420,6 +430,7 @@
         totalTr.innerHTML += "<td>聚合统计</td>";
         totalTr.innerHTML += "<td>"+userNum+"(总)</td>";
         totalTr.innerHTML += "<td>"+parseInt(totalLevel/userNum)+"(均)</td>";
+        totalTr.innerHTML += "<td>"+parseInt(totalCredit/userNum)+"(均)</td>";
         totalTr.innerHTML += "<td>"+parseInt(totalExp/userNum)+"(均)</td>";
         totalTr.innerHTML += "<td>"+parseInt(totalFollow/userNum)+"(均)</td>";
         totalTr.innerHTML += "<td>"+Array.from(totalVersion).length+"(总)</td>";
