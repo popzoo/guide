@@ -65,11 +65,11 @@
     </span>
     <!-- <span style="margin-left: -10px;">😡羊毛福利共享😡</span>     -->
     <span class="collapse" style="float: right;white-space: nowrap; margin-right: 10%; font-size: 20px;color:#4D4D4D;"> 
-        <a class="nav-link" id="own_time" style="text-decoration:none;" href="https://www.popzoo.xyz/">时光轴</a> •
-        <a class="nav-link" id="own_fire" style="text-decoration:none;" href="http://pop.popzoo.xyz/">火力房</a> •
-        <a class="nav-link" id="own_danmu" style="text-decoration:none;" href="https://danmu.popzoo.xyz/">云弹幕</a> •        
-        <a class="nav-link" id="own_gift" style="text-decoration:none;" href="http://pop.popzoo.xyz/giftshow.html">礼物秀</a> •
-        <a class="nav-link" id="own_car" style="text-decoration:none;" href="http://pop.popzoo.xyz/motorcade.html">车队展</a>
+        <a class="nav-link" id="own_time" style="text-decoration:none;" href="https://www.popzoo.ga/">时光轴</a> •
+        <a class="nav-link" id="own_fire" style="text-decoration:none;" href="https://www.popzoo.ga/">火力房</a> •
+        <a class="nav-link" id="own_danmu" style="text-decoration:none;" href="https://www.popzoo.ga/">云弹幕</a> •        
+        <a class="nav-link" id="own_gift" style="text-decoration:none;" href="https://www.popzoo.ga/">礼物秀</a> •
+        <a class="nav-link" id="own_car" style="text-decoration:none;" href="https://www.popzoo.ga/">车队展</a>
     </span>
 </div>
 <div class="content">
@@ -198,9 +198,9 @@
             if(json!=undefined&&json!=[]){
                 roomList = [].concat(json);
                 if(isDay){
-                    // roomList.sort(function(a, b) {
-                    //     return b.endTime - a.endTime; //return b.weight - a.weight;  return b.winRate - a.winRate;
-                    // });
+                    roomList.sort(function(a, b) {
+                        return b.endTime - a.endTime; //return b.weight - a.weight;  return b.winRate - a.winRate;
+                    });
                     // roomList = [].concat(roomList.reverse());    
                     console.debug("当前页面节点总数："+roomList.length);                    
                     $("#device").gridalicious('append', makeAllBoxes());                    
@@ -254,12 +254,11 @@
             	let title = roomList[j].title!=""?roomList[j].title:roomList[j].name!=undefined?roomList[j].name:"木有标题";
             	content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='https://rpic.douyucdn.cn/"+roomList[j].avatar+"/dy1'/></a>";
             	content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>";
-            	content += leftTime + "</strong>s&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
-            	content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"</strong>&nbsp;";
-            	content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong></p>";
-                content += "<p>粉丝:<strong style='color:#CD00CD;'>"+ roomList[j].fans +"</strong>&nbsp;";
-            	content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
-            	content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";
+            	content += leftTime + "</strong>s</p>";
+            	content += "<p><strong style='color:DarkViolet;'>"+ joinCondition +"</strong>&nbsp;";
+            	content += "<strong style='color:green;'>"+roomList[j].award+"×"+roomList[j].num+"份=["+roomList[j].weight+"]</strong></p>";
+                content += "<p>订阅:<strong style='color:blue;'>"+ roomList[j].fans +"</strong>&nbsp;";
+            	content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";                    
             	content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";
             }else if(radioObj==="effect_welfare"){
             	let leftTime = roomList[j].endTime - parseInt(new Date().getTime()/1000);//无毫秒
@@ -279,7 +278,7 @@
                 }
             	content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].roomImg+"'/></a>";
             	content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;剩时:<strong style='color:red;' class='refresh_time'>"+leftTime+"</strong>s</p>";;
-            	content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"</strong>&nbsp;份数:<strong style='color:blue;'>"+ roomList[j].prizeNum +"</strong></p>";
+            	content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].prizeName+"×"+ roomList[j].prizeNum +"份</strong></p>";
             	content += "<p>需送:<strong style='color:green;'>"+joinCondition+"</strong></p>";                    
             	content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;标题:<strong style='color:blue;'>"+ title +"</strong></p>";
             }
@@ -304,13 +303,11 @@
                 content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='https://rpic.douyucdn.cn/"+roomList[j].avatar+"/dy1'/></a>";
                 content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>";
                 content += dateFormat('HH:MM:SS',new Date(roomList[j].endTime*1000)) + "</strong></p>";
-                content += "<p>奖品:<strong style='color:blue;'>"+roomList[j].award+"</strong>&nbsp;";
-                content += "条件:<strong style='color:blue;'>"+ joinCondition +"</strong>&nbsp;数量:<strong style='color:blue;'>"+roomList[j].num+"</strong></p>";
-                // content += "<p>持续:<strong style='color:#CD00CD;'>"+ roomList[j].duration +"s</strong>&nbsp;";
-                content += "<p>粉丝:<strong style='color:#CD00CD;'>"+ roomList[j].fans +"</strong>&nbsp;";
-                content += "权重:<strong style='color:green;'>"+roomList[j].weight+"</strong>&nbsp;";                    
-                content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";
-                content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";         		
+                content += "<p><strong style='color:DarkViolet;'>"+ joinCondition +"</strong>&nbsp;";
+                content += "<strong style='color:green;'>"+roomList[j].award+"×"+roomList[j].num+"份=["+roomList[j].weight+"]</strong></p>";
+                content += "<p>订阅:<strong style='color:blue;'>"+ roomList[j].fans +"</strong>&nbsp;";
+                content += "中率:<strong style='color:blue;'>"+ roomList[j].winRate +"</strong></p>";                    
+                content += "<p>标题:<strong style='color:blue;'>"+ title +"</strong></p>";        		
         	}else if(radioObj==="daily_welfare"){
         	    // joinType = roomList[j].joinType==0?'全部':(roomList[j].joinType==1?'关注':'粉丝');
                 let joinType = 'null';
@@ -340,7 +337,7 @@
                 content = "<a href='https://www.douyu.com/"+roomList[j].rid+"' target='_blank'><img src='"+roomList[j].vsrc+"'/></a>";
                 content += "<p>房号:<strong style='color:red;'>"+roomList[j].rid+"</strong>&nbsp;&nbsp;时间:<strong style='color:red;' class='refresh_time'>"+startTime+"</strong></p>";
                 content += "<p>主播:<strong style='color:blue;'>"+roomList[j].nn+"</strong>&nbsp;鱼翅:<strong style='color:blue;'>"+ roomList[j].yc/100 +"</strong></p>";
-                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;土豪:<strong style='color:blue;'>"+ roomList[j].uname +"</strong></p>";            	
+                content += "<p><strong style='color:#CD00CD;'>"+ joinType +"</strong>&nbsp;土豪:<strong style='color:green;'>"+ roomList[j].uname +"</strong></p>";            	
             }       
         	div.append(content);
         	boxes.push(div);
