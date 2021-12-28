@@ -1,6 +1,5 @@
 # Guide
-## nav page 
-## including
+##  This project is nav page,which including:
 - gift show
 - fleet show
 - time line
