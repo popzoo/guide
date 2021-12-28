@@ -1,2 +1,2 @@
 # guide
-guide page of website
+nav page
