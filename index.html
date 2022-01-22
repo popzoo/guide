@@ -70,7 +70,7 @@
 </div>
 </main>
 </div>
-<footer id="top_footer">
+<footer id="top_footer" style="display:none;">
     <span id="top_copyright">
         Site has running:<span id='site-signal'>❤️</span><span id='site-time'>加载中</span><br>
         <a href="https://icp.gov.moe" target="_blank">萌ICP备</a>·<a href="https://icp.gov.moe/?keyword=20201314" target="_blank">20201314号</a>
@@ -194,8 +194,9 @@
     }
     function isMobileDevice(){
         if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            document.getElementById('top_footer').setAttribute('style','display:none');
+            // 手机简化显示
         } else {
+            document.getElementById('top_footer').setAttribute('style','display:inherit');
             siteSignal();
             siteTime();
         }
