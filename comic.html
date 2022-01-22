@@ -122,7 +122,7 @@
         <span class="collapse" style="margin: 0 auto 0;white-space: nowrap; font-size: 20px;color:#4D4D4D;"> 
             <form class="search-form search-form--centering">
               <label class="search-form__label-input">
-                <input class="search-form__input" placeholder="search it!"/>
+                <input class="search-form__input" placeholder="search it!" ondblclick="clearInputText()" />
               </label>
               <button class="search-form__search-btn" type="submit" onclick="searchBtnSubmit()">Go!</button>
             </form>               
@@ -150,7 +150,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/renewLink.js"></script>  
     <script type="text/javascript">
     var count = 0;
-    var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?800:(sessionStorage.getItem("comicStatus")=='mid_view')?600:360;
+    var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?800:(sessionStorage.getItem("comicStatus")=='small_view')?360:600;//mid_view
     var word = sessionStorage.getItem("comicWord");
     var comicList = new Array();
     var baseUrl = 'https://bbs.bbbh.cc/2048/'
@@ -166,7 +166,14 @@
             document.body.appendChild(scriptNode);
         }
     })();
-    (function getConfig(){
+    (function authCheck(){
+        if(getCookie("auth")!=null){
+            getConfig();
+        }else{
+            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
+        }   
+    })();      
+    function getConfig(){
         fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
             method: 'GET',
             mode: 'cors',
@@ -183,7 +190,7 @@
         }).catch((error)=>{
             console.error("请求错误", error.message)
         });
-    })();      
+    }    
     function initProgram(){
         let btn = document.querySelector('.search-form__search-btn');
         btn.addEventListener('click', e => {
@@ -194,10 +201,9 @@
         radioNode.setAttribute("checked","checked");
         radioEventListener();
         if(word!=null && word.trim()!=''){
-            getSearchComic();
-        }else{
-            getComicsData();
+            document.getElementsByClassName('search-form__input')[0].value = word;
         }
+        getComicsData();
     } 
     // add Event Listener of radio onchange
     function radioEventListener(){
@@ -213,6 +219,9 @@
         sessionStorage.setItem("comicStatus",msg);
         location.reload();
     }    
+    function clearInputText(){
+        document.getElementsByClassName('search-form__input')[0].value="";
+    }
     function searchBtnSubmit(){
         let wordStr = document.getElementsByClassName('search-form__input')[0].value;
         if(wordStr.trim()!=''){
@@ -223,27 +232,11 @@
             location.reload();
         }
     }
-    function getSearchComic(){
-        let reqUrl = serverUrl+'/searchcomic?auth='+ getCookie("auth")+'&word='+sessionStorage.getItem("comicWord").trim();
-        fetch(reqUrl, {           
-            method: 'GET',
-            mode: 'cors', 
-            cache: 'default', 
-            credentials: 'omit', 
-        }).then(res => {
-            return res.json();
-        }).then(result => {
-            comicList = [].concat(result);
-            console.info("搜索到相关漫画："+comicList.length);
-            $("#device").gridalicious('append', makeboxes());
-        }).catch(err => {
-            console.error('请求错误', err);
-        })              
-    }
-    // get data from abroad statically cdn
+    // get data
     function getComicsData(){
         // fetch("https://cdn.jsdelivr.net/gh/popzoo/pop/json/"+urlTail,{
-        let reqUrl = serverUrl+'/getcomic?auth='+ getCookie("auth");
+        let wordStr = sessionStorage.getItem("comicWord")==null?"":sessionStorage.getItem("comicWord").trim();
+        let reqUrl = serverUrl+'/getcomic?auth='+ getCookie("auth")+'&word='+wordStr;
         fetch(reqUrl, {           
             method: 'GET',
             mode: 'cors', 
@@ -252,8 +245,7 @@
         }).then(res => {
             return res.json();
         }).then(result => {
-            // comicList = JSON.parse(result.substring(17, result.length-2));
-            comicList = [].concat(result);
+            comicList = result;
             console.info("漫画总数："+comicList.length);
             $("#device").gridalicious('append', makeboxes());
         }).catch(err => {
