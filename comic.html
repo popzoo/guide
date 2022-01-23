@@ -153,7 +153,8 @@
     var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?800:(sessionStorage.getItem("comicStatus")=='small_view')?360:600;//mid_view
     var word = sessionStorage.getItem("comicWord");
     var comicList = new Array();
-    var baseUrl = 'https://bbs.bbbh.cc/2048/'
+    var baseUrlArr = sessionStorage.getItem("baseUrlArr");
+    var baseUrl = 'https://bbs.bbbh.cc';
     var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
     //=================== Script init ======================
@@ -169,10 +170,16 @@
     (function authCheck(){
         if(getCookie("auth")!=null){
             getConfig();
+            if(baseUrlArr==null){
+                getAddrPage();
+            }else{
+                baseUrlArr = JSON.parse(baseUrlArr);
+                baseUrl = baseUrlArr[parseInt(Math.random() * baseUrlArr.length)];
+            }
         }else{
             location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
         }   
-    })();      
+    })();
     function getConfig(){
         fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
             method: 'GET',
@@ -190,12 +197,27 @@
         }).catch((error)=>{
             console.error("请求错误", error.message)
         });
-    }    
+    } 
+    function getAddrPage(){
+        fetch(window.atob('aHR0cHM6Ly9zZXJ2aWNlLWVxNjhmbGFkLTEyNTM2MjY2ODMuYmouYXBpZ3cudGVuY2VudGNzLmNvbS9yZWxlYXNlL2hqZDIwNDg='), {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'omit'
+        }).then((res)=>{
+            return res.json()
+        }).then((json)=>{
+            baseUrl = json[parseInt(Math.random() * json.length)];
+            sessionStorage.setItem("baseUrlArr",JSON.stringify(json));
+        }).catch((error)=>{
+            console.error("请求错误", error.message)
+        });
+    }
     function initProgram(){
-        let btn = document.querySelector('.search-form__search-btn');
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-        });             
+        // let btn = document.querySelector('.search-form__search-btn');
+        // btn.addEventListener('click', e => {
+        //   e.preventDefault();//阻止表单提交
+        // });             
         let radioObj = sessionStorage.getItem("comicStatus")!=null ? sessionStorage.getItem("comicStatus") : "mid_view";
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");
@@ -258,7 +280,7 @@
         for(let i=count*60;i<Math.min((count+1)*60, comicList.length);i++){
             // console.info(comicList[i]); encodeURIComponent(comicList[i].mcId)
             let div = $('<div></div>').addClass('item');
-            var content = "<a href='"+baseUrl+comicList[i].link+"' target='_blank'><img src='"+comicList[i].img+"'/>";
+            var content = "<a href='"+baseUrl+'/2048/'+comicList[i].link+"' target='_blank'><img src='"+comicList[i].img+"'/>";
             content += "<p>标题:<strong style='color:green;'>"+comicList[i].title+"</strong></p></a>";
             content += "<p>时间:<strong style='color:blue;'>"+comicList[i].time+"</strong></p>";
             div.append(content);
