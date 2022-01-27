@@ -52,10 +52,10 @@
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '小主失联了⊂⊙•⊙⊃';
+            document.title = '小主丢了⊂⊙_⊙⊃';
             clearTimeout(titleTime);
         } else {
-            document.title = '带小主回家┗(^_^)┛';
+            document.title = '牵主回家┗(^_^)┛';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },3000);
@@ -85,7 +85,7 @@
         });
     }
     const live2d_path = "https://cdn.jsdelivr.net/gh/popsee/live2d-all/";
-    if (screen.width >= 768 && window.location.href.indexOf('bi')==-1) {//手机窄屏不显示live2d
+    if (screen.width >= 768 && document.URL.indexOf('bi.html')==-1) {//手机窄屏不显示live2d
         Promise.all([
             loadExternalResource("https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css", "css"),//图标加载
             loadExternalResource(live2d_path + "waifu.css", "css"),
