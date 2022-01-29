@@ -100,6 +100,8 @@
     // localStorage.setItem("modelId",0)
     // localStorage.setItem("modelTexturesId",0);   
     var serverUrl = document.location.protocol+"//"+document.domain;
+    var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
+    var bodyBgs = [];     
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
@@ -198,9 +200,10 @@
         location.reload(true);
     }
     function isMobileDevice(){
-        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            // 手机简化显示
-        } else {
+        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
+            bodyBgs = ["hotgirl_0.jpg","hotgirl_1.jpg","hotgirl_2.jpg","hotgirl_3.jpg","hotgirl_4.jpg","hotgirl_5.jpg","hotgirl_6.jpg","hotgirl_7.jpg","hotgirl_8.jpg","hotgirl_9.jpg","hotgirl_10.jpg"];
+        } else {// PC模式
+            bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];
             document.getElementById('top_footer').setAttribute('style','display:inherit');
             siteSignal();
             siteTime();
@@ -244,14 +247,13 @@
         var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds)
         document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
     }
-    var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
-    var bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];    
+   
     function lazyLoadImg(){
         preLoadImg(0);
         function preLoadImg(index){
             $.get(prefix + bodyBgs[index]);
-            if(index<bodyBgs.length-1){
-                setTimeout(function(){preLoadImg(++index)},500);
+            if(index<bodyBgs.length){
+                setTimeout(()=>{preLoadImg(++index)},1000);
             }
         }        
     }
@@ -259,7 +261,7 @@
         let rdIndex = Math.floor( Math.random() * bodyBgs.length );
         let img1= document.getElementsByTagName('html')[0];
         img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
-        window.setTimeout(function(){changeImg()},10000);
+        window.setTimeout(()=>{changeImg()},10000);
     }    
     function authCheck(){
         let pwd =window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！","");
