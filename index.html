@@ -316,8 +316,13 @@
         }
     }    
     function mouseOver(){
-        document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
+        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
+            document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
         // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
+        } else {// PC模式     
+            document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx1.png";//鼠标悬浮时的旋转图标
+        // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
+        }   
     }
     function mouseOut()
     {
