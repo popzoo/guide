@@ -6,7 +6,13 @@
     }
  //    var authStr = getCookie('auth');
 	// if(authStr!=null){
-		window.parent.postMessage('here is your vigina to insert','https://popzoo.vercel.app');	
+	window.addEventListener('message', function(e){
+		if(e.source!=window.parent){
+			return ;
+		}else{
+			window.parent.postMessage('here is your vigina to insert','https://popzoo.vercel.app');	
+		} 
+	})
 	// }
 </script>
 <html>
