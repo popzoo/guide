@@ -6,12 +6,12 @@
     }
     var authStr = getCookie('auth')
 	if(authStr!=null){
-		window.parent.postMessage(authStr);	
+		window.parent.postMessage(authStr,'https://popzoo.vercel.app/index.html');	
 	}
 </script>
 <html>
 	<head>
-		<title>获取信息</title>
+		<!-- <title>获取信息</title> -->
 	</head>
 	<body>
 		<h1>Hello Friends!</h1>
