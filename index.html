@@ -104,7 +104,8 @@
     // localStorage.setItem("modelTexturesId",0);   
     var serverUrl = document.location.protocol+"//"+document.domain;
     var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
-    var bodyBgs = ['nier_0.jpg'];     
+    var bodyBgs = ['nier_0.jpg'];
+    var domainUrl = 'https://www.popzoo.ga';     
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
@@ -129,7 +130,7 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            let domainUrl = window.atob(json.domainUrl);
+            domainUrl = window.atob(json.domainUrl);
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
                 // window.frames[0].postMessage('hookMsg','https://popzoo.vercel.app');// 监听跨域事件
@@ -157,7 +158,7 @@
         if(e.data=='true'){
             location.reload(true);
         }
-        if(e.data!=null && e.data!='true'){
+        if(e.data!=null && e.data!='true' && e.data!=''){
            initProgram(e.data); 
         }
     }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
@@ -276,7 +277,7 @@
         preLoadImg(0);
         function preLoadImg(index){
             $.get(prefix + bodyBgs[index]);
-            if(index<bodyBgs.length){
+            if(index<bodyBgs.length-1){
                 setTimeout(()=>{preLoadImg(++index)},1000);
             }
         }        
