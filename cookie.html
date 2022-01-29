@@ -4,9 +4,9 @@
         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
     　　return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
     }
-    var authStr = getCookie('auth')
+    var authStr = getCookie('auth');
 	if(authStr!=null){
-		window.parent.postMessage(authStr,'https://popzoo.vercel.app/index.html');	
+		window.parent.postMessage(authStr,'https://popzoo.vercel.app');	
 	}
 </script>
 <html>
