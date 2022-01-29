@@ -11,7 +11,7 @@
 			return ;
 		}else{
 			// window.parent.postMessage(e.origin+'<====>'+authStr,'https://popzoo.vercel.app');	
-			window.parent.postMessage('====>'+authStr,e.origin);	
+			window.parent.postMessage(authStr,e.origin);	
 		} 
 	})
 	// }
