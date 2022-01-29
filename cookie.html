@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    function getCookie(name){
+        //document.cookie.setPath("/");
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
+    　　return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+    }
+    var authStr = getCookie('auth')
+	if(authStr!=null){
+		window.parent.postMessage(authStr);	
+	}
+</script>
+<html>
+	<head>
+		<title>获取信息</title>
+	</head>
+	<body>
+		<h1>Hello Friends!</h1>
+	</body>
+</html>
