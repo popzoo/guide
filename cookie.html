@@ -6,13 +6,14 @@
     }
     var authStr = getCookie('auth');
 	// if(authStr!=null){
-		window.addEventListener('message', function(e){
-			if(e.source!=window.parent){
-				return ;
-			}else{
-				window.parent.postMessage(e.origin+'<====>'+authStr,'https://popzoo.vercel.app');	
-			} 
-		})
+	window.addEventListener('message', function(e){
+		if(e.source!=window.parent){
+			return ;
+		}else{
+			// window.parent.postMessage(e.origin+'<====>'+authStr,'https://popzoo.vercel.app');	
+			window.parent.postMessage('====>'+authStr,e.origin);	
+		} 
+	})
 	// }
 </script>
 <html>
