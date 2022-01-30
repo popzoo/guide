@@ -89,8 +89,8 @@
     <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> -->
     <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js>
 </div>
-<!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://www.popzoo.ga/cookie.html" width="600" height="360"> -->
-<iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%">
+<iframe name="loginAuth" id="login_auth" style="display:none;" src="https://www.popzoo.ga/cookie.html" width="100%" height="10%">
+<!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%"> -->
     <p>你的浏览器不支持iframe</p>
 </iframe>
 <!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
@@ -106,7 +106,8 @@
     var serverUrl = document.location.protocol+"//"+document.domain;
     var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
     var bodyBgs = ['nier_0.jpg'];
-    var domainUrl = 'https://www.popzoo.ga';     
+    var domainUrl = 'https://www.popzoo.ga'; 
+    var mirrorUrl = 'https://popzoo.vercel.app';  
     (function ctrlBackEffect(){
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
@@ -134,9 +135,10 @@
             domainUrl = window.atob(json.domainUrl);
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
-                document.getElementById('login_auth').setAttribute('src','https://popzoo.vercel.app/cookie.html');
+                mirrorUrl = window.atob(json.mirrorUrl); 
+                document.getElementById('login_auth').setAttribute('src',mirrorUrl+'/cookie.html');//https://popzoo.vercel.app
                 // window.frames[0].postMessage('hookMsg','https://popzoo.vercel.app');// 监听跨域事件
-                document.getElementById('own_tire').setAttribute('href','https://popzoo.vercel.app');
+                document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
             // }else{
             //     window.frames[0].postMessage('hookMsg',domainUrl);// 监听跨域事件
@@ -149,17 +151,14 @@
             console.error("请求错误", error.message)
         });
     })(); 
-    // if(document.URL.indexOf('www.popzoo.ga')>-1){
-    //     document.getElementById('login_auth').src = "https://popzoo.vercel.app/cookie.html";
-    // }
     // ===============================================================>>>
     // 监听跨域事件
     // (function getRemoteMsg(){
     //     window.frames[0].postMessage('getAuth','https://www.popzoo.ga')
     // }();
     window.addEventListener('message', function (e) {  // 监听 message 事件
-        console.debug(e.origin);
-        console.debug(e.data);
+        console.debug('csrfOrigin===>'+e.origin);
+        console.debug('csrfData===>'+e.data);
         if(e.data=='true'){
             location.reload(true);
         }
@@ -177,9 +176,12 @@
             document.getElementById('own_find').style.visibility='inherit';
             document.getElementById('own_deit').style.visibility='inherit';
         }else{
-            let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
-            console.info('origin====>'+originUrl);
-            setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);// 监听跨域事件
+            let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
+            console.info('originUrl===>'+originUrl);
+            if(sessionStorage.getItem('logout')!='true'){    
+                window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
+                // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
+            }
         }
         if(getCookie('auth')==null && authStr!=null){
             setCookie('auth',authStr);
@@ -227,8 +229,9 @@
         delCookie("auth");
         // window.name='';//这里需要通信远程，删除cookie================
         // let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
-        // window.frames[0].postMessage('delMsg',originUrl);// 监听跨域事件        
-        location.reload(true);//这里要处理，防止从备用站获取cookie;
+        // window.frames[0].postMessage('delMsg',originUrl);// 监听跨域事件
+        sessionStorage.setItem('logout','true');        
+        location.reload();//这里要处理，防止从备用站获取cookie;
     }
     function isMobileDevice(){
         if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
@@ -338,7 +341,7 @@
                 }else{
                     delCookie("auth");
                     // window.name = '';
-                    alert('当前秘钥已经过期，请重新登录！');
+                    alert('当前秘钥已失效，请重新登录！');
                     window.location.reload();
                 }                    
             }).catch(err => {
