@@ -170,7 +170,13 @@
     //        initProgram(e.data); 
     //     }
     // }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
-
+    window.addEventListener('message', function (e) {  // 监听 message 事件
+        console.debug('csrfOrigin===>'+e.origin);
+        console.debug('csrfData===>'+e.data);
+        if(e.data!=null && e.data.length>30){
+           initProgram(e.data); 
+        }
+    });//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行        
     function initProgram(authStr){
         if(getCookie('auth')!=null || authStr!=null){// || authStr!=''
             document.getElementById('own_bgrid').style.visibility='inherit'; 
@@ -180,25 +186,20 @@
             document.getElementById('own_find').style.visibility='inherit';
             document.getElementById('own_deit').style.visibility='inherit';
         }else{
+            if(sessionStorage.getItem('reload')!='true'){
+                sessionStorage.setItem('reload','true');
+                location.reload(true);//这里采用真刷新，否则postMessage缓存会报错
+            }
             let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
             console.debug('originUrl===>'+originUrl);
-            if(sessionStorage.getItem('logout')!='true'){    
+            if(sessionStorage.getItem('logout')!='true'){ //没注销 
                 window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
                 // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
             }
-            window.addEventListener('message', function (e) {  // 监听 message 事件
-                console.debug('csrfOrigin===>'+e.origin);
-                console.debug('csrfData===>'+e.data);
-                if(e.data=='true'){
-                    location.reload(true);
-                }
-                if(e.data!=null && e.data!='true' && e.data!=''){
-                   initProgram(e.data); 
-                }
-            });//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行            
         }
         if(getCookie('auth')==null && authStr!=null){
             setCookie('auth',authStr);
+            sessionStorage.removeItem('reload');
         }
         loginRender();
         isMobileDevice();
@@ -322,7 +323,7 @@
             }).then(json => {
                 if(json.msg=="success"){
                     setCookie('auth',json.auth);
-                    window.location.reload(true);
+                    window.location.reload();
                 }else{
                     delCookie("auth");
                     if(json.code == 401){
@@ -351,7 +352,6 @@
                     console.debug('Session秘钥验证正确!');
                 }else{
                     delCookie("auth");
-                    // window.name = '';
                     alert('当前秘钥已失效，请重新登录！');
                     window.location.reload();
                 }                    
