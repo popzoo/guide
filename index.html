@@ -133,6 +133,7 @@
             domainUrl = window.atob(json.domainUrl);
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
+                document.getElementById('login_auth').src = "https://popzoo.vercel.app/cookie.html";
                 // window.frames[0].postMessage('hookMsg','https://popzoo.vercel.app');// 监听跨域事件
                 document.getElementById('own_tire').setAttribute('href','https://popzoo.vercel.app');
                 document.getElementById('own_tire').innerText = '镜像站';
@@ -147,6 +148,9 @@
             console.error("请求错误", error.message)
         });
     })(); 
+    // if(document.URL.indexOf('www.popzoo.ga')>-1){
+    //     document.getElementById('login_auth').src = "https://popzoo.vercel.app/cookie.html";
+    // }
     // ===============================================================>>>
     // 监听跨域事件
     // (function getRemoteMsg(){
