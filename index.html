@@ -89,18 +89,17 @@
     <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> -->
     <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js>
 </div>
-<!-- <iframe id="login_auth" style="display:none;" src="javascript:document.URL.indexOf('vercel')>-1?'https://www.popzoo.ga/cookie.html':'https://popzoo.vercel.app/cookie.html'" width="100%" height="10%"> -->
 <!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%"> -->
 <!--     <p>你的浏览器不支持iframe</p>
 </iframe> -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     let bodyEle = document.getElementsByTagName('body')[0];
     let outerDiv = document.createElement("div");
     let targetUrl = document.URL.indexOf('vercel')>-1?'https://www.popzoo.ga/cookie.html':'https://popzoo.vercel.app/cookie.html';
     let iframeHtml = '<iframe id="login_auth" style="display:none;" src="'+targetUrl+'" width="100%" height="10%"><p>你的浏览器不支持iframe</p></iframe>';
     outerDiv.innerHTML = iframeHtml;
     bodyEle.appendChild(outerDiv);
-</script>
+</script> -->
 <!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> 
@@ -144,12 +143,8 @@
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
                 mirrorUrl = window.atob(json.mirrorUrl); 
-                // document.getElementById('login_auth').setAttribute('src',mirrorUrl+'/cookie.html');//https://popzoo.vercel.app
-                // window.frames[0].postMessage('hookMsg','https://popzoo.vercel.app');// 监听跨域事件
                 document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
-            // }else{
-            //     window.frames[0].postMessage('hookMsg',domainUrl);// 监听跨域事件
             }
             if(isValidIP(document.domain)){
                 location.href = domainUrl;
@@ -184,12 +179,19 @@
             document.getElementById('own_find').style.visibility='inherit';
             document.getElementById('own_deit').style.visibility='inherit';
         }else{
+            let bodyEle = document.getElementsByTagName('body')[0];
+            let outerDiv = document.createElement("div");
             let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
-            console.info('originUrl===>'+originUrl);
-            if(sessionStorage.getItem('logout')!='true'){    
-                window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
-                // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
-            }
+            let targetUrl = originUrl+'/cookie.html';
+            let iframeHtml = '<iframe id="login_auth" style="display:none;" src="'+targetUrl+'" width="100%" height="10%"><p>你的浏览器不支持iframe</p></iframe>';
+            outerDiv.innerHTML = iframeHtml;
+            bodyEle.appendChild(outerDiv);            
+            // let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
+            // console.info('originUrl===>'+originUrl);
+            // if(sessionStorage.getItem('logout')!='true'){    
+            //     window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
+            //     // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
+            // }
         }
         if(getCookie('auth')==null && authStr!=null){
             setCookie('auth',authStr);
@@ -235,11 +237,8 @@
     }
     function logoutAcc(){
         delCookie("auth");
-        // window.name='';//这里需要通信远程，删除cookie================
-        // let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
-        // window.frames[0].postMessage('delMsg',originUrl);// 监听跨域事件
         sessionStorage.setItem('logout','true');        
-        location.reload();//这里要处理，防止从备用站获取cookie;
+        location.reload();//这里要处理，防止从备用站获取cookie, 需要通信远程，删除cookie
     }
     function isMobileDevice(){
         if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
