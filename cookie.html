@@ -17,7 +17,8 @@
 		}else{
 			// window.parent.postMessage(e.origin+'<====>'+authStr,'https://popzoo.vercel.app');
 			if(e.data=='hookMsg'){
-				window.parent.postMessage(authStr,e.origin);
+				// window.parent.postMessage(authStr,e.origin);
+				window.parent.postMessage(authStr,'*');
 			// }else if(e.data=='delMsg'){
 			// 	delCookie('auth');
 			// 	window.parent.postMessage('true',e.origin);
