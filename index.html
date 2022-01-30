@@ -188,7 +188,7 @@
                 if(e.data!=null && e.data.length>30){
                    initProgram(e.data); 
                 }
-            });//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行                    
+            },false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行                    
             let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
             console.debug('originUrl===>'+originUrl);
             if(sessionStorage.getItem('logout')!='true'){ //没注销 
