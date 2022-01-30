@@ -177,6 +177,7 @@
             document.getElementById('own_deit').style.visibility='inherit';
         }else{
             let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
+            console.info('origin====>'+originUrl);
             window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件
         }
         if(getCookie('auth')==null && authStr!=null){
