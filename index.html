@@ -90,7 +90,7 @@
     <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js>
 </div>
 <!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://www.popzoo.ga/cookie.html" width="600" height="360"> -->
-<iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="600" height="360">
+<iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%">
     <p>你的浏览器不支持iframe</p>
 </iframe>
 <!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
@@ -179,7 +179,7 @@
         }else{
             let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
             console.info('origin====>'+originUrl);
-            window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件
+            setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);// 监听跨域事件
         }
         if(getCookie('auth')==null && authStr!=null){
             setCookie('auth',authStr);
@@ -226,9 +226,9 @@
     function logoutAcc(){
         delCookie("auth");
         // window.name='';//这里需要通信远程，删除cookie================
-        let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
-        window.frames[0].postMessage('delMsg',originUrl);// 监听跨域事件        
-        // location.reload(true);//这里不能刷新，防止从备用站获取cookie;
+        // let originUrl = document.URL.indexOf(domainUrl)>-1 ?'https://popzoo.vercel.app':domainUrl;
+        // window.frames[0].postMessage('delMsg',originUrl);// 监听跨域事件        
+        location.reload(true);//这里要处理，防止从备用站获取cookie;
     }
     function isMobileDevice(){
         if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
@@ -242,7 +242,7 @@
 
     }
     function siteSignal(){
-        window.setTimeout("siteSignal()", 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
+        setTimeout(siteSignal, 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
         document.getElementById("site-signal").innerHTML = "💔";
         document.getElementById("site-emoji").innerHTML = "(*◐ᴗ◑*)";
         setTimeout(function(){
