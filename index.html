@@ -136,7 +136,7 @@
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
                 mirrorUrl = window.atob(json.mirrorUrl); 
-                document.getElementById('login_auth').setAttribute('src',mirrorUrl+'/cookie.html');//https://popzoo.vercel.app
+                // document.getElementById('login_auth').setAttribute('src',mirrorUrl+'/cookie.html');//https://popzoo.vercel.app
                 // window.frames[0].postMessage('hookMsg','https://popzoo.vercel.app');// 监听跨域事件
                 document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
