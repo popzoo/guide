@@ -181,11 +181,6 @@
             if(getCookie('auth')==null && authStr!=null){
                 setCookie('auth',authStr);
             }            
-            loginRender();
-            isMobileDevice();
-            lazyLoadImg();
-            changeImg();
-            sessionCheck();            
         }else{
             window.addEventListener('message', function (e) {  // 监听 message 事件
                 console.debug('csrfOrigin===>'+e.origin);
@@ -201,6 +196,11 @@
                 // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
             }
         }
+        loginRender();
+        isMobileDevice();
+        lazyLoadImg();
+        changeImg();
+        sessionCheck();            
     }
     function checkBrowser(obj){
         if(getCookie('auth')==null){
