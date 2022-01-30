@@ -11,11 +11,10 @@
         if(cval!=null) document.cookie= name + "="+cval+"; path=/; expires="+exp.toGMTString();
     }    
     var authStr = getCookie('auth');
-	// if(authStr!=null){
 	window.addEventListener('message', function(e){
-		// if(e.source!=window.parent){
-		// 	return ;
-		// }else{
+		if(e.source!=window.parent){
+			return ;
+		}else{
 			// window.parent.postMessage(e.origin+'<====>'+authStr,'https://popzoo.vercel.app');
 			if(e.data=='hookMsg'){
 				window.parent.postMessage(authStr,e.origin);
@@ -23,9 +22,8 @@
 			// 	delCookie('auth');
 			// 	window.parent.postMessage('true',e.origin);
 			}	
-		// } 
+		} 
 	})
-	// }
 </script>
 <html>
 	<head>
