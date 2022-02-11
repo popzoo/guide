@@ -150,7 +150,7 @@
         sortNodeList = [].concat(nodeList);//获取排序数组，提供复制链接使用
         let tableCell = document.getElementById('render_table_cell');
         tableCell.firstElementChild.remove();//删除提示“正在加载”
-        for(let i = 1;i<21;i++){//去除第一个标题行,去除末尾空空行和时间戳
+        for(let i = 1;i<nodeList.length-2;i++){//去除第一个标题行,去除末尾空空行和时间戳
             addTagItem(nodeList[i],i);
         }
         // add tag 
@@ -195,8 +195,8 @@
         let totalTr = document.createElement('tr');
         totalTr.setAttribute("style","background-color: #B9D3EE");
         // let startTime = new Date(nodeList[nodeList.length-1].startTime);
-        let testTime = new Date(nodeList[nodeList.length-2]);
-        totalTr.innerHTML = `<td colspan='11' style='font-weight:600;'>💠测试节点：【${nodeList[nodeList.length-1]}】   ⏲测试时间：${dateFormat('YYYY-mm-dd【HH:MM:SS】', testTime)}`;
+        let testTime = new Date(nodeList[nodeList.length-1]);
+        totalTr.innerHTML = `<td colspan='11' style='font-weight:600;'>⏲测速时间：${dateFormat('YYYY-mm-dd【HH:MM:SS】', testTime)}`;
         tableCell.appendChild(totalTr);
         addCopyEvent();
     }
