@@ -38,7 +38,7 @@
 <div id="top">
 <main id="top_main">
 <div><a id="login_show">❤️</a></div>
-<div id="top_logo"><img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx2.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="backBtnListen()" id="mainimg"></div>
+<div id="top_logo"><img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="backBtnListen()" id="mainimg"></div>
 <div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png">
     <!-- <br class="top_hr_style01">  float:right;margin: -15px 30px 0 0; -->
 </div>
@@ -58,9 +58,11 @@
   <!-- <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
   <a id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/" title="夸克搜索" class="button button-rounded button-plain button-small-caps button-border" target="_blank">夸克搜</a>
   <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
+
   <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋" class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
   <a id="own_tire" href="https://www.popzoo.ga" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">主网站</a>
-  <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>    
+<!--   <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>   -->  
+  <a id="own_999" href="#" onclick="checkBrowser(this)" title="漫表格" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">漫表格</a>  
   <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">云修图</a>    
   <!-- <a id="own_tire" href="https://popzoo.vercel.app" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">镜像站</a>  -->
   <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云外访</a>
@@ -172,8 +174,9 @@
     // }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
     function initProgram(authStr){
         if(getCookie('auth')!=null || authStr!=null){// || authStr!=''
-            document.getElementById('own_bgrid').style.visibility='inherit'; 
+            // document.getElementById('own_bgrid').style.visibility='inherit'; 
             document.getElementById('own_fixpic').style.visibility='inherit';           
+            document.getElementById('own_999').style.visibility='inherit';           
             document.getElementById('own_cfip').style.visibility='inherit';
             document.getElementById('own_ping').style.visibility='inherit';
             document.getElementById('own_find').style.visibility='inherit';
@@ -221,6 +224,8 @@
                     window.open(document.location.protocol+'//wood.firenet.'+'workers.dev/');
                 }else if(obj.id=='own_deit'){
                     window.open(document.location.protocol+'//seed.firenet.'+'workers.dev/');
+                }else if(obj.id=='own_999'){
+                    window.open(document.location.protocol+"//"+document.domain+"/999.html");                
                 }        
             }
         }
@@ -356,20 +361,10 @@
         }
     }    
     function mouseOver(){
-        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
-            document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
-        // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
-        } else {// PC模式     
-            document.getElementById("mainimg").src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//鼠标悬浮时的旋转图标
-        // document.getElementById("mainimg").src="img/tx.png";//鼠标悬浮时的旋转图标
-        }   
+        document.getElementById("mainimg").src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+parseInt(Math.random()*8+1)+".png";//鼠标悬浮时的旋转图标
     }
     function mouseOut(){
-        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
-            document.getElementById('mainimg').src ="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx1.png"//默认的旋转图标
-        } else {// PC模式     
-            document.getElementById('mainimg').src ="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx1.png"//默认的旋转图标 tx2
-        }          
+        document.getElementById('mainimg').src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//默认的旋转图标
     }
     // date util
     function dateFormat(fmt, date) {
