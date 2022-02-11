@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+<head>
+<title>漫表格</title>
+<meta charset="UTF-8"/>
+<meta name="keywords" content="CF-IP"/>
+<meta name="description" content="999testContent"/>
+<meta name="robots" content="index,follow"/>
+<meta name="author" content="lvlanxing"/>
+<meta name="google" value="notranslate"/>
+<!-- 网页控制 -->
+<meta name="referrer" content="no-referrer"/>
+<!-- <meta http-equiv="cache-control" content="no-cache"/> -->
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="shortcut icon" href="/img/favicon.ico"/>
+<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+<!-- iphone suitable -->
+<meta name="theme-color" content="#000000"/>
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.7,maximum-scale=1.0,minimum-scale=0.5"/>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
+<meta name="apple-mobile-web-app-title" content="POPZOO"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="format-detection" content="email=no"/>
+<style type="text/css">
+    body{font:400 14px/21px Arial,serif}.example{width:100%;margin:36px auto;}table{font-size:1em;border-collapse:collapse;margin:0 auto;}tr{border-spacing:0;}table,td{text-align:center;padding:0 2px;}th{background:#333;color:#FDFDFD;cursor:pointer;text-align:center;height:40px; padding:0 5px;}th.sorted,th:hover{background:black}
+</style>   
+</head>
+<body>
+     <a id="left_link" href="https://github.com/tindy2013/stairspeedtest-reborn" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1); z-index: 10;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <a id="right_link" href="https://github.com/proxysu/ProxySU" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div style="text-align: center; font-size: 30px;font-weight: 600; margin: 30px;0;">👒999漫化表格👒</div>
+<div id="show_title" style="height:30px; color:#3C3C3C; line-height:30px; text-align: center; font-size:30px; visibility:hidden; font-family: Arial,Microsoft YaHei,'宋体';">
+<!--     <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-right:20px;">
+        <label for="effect_fire" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_node" id="public_version"  value="effect_fire"/>活跃度
+            <span class="radio-on"></span>
+        </label>
+        <label for="effect_welfare" class="radio">
+            <span class="radio-bg"></span>
+            <input type="radio" name="radio_node" id="private_version"  value="effect_welfare"/>红人榜
+            <span class="radio-on"></span>
+        </label>        
+    </span> -->
+    <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-left:20px;"> 
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_home" href="https://www.popzoo.ga/">导航页</a> •
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_comic" href="https://www.popzoo.ga/">漫画屋</a> •
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_novel" href="https://www.popzoo.ga/">小说集</a> •
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/">夸克搜</a> •
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_disk" href="https://www.popzoo.ga/">云网盘</a>
+    </span>
+</div>
+<div class="example ex-1">
+    <table id="show_table" style="visibility:hidden">
+        <thead>
+            <tr>
+                <th id="id">ID</th>
+                <th>Title</th>
+                <th>Renew</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody id = "render_table_cell">
+            <tr>
+                <td colspan="4">正在加载中……</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <button id="login_out">注销</button> -->
+</div>
+
+<script type="text/javascript" src="https://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/form/js/jquery.tablesort.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/form/js/cos-js-sdk-v5.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/form/js/spider-background.js"></script> -->
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zenorocha/clipboard.js/dist/clipboard.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
+<script type="text/javascript">
+    var sortNodeList = [];// judge= 'kissyourvigina';
+    var serverUrl = document.location.protocol+"//"+document.domain;
+    var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
+    (function ctrlBackEffect(){
+        var scriptNode = document.createElement("script");
+        scriptNode.setAttribute("type", "text/javascript");
+        if(localStorage.getItem('showBack')!='off'){
+            scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
+            document.body.appendChild(scriptNode);
+        }
+    })();
+    (function authCheck(){
+        if(getCookie("auth")!=null){
+            getConfig();
+        }else{
+            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
+        }   
+    })();        
+    function getConfig(){
+        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'omit'
+        }).then((res)=>{
+            return res.json()
+        }).then((json)=>{
+            let domainUrl = window.atob(json.domainUrl);
+            if(document.URL.indexOf(domainUrl)>-1){
+                serverUrl = window.atob(json.tlsoffer);
+            }
+            initProgram();
+        }).catch((error)=>{
+            console.error("请求错误", error.message)
+        });
+    }     
+    // get cos sek
+    function initProgram(){
+        document.getElementById("show_table").style.visibility="visible";
+        document.getElementById("show_title").style.visibility="visible";
+        getNodeList();
+    }
+    function getNodeList() {
+        let reqUrl = serverUrl+'/get999test?auth='+getCookie('auth');//+'&word='+queryWord
+        fetch(reqUrl, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            credentials: 'omit',
+        }).then(res => {
+            return res.json();
+        }).then(json => {
+            // console.info(json);
+            renderDataToTable(json);
+        }).catch(err => {
+            console.error('请求错误', err);
+        })
+    }    
+
+    function renderDataToTable(nodeList){
+        sortNodeList = [].concat(nodeList);//获取排序数组，提供复制链接使用
+        let tableCell = document.getElementById('render_table_cell');
+        tableCell.firstElementChild.remove();//删除提示“正在加载”
+        for(let i = 1;i<nodeList.length;i++){//去除第一个标题行,去除末尾空空行和时间戳
+            addTagItem(nodeList[i],i);
+        }
+        // add tag 
+        function addTagItem(nodeItem,i){
+            let outTr = document.createElement('tr');
+            i%2==0 ? outTr.setAttribute("style","background-color:#DDD") : outTr.setAttribute("style","background-color:#F7F7F7");
+            // =================================================
+            outTr.innerHTML = "<td width='50px'>"+i+" </td>";
+            let titleTag = "<td>";
+            if(nodeItem.hot<500){
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/pin_1.gif'  alt='pin1' title='升值1'>"
+            }else if(nodeItem.hot>=500 && nodeItem.hot<1000){
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/pin_2.gif'  alt='pin2' title='升值2'>"
+            }else if(nodeItem.hot>=1000 && nodeItem.hot<2000){
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/pin_3.gif'  alt='pin3' title='升值3'>"
+            }else if(nodeItem.hot>=2000 && nodeItem.hot <3000){
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/digest_3.gif'  alt='digest' title='精华'>"
+            }else{
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/digest_3.gif'  alt='digest' title='精华'>"
+                titleTag += "<img src='https://cdn.jsdelivr.net/gh/popzoo/guide/img/hot_3.gif'  alt='hot' title='火爆'>"
+            }
+            titleTag += "<a href='https://note.2046acg.com/"+nodeItem.link+"' style='text-decoration:none;color:green;' target='_blank'>"+nodeItem.title+"</a></td>";
+            outTr.innerHTML += titleTag;
+            outTr.innerHTML += "<td>"+nodeItem.renew+"</td><td>"+nodeItem.hot+"</td>";
+            // outTr.innerHTML += "<td width='60px'><a class='copylink' style='font-weight:600;color:#FF8247;'>CopyLink</a></td>";//text-decoration:none;
+            // console.debug(nodeItem);
+            tableCell.appendChild(outTr);
+        }
+        // let totalTr = document.createElement('tr');
+        // totalTr.setAttribute("style","background-color: #B9D3EE");
+        // let startTime = new Date(nodeList[nodeList.length-1].startTime);
+        // let testTime = new Date(nodeList[nodeList.length-1]);
+        // totalTr.innerHTML = `<td colspan='11' style='font-weight:600;'>⏲测速时间：${dateFormat('YYYY-mm-dd【HH:MM:SS】', testTime)}`;
+        // tableCell.appendChild(totalTr);
+        // addCopyEvent();
+    }
+    // function addCopyEvent(){
+    //     let num = document.getElementsByClassName('copylink');//.innerText = "已复制";
+    //     for(let i = 0;i<num.length;i++){
+    //         num[i].addEventListener('click',(function() {copyLinkText(i)}))
+    //     }
+    // }
+    // function copyLinkText(i){
+    //     document.getElementsByClassName('copylink')[i].innerText = "成功";
+    //     document.getElementsByClassName('copylink')[i].style.color = "blue";
+    //     // 复制内容
+    //     var tag = document.createElement('input');
+    //     tag.setAttribute('id', 'cp_hgz_input');
+    //     tag.value = sortNodeList[i+1][0];
+    //     document.getElementsByTagName('body')[0].appendChild(tag);
+    //     document.getElementById('cp_hgz_input').select();
+    //     document.execCommand('copy');
+    //     document.getElementById('cp_hgz_input').remove();
+    // }
+    // set cookie
+    function setCookie(name,value){
+        //document.cookie.setPath("/");
+        var exp = new Date(); 
+        exp.setTime(exp.getTime() + 365*24*60*60*1000); 
+        document.cookie = name + "="+ escape (value) + ";  path=/; expires=" + exp.toGMTString();//domain=popzoo.xyz;
+    }
+    // get cookie
+    function getCookie(name){
+        //document.cookie.setPath("/");
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
+    　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+    }
+    // del cookie
+    function delCookie(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null) document.cookie= name + "="+cval+";  path=/; expires="+exp.toGMTString();//domain=popzoo.xyz;
+    }
+    // time format util
+    function dateFormat(fmt, date) {
+        let ret;
+        let opt = {
+            "Y+": date.getFullYear().toString(),
+            "m+": (date.getMonth() + 1).toString(),
+            "d+": date.getDate().toString(),
+            "H+": date.getHours().toString(),
+            "M+": date.getMinutes().toString(),
+            "S+": date.getSeconds().toString()
+        };// 有其他格式化字符需求可以继续添加，必须转化成字符串
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
+    }
+    // function isValidIP(ip) {
+    //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+    //     return reg.test(ip);
+    // }    
+</script>
+</div>
+</body>
+</html>
