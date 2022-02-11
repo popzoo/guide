@@ -293,7 +293,6 @@
         var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds)
         document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
     }
-   
     function lazyLoadImg(){
         preLoadImg(0);
         function preLoadImg(index){
@@ -301,7 +300,14 @@
             if(index<bodyBgs.length-1){
                 setTimeout(()=>{preLoadImg(++index)},1000);
             }
-        }        
+        }
+        preLoadAvatar(1);
+        function preLoadAvatar(index){
+            $.get("https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+[index]+".png");
+            if(index<=8){
+                setTimeout(()=>{preLoadAvatar(++index)},1200);
+            }
+        }                 
     }
     function changeImg(){
         let rdIndex = Math.floor( Math.random() * bodyBgs.length );
