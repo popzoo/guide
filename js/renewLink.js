@@ -3,6 +3,9 @@
     document.write(unescape("%3Cspan style='display:none' id='cnzz_stat_icon_1278051049'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278051049' type='text/javascript'%3E%3C/script%3E"));
     
     let serverUrl = document.location.protocol+'//'+document.domain;
+    if(document.getElementById("own_home")!=undefined){
+        document.getElementById("own_home").setAttribute("href",serverUrl+"/index.html");//popzoo.github.io/zoo/
+    }    
     if(document.getElementById("own_time")!=undefined){
 		document.getElementById("own_time").setAttribute("href",serverUrl+"/time.html");//popzoo.github.io/zoo/
 	}
@@ -30,9 +33,9 @@
     if(document.getElementById("own_novel")!=undefined){
         document.getElementById("own_novel").setAttribute("href",serverUrl+"/novel.html");
     }       
-    // if(document.getElementById("own_cfip")!=undefined){
-    //     document.getElementById("own_cfip").setAttribute("href",serverUrl+"/cfip.html");
-    // }          
+    if(document.getElementById("own_comic")!=undefined){
+        document.getElementById("own_comic").setAttribute("href",serverUrl+"/comic.html");
+    }          
     // github link
     if(document.getElementById("left_link")!=undefined){
         document.getElementById("left_link").setAttribute("href","https://ghproxy.com/");
