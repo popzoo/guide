@@ -204,12 +204,12 @@
         }        
     }
     function getNovelData(labelObj){
-        let reqUrl = serverUrl+'/getnovel?label='+labelObj+'&auth='+getCookie('auth');
+        let reqUrl = serverUrl+'/getnovel?label='+labelObj;
         fetch(reqUrl, {           
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit',
+            credentials: 'include',
         }).then(res => {
             return res.json();
         }).then(json => {

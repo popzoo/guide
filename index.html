@@ -344,8 +344,7 @@
         }
     }
     function sessionCheck(){
-        if(getCookie('auth')!=null){
-            // let reqUrl = serverUrl+'/checkauth?auth='+getCookie('auth');
+        if(getCookie('auth')!=null){//?auth='+getCookie('auth');
             let reqUrl = serverUrl+'/checkauth';
             fetch(reqUrl, {               
                 method: 'GET',

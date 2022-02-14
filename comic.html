@@ -258,12 +258,12 @@
     function getComicsData(){
         // fetch("https://cdn.jsdelivr.net/gh/popzoo/pop/json/"+urlTail,{
         let wordStr = sessionStorage.getItem("comicWord")==null?"":sessionStorage.getItem("comicWord").trim();
-        let reqUrl = serverUrl+'/getcomic?auth='+ getCookie("auth")+'&word='+wordStr;
+        let reqUrl = serverUrl+'/getcomic?word='+wordStr;
         fetch(reqUrl, {           
             method: 'GET',
             mode: 'cors', 
             cache: 'default', 
-            credentials: 'omit', 
+            credentials: 'include', 
         }).then(res => {
             return res.json();
         }).then(result => {

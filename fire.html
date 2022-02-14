@@ -176,22 +176,22 @@
         var reqUrl="";
         if(isFire){
             if(isDay){
-                reqUrl = serverUrl + '/getdayfire?auth='+ getCookie("auth");
+                reqUrl = serverUrl + '/getdayfire';
             }else{
-                reqUrl = serverUrl + '/getfire?auth='+ getCookie("auth");
+                reqUrl = serverUrl + '/getfire';
             }
         }else{
             if(isDay){
-                reqUrl = serverUrl + '/getdaylotto?auth='+ getCookie("auth");
+                reqUrl = serverUrl + '/getdaylotto';
             }else{
-                reqUrl = serverUrl + '/getlotto?auth='+ getCookie("auth");
+                reqUrl = serverUrl + '/getlotto';
             }
         }            
         fetch(reqUrl, {              
             method: 'GET',
             mode: 'cors',
             cache: 'no-store',
-            credentials: 'omit'
+            credentials: 'include'
         }).then(result => {
             return result.json();
         }).then(json => {
@@ -218,11 +218,11 @@
     }
     function getRedPackList(){
         let reqUrl = serverUrl+'/getredpack';
-        fetch(reqUrl, {//+getCookie("auth")
+        fetch(reqUrl, {
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit'
+            credentials: 'include'
         }).then(result => {
             return result.json();
         }).then(json => {

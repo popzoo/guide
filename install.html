@@ -441,6 +441,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
     <script type="text/javascript">
       var serverUrl = document.location.protocol+"//"+document.domain;
+      var mirrorUrl = document.URL;
       (function ctrlBackEffect(){
           var scriptNode = document.createElement("script");
           scriptNode.setAttribute("type", "text/javascript");
@@ -461,6 +462,7 @@
               let domainUrl = window.atob(json.domainUrl);
               if(document.URL.indexOf(domainUrl)>-1){
                   serverUrl = window.atob(json.tlsoffer);
+                  mirrorUrl = window.atob(json.mirrorUrl);
               }
           }).catch((error)=>{
               console.error("请求错误", error.message)
@@ -468,17 +470,17 @@
       })();         
       function installScript(){
          if(getCookie("auth")!=null){
-            let reqUrl = serverUrl+'/getscript?auth='+getCookie('auth');
+            let reqUrl = serverUrl+'/getscript';
             fetch(reqUrl, {          
                 method: 'GET',
                 mode: 'cors',
                 cache: 'default',
-                credentials: 'omit',
+                credentials: 'include',
             }).then(res => {
                 return res.json();
             }).then(json => {
                 if(json.code==1){
-                  window.open(document.location.protocol +'//popzoo.vercel.app'+json.msg);
+                  window.open(mirrorUrl+'/'+json.msg);
                 }else{
                   alert('登录信息错误，请重新登录！');
                 }

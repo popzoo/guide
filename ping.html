@@ -141,12 +141,12 @@
         location.reload();
     }
     function getNodeList() {
-        let reqUrl = serverUrl+'/getping?auth='+getCookie('auth');
+        let reqUrl = serverUrl+'/getping';
         fetch(reqUrl, {        
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit',
+            credentials: 'include',
         }).then(res => {
             return res.json();
         }).then(json => {

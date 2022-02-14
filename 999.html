@@ -123,12 +123,12 @@
         getNodeList();
     }
     function getNodeList() {
-        let reqUrl = serverUrl+'/get999test?auth='+getCookie('auth');//+'&word='+queryWord
+        let reqUrl = serverUrl+'/get999test';//+'&word='+queryWord
         fetch(reqUrl, {
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit',
+            credentials: 'include',
         }).then(res => {
             return res.json();
         }).then(json => {

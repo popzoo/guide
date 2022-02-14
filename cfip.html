@@ -130,12 +130,12 @@
         getNodeList();
     }
     function getNodeList() {
-        let reqUrl = serverUrl+'/getcfip?auth='+getCookie('auth');
+        let reqUrl = serverUrl+'/getcfip';
         fetch(reqUrl, {
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit',
+            credentials: 'include',
         }).then(res => {
             return res.json();
         }).then(json => {
