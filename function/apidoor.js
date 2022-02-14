@@ -5,14 +5,16 @@ exports.handler = async function(event, context) {
     // exports.main_handler = function(event, context, callbk) {
     // console.info(event.queryString);
     // let path = event.path.replace('/tlstransfer', '');
+    let path = event.path;
     let auth = '?auth=' + event.queryString.auth;
     let label = '&label=' + event.queryString.label;
     let type = '&type=' + event.queryString.type;
     let word = '&word=' + event.queryString.word;
     // let serverUrl = process.env.serverUrl;
     let serverUrl = 'http://47.93.190.201';
-    serverUrl = serverUrl + auth + label + type + word;
+    serverUrl = serverUrl + path + auth + label + type + word;
     // event.headers['x-real-ip'] = event.requestContext.sourceIp;
+    console.info(event.path);
     console.info(event.headers);
     request({
         url: encodeURI(serverUrl),
