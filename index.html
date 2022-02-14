@@ -323,7 +323,7 @@
                 method: 'GET',
                 mode: 'cors', 
                 cache: 'no-store', 
-                credentials: 'omit', 
+                credentials: 'same-origin', 
             }).then(res => {
                 return res.json();
             }).then(json => {
@@ -345,12 +345,13 @@
     }
     function sessionCheck(){
         if(getCookie('auth')!=null){
-            let reqUrl = serverUrl+'/checkauth?auth='+getCookie('auth');
+            // let reqUrl = serverUrl+'/checkauth?auth='+getCookie('auth');
+            let reqUrl = serverUrl+'/checkauth';
             fetch(reqUrl, {               
                 method: 'GET',
                 mode: 'cors', 
                 cache: 'no-store', 
-                credentials: 'omit', 
+                credentials: 'include', 
             }).then(res => {
                 return res.json();
             }).then(json => {
@@ -358,7 +359,7 @@
                     console.debug('Session秘钥验证正确!');
                 }else{
                     delCookie("auth");
-                    alert('当前秘钥已失效，请重新登录！');
+                    alert('Session秘钥失效，请重新登录！');
                     window.location.reload();
                 }                    
             }).catch(err => {
