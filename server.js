@@ -8,11 +8,11 @@ const app = express();
 
 app.use(express.static("public"));
 app.get("/", (request, response) => {//https://firepage.glitch.me/
-    response.sendFile(__dirname + "/views/index.html");
+    response.sendFile(__dirname + "/index.html");
 });
-app.get("/login", (request, response) => {//https://firepage.glitch.me/
-    response.sendFile(__dirname + "/views/login.html");
-});
+// app.get("/login", (request, response) => {//https://firepage.glitch.me/
+//     response.sendFile(__dirname + "/views/login.html");
+// });
 // send the default array of dreams to the webpage
 app.get("/dreams", (request, response) => {
     addApiHead(response);
