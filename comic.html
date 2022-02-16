@@ -168,7 +168,7 @@
         }
     })();
     (function authCheck(){
-        if(getCookie("auth")!=null){
+        if(localStorage.getItem('token')!=null){
             getConfig();
             if(baseUrlArr==null){
                 getAddrPage();
@@ -199,11 +199,12 @@
         });
     } 
     function getAddrPage(){
-        fetch(window.atob('aHR0cHM6Ly9zZXJ2aWNlLWVxNjhmbGFkLTEyNTM2MjY2ODMuYmouYXBpZ3cudGVuY2VudGNzLmNvbS9yZWxlYXNlL2hqZDIwNDg='), {
+        fetch(serverUrl+'/gethjd', {
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'omit'
+            headers: {'Authorization': localStorage.getItem('token')},
+            credentials: 'same-origin'
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
@@ -263,7 +264,8 @@
             method: 'GET',
             mode: 'cors', 
             cache: 'default', 
-            credentials: 'include', 
+            headers: {'Authorization': localStorage.getItem('token')},
+            credentials: 'same-origin'
         }).then(res => {
             return res.json();
         }).then(result => {

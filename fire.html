@@ -106,7 +106,7 @@
         }
     })();
     (function authCheck(){
-        if(getCookie("auth")!=null){
+        if(localStorage.getItem('token')!=null){
             getConfig();
         }else{
             location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
@@ -191,7 +191,8 @@
             method: 'GET',
             mode: 'cors',
             cache: 'no-store',
-            credentials: 'include'
+            headers: {'Authorization': localStorage.getItem('token')},
+            credentials: 'same-origin'
         }).then(result => {
             return result.json();
         }).then(json => {
@@ -222,7 +223,8 @@
             method: 'GET',
             mode: 'cors',
             cache: 'default',
-            credentials: 'include'
+            headers: {'Authorization': localStorage.getItem('token')},
+            credentials: 'same-origin'
         }).then(result => {
             return result.json();
         }).then(json => {

@@ -16,7 +16,7 @@
 <meta http-equiv="cache-control" content="no-cache"/>
 <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>--><!-- 强制使用https请求，测试请关闭 -->
 <link rel="shortcut icon" href="/img/favicon.ico"/>
 <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
 <!-- iphone suitable -->
@@ -110,6 +110,7 @@
 <script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/Browser.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/snowy.js"></script> -->
+<!-- <script src="https://popzoo.netlify.app/.netlify/functions/setcookie?cookieName=auth&cookieValue=9999999"></script> -->
 <script type="text/javascript">
     // localStorage.setItem("modelId",0)
     // localStorage.setItem("modelTexturesId",0);   
@@ -149,10 +150,10 @@
                 document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
             }
-            if(isValidIP(document.domain)){
-                location.href = domainUrl;
-            }    
-            initProgram(null);        
+            // if(isValidIP(document.domain)){
+            //     location.href = domainUrl;
+            // }    
+            initProgram();
         }).catch((error)=>{
             console.error("请求错误", error.message)
         });
@@ -172,68 +173,91 @@
     //        initProgram(e.data); 
     //     }
     // }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
-    function initProgram(authStr){
-        if(getCookie('auth')!=null || authStr!=null){// || authStr!=''
-            // document.getElementById('own_bgrid').style.visibility='inherit'; 
-            document.getElementById('own_fixpic').style.visibility='inherit';           
-            document.getElementById('own_999').style.visibility='inherit';           
-            document.getElementById('own_cfip').style.visibility='inherit';
-            document.getElementById('own_ping').style.visibility='inherit';
-            document.getElementById('own_find').style.visibility='inherit';
-            document.getElementById('own_deit').style.visibility='inherit';
-            if(getCookie('auth')==null && authStr!=null){
-                setCookie('auth',authStr);
-            }            
-        }else{
-            window.addEventListener('message', function (e) {  // 监听 message 事件
-                console.debug('csrfOrigin===>'+e.origin);
-                console.debug('csrfData===>'+e.data);
-                if(e.data!=null && e.data.length>30){
-                   initProgram(e.data); 
-                }
-            },false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行                    
-            let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
-            console.debug('originUrl===>'+originUrl);
-            if(sessionStorage.getItem('logout')!='true'){ //没注销 
-                window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
-                // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
-            }
-        }
-        loginRender();
+    function initProgram(){
         isMobileDevice();
         lazyLoadImg();
         changeImg();
-        sessionCheck();            
+        oAuthCheck();         
+
+        //     window.addEventListener('message', function (e) {  // 监听 message 事件
+        //         console.debug('csrfOrigin===>'+e.origin);
+        //         console.debug('csrfData===>'+e.data);
+        //         if(e.data!=null && e.data.length>30){
+        //            initProgram(e.data); 
+        //         }
+        //     },false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行                    
+        //     let originUrl = document.URL.indexOf(domainUrl)>-1 ? mirrorUrl : domainUrl;
+        //     console.debug('originUrl===>'+originUrl);
+        //     if(sessionStorage.getItem('logout')!='true'){ //没注销 
+        //         window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
+        //         // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
+        //     }
     }
-    function checkBrowser(obj){
-        if(getCookie('auth')==null){
-            location.href = document.location.protocol+"//"+document.domain + "/illegal.html";
+    function oAuthCheck(){
+        if(localStorage.getItem('token')!=null){//?auth='+getCookie('auth');
+            let reqUrl = serverUrl+'/checkoauth';
+            fetch(reqUrl, {               
+                method: 'GET',
+                mode: 'cors', 
+                cache: 'no-store', 
+                headers: {'Authorization': localStorage.getItem('token'), 'Content-Type': 'application/json'},
+                credentials: 'same-origin'
+            }).then(res => {
+                return res.json();
+            }).then(json => {
+                if(json.code==1){
+                    console.debug(json.msg);
+                    loginRender(true);
+                    renderHidden();
+                }else{
+                    localStorage.removeItem('token');
+                    loginRender(false);
+                }                    
+            }).catch(err => {
+                console.error('请求错误', err);
+            })        
         }else{
-            var info = new Browser();
-            if(info.browser.indexOf('360')>-1 || info.browser.indexOf('QQ')>-1 || info.browser.indexOf('Wechat')>-1 || info.browser.indexOf('baidu')>-1 || info.browser.indexOf('sougou')>-1){
-                location.href = document.location.protocol+"//"+document.domain + "/illegal.html";
-            }else{
-                if(obj.id=="own_fuli"){
-                    // window.open(document.location.protocol+'//rouman5.com/home');
-                    window.open(document.location.protocol+"//"+document.domain+"/comic.html");
-                }else if(obj.id=='own_ping'){    
-                    window.open(document.location.protocol+"//"+document.domain+"/ping.html");
-                }else if(obj.id=='own_cfip'){
-                    window.open(document.location.protocol+"//"+document.domain+"/cfip.html");
-                }else if(obj.id=='own_find'){
-                    window.open(document.location.protocol+'//wood.firenet.'+'workers.dev/');
-                }else if(obj.id=='own_deit'){
-                    window.open(document.location.protocol+'//seed.firenet.'+'workers.dev/');
-                }else if(obj.id=='own_999'){
-                    window.open(document.location.protocol+"//"+document.domain+"/999.html");                
-                }        
-            }
+            loginRender(false);
+        //     alert('Session秘钥失效，请重新登录！');
+        //     window.location.reload();              
+        //     return false;
         }
     }
-    function loginRender(){
-        if(getCookie('auth')==null){
+    function renderHidden(){
+        // document.getElementById('own_bgrid').style.visibility='inherit'; 
+        document.getElementById('own_fixpic').style.visibility='inherit';           
+        document.getElementById('own_999').style.visibility='inherit';           
+        document.getElementById('own_cfip').style.visibility='inherit';
+        document.getElementById('own_ping').style.visibility='inherit';
+        document.getElementById('own_find').style.visibility='inherit';
+        document.getElementById('own_deit').style.visibility='inherit';   
+        // loginRender(true);     
+    }
+    function checkBrowser(obj){
+        var info = new Browser();
+        if(info.browser.indexOf('360')>-1 || info.browser.indexOf('QQ')>-1 || info.browser.indexOf('Wechat')>-1 || info.browser.indexOf('baidu')>-1 || info.browser.indexOf('sougou')>-1){
+            location.href = document.location.protocol+"//"+document.domain + "/illegal.html";
+        }else{
+            if(obj.id=="own_fuli"){
+                // window.open(document.location.protocol+'//rouman5.com/home');
+                window.open(document.location.protocol+"//"+document.domain+"/comic.html");
+            }else if(obj.id=='own_ping'){    
+                window.open(document.location.protocol+"//"+document.domain+"/ping.html");
+            }else if(obj.id=='own_cfip'){
+                window.open(document.location.protocol+"//"+document.domain+"/cfip.html");
+            }else if(obj.id=='own_find'){
+                window.open(document.location.protocol+'//wood.firenet.'+'workers.dev/');
+            }else if(obj.id=='own_deit'){
+                window.open(document.location.protocol+'//seed.firenet.'+'workers.dev/');
+            }else if(obj.id=='own_999'){
+                window.open(document.location.protocol+"//"+document.domain+"/999.html");                
+            }        
+        }
+    }
+    function loginRender(isLogin){
+        if(!isLogin){
             document.getElementById("login_show").innerText = "📴登录";
-            document.getElementById("login_show").addEventListener('click',authCheck);
+            document.getElementById("login_show").addEventListener('click',pwdLogin);
 
         }else{
             document.getElementById("login_show").innerText = "📳注销";
@@ -241,8 +265,9 @@
         }
     }
     function logoutAcc(){
-        delCookie("auth");
-        sessionStorage.setItem('logout','true');        
+        // delCookie("auth");
+        localStorage.removeItem('token');//======================todo:revorkedToken
+        // sessionStorage.setItem('logout','true');        
         location.reload();//这里要处理，防止从备用站获取cookie, 需要通信远程，删除cookie
     }
     function isMobileDevice(){
@@ -254,7 +279,6 @@
             siteSignal();
             siteTime();
         }
-
     }
     function siteSignal(){
         setTimeout(siteSignal, 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
@@ -304,7 +328,7 @@
         preLoadAvatar(1);
         function preLoadAvatar(index){
             $.get("https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+[index]+".png");
-            if(index<=8){
+            if(index<8){
                 setTimeout(()=>{preLoadAvatar(++index)},1200);
             }
         }                 
@@ -315,27 +339,38 @@
         img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
         window.setTimeout(()=>{changeImg()},10000);
     }    
-    function authCheck(){
+    function pwdLogin(){
         let pwd =window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！","");
         if (pwd!=null && pwd!=""){
-            let reqUrl = serverUrl+'/getauth?auth='+pwd.trim();
+            // let reqUrl = serverUrl+'/getauth?auth='+pwd.trim();
+            let reqUrl = serverUrl+'/getoauth';
+            let content = {secret:window.btoa(pwd.trim())};
             fetch(reqUrl, {               
-                method: 'GET',
+                method: 'POST',
                 mode: 'cors', 
                 cache: 'no-store', 
-                credentials: 'same-origin', 
+                // headers: new Headers({
+                //   'Content-Type': 'application/json'
+                // }),
+                headers: {'Content-Type': 'application/json'},
+                // credentials: 'same-origin',
+                body:JSON.stringify(content)
             }).then(res => {
                 return res.json();
             }).then(json => {
                 if(json.msg=="success"){
-                    setCookie('auth',json.auth);
-                    window.location.reload();
+                    localStorage.setItem('token',json.token);
+                    // console.info(json.token);
+                    // window.location.reload();
+                    loginRender(true);
+                    renderHidden();                    
                 }else{
-                    delCookie("auth");
+                    // delCookie("token");
+                    localStorage.removeItem('token');
                     if(json.code == 401){
-                        alert("密码错误，请重新输入");
-                    }else if(json.code == 403){
-                        alert("密码错误超过5次，请30min后重试");
+                        alert("🤢密码错误，请重新输入,你还有"+json.count+"次机会");
+                    }else if(json.code == 402){
+                        alert("😡密码错误超过5次，请30min后重试");
                     }
                 }                    
             }).catch(err => {
@@ -343,29 +378,6 @@
             })        
         }
     }
-    function sessionCheck(){
-        if(getCookie('auth')!=null){//?auth='+getCookie('auth');
-            let reqUrl = serverUrl+'/checkauth';
-            fetch(reqUrl, {               
-                method: 'GET',
-                mode: 'cors', 
-                cache: 'no-store', 
-                credentials: 'include', 
-            }).then(res => {
-                return res.json();
-            }).then(json => {
-                if(json.code==1){
-                    console.debug('Session秘钥验证正确!');
-                }else{
-                    delCookie("auth");
-                    alert('Session秘钥失效，请重新登录！');
-                    window.location.reload();
-                }                    
-            }).catch(err => {
-                console.error('请求错误', err);
-            })        
-        }
-    }    
     function mouseOver(){
         document.getElementById("mainimg").src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+parseInt(Math.random()*8+1)+".png";//鼠标悬浮时的旋转图标
     }

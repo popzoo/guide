@@ -469,13 +469,14 @@
           });
       })();         
       function installScript(){
-         if(getCookie("auth")!=null){
+         if(localStorage.getItem('token')!=null){
             let reqUrl = serverUrl+'/getscript';
             fetch(reqUrl, {          
                 method: 'GET',
                 mode: 'cors',
                 cache: 'default',
-                credentials: 'include',
+                headers: {'Authorization': localStorage.getItem('token')},
+                credentials: 'same-origin'
             }).then(res => {
                 return res.json();
             }).then(json => {
