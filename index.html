@@ -200,7 +200,7 @@
                 method: 'GET',
                 mode: 'cors', 
                 cache: 'no-store', 
-                headers: {'Authorization': localStorage.getItem('token'), 'Content-Type': 'application/json'},
+                headers: {'Authorization': localStorage.getItem('token')},
                 credentials: 'same-origin'
             }).then(res => {
                 return res.json();
