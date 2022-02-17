@@ -178,7 +178,6 @@
         lazyLoadImg();
         changeImg();
         oAuthCheck();         
-
         //     window.addEventListener('message', function (e) {  // 监听 message 事件
         //         console.debug('csrfOrigin===>'+e.origin);
         //         console.debug('csrfData===>'+e.data);
@@ -195,7 +194,7 @@
     }
     function oAuthCheck(){
         if(localStorage.getItem('token')!=null){//?auth='+getCookie('auth');
-            let reqUrl = serverUrl+'/checkoauth';
+            let reqUrl = serverUrl+'/getverify';
             fetch(reqUrl, {               
                 method: 'GET',
                 mode: 'cors', 
@@ -218,9 +217,6 @@
             })        
         }else{
             loginRender(false);
-        //     alert('Session秘钥失效，请重新登录！');
-        //     window.location.reload();              
-        //     return false;
         }
     }
     function renderHidden(){
