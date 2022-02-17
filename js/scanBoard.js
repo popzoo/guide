@@ -688,7 +688,7 @@ $(function() {
 
             document.getElementById("totalDanmu").setAttribute("total", todayDanmu); //今日弹幕总数
             totalNum($('#totalDanmu'), 100); //跳动渲染数据
-            console.info(todayUserList);
+            // console.info(todayUserList);
             document.getElementById("indicator1").setAttribute("total", todayUserList.length);//今日用户总数
             totalNum($('#indicator1'), 1); //跳动渲染
         } else {
