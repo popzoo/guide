@@ -92,6 +92,7 @@
     const curDay = new Date();
     const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0)-1800*1000);//昨天23点 
     var cos;//judge= 'kissyourvigina';
+    var serverUrl = document.location.protocol+"//"+document.domain;
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "user_exp";
     (function ctrlBackEffect(){
         var scriptNode = document.createElement("script");
@@ -117,9 +118,10 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            let secId = json.secId!=undefined ? window.atob(json.secId):secId;
-            let secKy = json.secKy != undefined ? window.atob(json.secKy.substr(4)):secKy;
-            cos = new COS({SecretId: secId, SecretKey: secKy});     
+            let domainUrl = window.atob(json.domainUrl);
+            if (document.URL.indexOf(domainUrl) > -1) {
+                serverUrl = window.atob(json.tlsoffer);
+            }        
             initProgram();
         }).catch((error)=>{
             console.error("网络异常", error.message)
@@ -127,9 +129,28 @@
     }    
     // get cos sek
     function initProgram(){
+        getCosKey();
         document.getElementById("show_table").style.visibility="visible";
         rankEventListener();
-        getUserNumber(true);
+    }
+    function getCosKey(){
+        let reqUrl = serverUrl+'/getcoskey';
+        fetch(reqUrl, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+            headers: {'Authorization': localStorage.getItem('token')},
+            credentials: 'same-origin'
+        }).then(res => {
+            return res.json();
+        }).then(json => {
+            let secId = json.secId!=undefined ? window.atob(json.secId):'';
+            let secKy = json.secKy != undefined ? window.atob(json.secKy.substr(4)):'';
+            cos = new COS({SecretId: secId, SecretKey: secKy});  
+            getUserNumber(true);
+        }).catch(err => {
+            console.error('请求错误', err);
+        })       
     }
     // add Event Listener of radio onchange
     function rankEventListener(){
