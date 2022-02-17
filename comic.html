@@ -150,11 +150,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
     <script type="text/javascript">
     var count = 0;
-    var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?800:(sessionStorage.getItem("comicStatus")=='small_view')?360:600;//mid_view
+    var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?700:(sessionStorage.getItem("comicStatus")=='small_view')?320:500;//mid_view
     var word = sessionStorage.getItem("comicWord");
     var comicList = new Array();
     var baseUrlArr = sessionStorage.getItem("baseUrlArr");
-    var baseUrl = 'https://bbs.bbbh.cc';
     var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
     //=================== Script init ======================
@@ -170,12 +169,6 @@
     (function authCheck(){
         if(localStorage.getItem('token')!=null){
             getConfig();
-            if(baseUrlArr==null){
-                getAddrPage();
-            }else{
-                baseUrlArr = JSON.parse(baseUrlArr);
-                baseUrl = baseUrlArr[parseInt(Math.random() * baseUrlArr.length)];
-            }
         }else{
             location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
         }   
@@ -193,6 +186,11 @@
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
+            if(baseUrlArr==null){
+                getAddrPage();
+            }else{
+                baseUrlArr = JSON.parse(baseUrlArr);
+            }            
             initProgram();
         }).catch((error)=>{
             console.error("请求错误", error.message)
@@ -208,7 +206,7 @@
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
-            baseUrl = json[parseInt(Math.random() * json.length)];
+            // baseUrl = json[parseInt(Math.random() * json.length)];
             sessionStorage.setItem("baseUrlArr",JSON.stringify(json));
         }).catch((error)=>{
             console.error("请求错误", error.message)
@@ -282,6 +280,7 @@
         for(let i=count*60;i<Math.min((count+1)*60, comicList.length);i++){
             // console.info(comicList[i]); encodeURIComponent(comicList[i].mcId)
             let div = $('<div></div>').addClass('item');
+            let baseUrl = baseUrlArr[parseInt(Math.random() * baseUrlArr.length)];
             var content = "<a href='"+baseUrl+'/2048/'+comicList[i].link+"' target='_blank'><img src='"+comicList[i].img+"'/>";
             content += "<p>标题:<strong style='color:green;'>"+comicList[i].title+"</strong></p></a>";
             content += "<p>时间:<strong style='color:blue;'>"+comicList[i].time+"</strong></p>";
