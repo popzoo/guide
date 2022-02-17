@@ -150,9 +150,9 @@
                 document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
             }
-            // if(isValidIP(document.domain)){
-            //     location.href = domainUrl;
-            // }    
+            if(isValidIP(document.domain)){
+                location.href = domainUrl;
+            }    
             initProgram();
         }).catch((error)=>{
             console.error("请求错误", error.message)
