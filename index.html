@@ -37,7 +37,7 @@
 <body>
 <div id="top">
 <main id="top_main">
-<div><a id="login_show">❤️</a></div>
+<div><a id="login_show">❤️❤️❤️</a></div>
 <div id="top_logo"><img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="backBtnListen()" id="mainimg"></div>
 <div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png">
     <!-- <br class="top_hr_style01">  float:right;margin: -15px 30px 0 0; -->
@@ -109,8 +109,6 @@
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
 <script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/Browser.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/snowy.js"></script> -->
-<!-- <script src="https://popzoo.netlify.app/.netlify/functions/setcookie?cookieName=auth&cookieValue=9999999"></script> -->
 <script type="text/javascript">
     // localStorage.setItem("modelId",0)
     // localStorage.setItem("modelTexturesId",0);   
@@ -252,10 +250,12 @@
     }
     function loginRender(isLogin){
         if(!isLogin){
+            document.getElementById("login_show").removeEventListener('click',logoutAcc,false);
             document.getElementById("login_show").innerText = "📴登录";
             document.getElementById("login_show").addEventListener('click',pwdLogin);
 
         }else{
+            document.getElementById("login_show").removeEventListener('click',pwdLogin,false);
             document.getElementById("login_show").innerText = "📳注销";
             document.getElementById("login_show").addEventListener('click',logoutAcc);
         }
@@ -338,7 +338,6 @@
     function pwdLogin(){
         let pwd =window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！","");
         if (pwd!=null && pwd.trim()!=""){
-            // let reqUrl = serverUrl+'/getauth?auth='+pwd.trim();
             let reqUrl = serverUrl+'/getoauth';
             let content = window.btoa(new Date().getFullYear().toString())+window.btoa(pwd.trim());
             content = 'secret='+window.btoa(content.replace('=',''));
@@ -346,9 +345,7 @@
                 method: 'POST',
                 mode: 'cors', 
                 cache: 'no-store', 
-                // headers: new Headers({
-                //   'Content-Type': 'application/json'
-                // }),
+                // headers: new Headers({'Content-Type': 'application/json'}),
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
                 credentials: 'same-origin',
                 body:content
