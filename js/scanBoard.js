@@ -48,6 +48,7 @@ $(function() {
     //============================================================     
     // get filter room and cos config
     authCheck();
+
     function authCheck() {
         if (localStorage.getItem('token') != null) {
             getServerConfig();
@@ -60,27 +61,27 @@ $(function() {
             }
         } else {
             let pwd = window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！", "");
-            if (pwd != null && pwd != "") {
-                // let reqUrl = serverUrl+'/getauth?auth='+pwd.trim();
+            if (pwd != null && pwd.trim() != "") {
                 let reqUrl = serverUrl + '/getoauth';
-                let content = {
-                    secret: window.btoa(pwd.trim())
-                };
+                let content = window.btoa(new Date().getFullYear().toString()) + window.btoa(pwd.trim());
+                content = 'secret=' + window.btoa(content.replace('=', ''));
                 fetch(reqUrl, {
                     method: 'POST',
                     mode: 'cors',
                     cache: 'no-store',
+                    // headers: new Headers({'Content-Type': 'application/json'}),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+                    },
                     credentials: 'same-origin',
-                    body: JSON.stringify(content)
+                    body: content
                 }).then(res => {
                     return res.json();
                 }).then(json => {
                     if (json.msg == "success") {
                         localStorage.setItem('token', json.token);
-                        // console.info(json.token);
                         authCheck();
                     } else {
-                        // delCookie("token");
                         localStorage.removeItem('token');
                         if (json.code == 401) {
                             alert("🤢密码错误，请重新输入,你还有" + json.count + "次机会");
@@ -689,7 +690,7 @@ $(function() {
             document.getElementById("totalDanmu").setAttribute("total", todayDanmu); //今日弹幕总数
             totalNum($('#totalDanmu'), 100); //跳动渲染数据
             // console.info(todayUserList);
-            document.getElementById("indicator1").setAttribute("total", todayUserList.length);//今日用户总数
+            document.getElementById("indicator1").setAttribute("total", todayUserList.length); //今日用户总数
             totalNum($('#indicator1'), 1); //跳动渲染
         } else {
             let yesterdayUserList = [].concat(userList);
@@ -1007,24 +1008,21 @@ $(function() {
     // 服务器延迟测试
     function getServerDelay() {
         let startTime = new Date().getTime();
-        let reqUrl = serverUrl + '/getfire';
+        let reqUrl = serverUrl + '/getverify';
         fetch(reqUrl, {
-            method: 'GET',
+            method: 'OPTION',
             mode: 'cors',
             cache: 'no-store',
-            headers: {
-                'Authorization': localStorage.getItem('token')
-            },
             credentials: 'omit'
         }).then(res => {
-            return res.json();
-        }).then(json => {
-            if (json.msg != null) {
-                let delayTime = ((new Date().getTime() - startTime) / 1000).toFixed(1);
-                $('#server_delay_time').text(delayTime + 's');
-            } else {
-                $('#server_delay_time').text('异常');
-            }
+            //     return res.json();
+            // }).then(json => {
+            // if (json.msg != null) {
+            let delayTime = ((new Date().getTime() - startTime) / 1000).toFixed(1);
+            $('#server_delay_time').text(delayTime + 's');
+            // } else {
+            //     $('#server_delay_time').text('异常');
+            // }
         }).catch(err => {
             $('#server_delay_time').text("挂了");
         })
