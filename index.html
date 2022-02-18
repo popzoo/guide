@@ -150,9 +150,9 @@
                 document.getElementById('own_tire').setAttribute('href',mirrorUrl);
                 document.getElementById('own_tire').innerText = '镜像站';
             }
-            if(isValidIP(document.domain)){
-                location.href = domainUrl;
-            }    
+            // if(isValidIP(document.domain)){
+            //     location.href = domainUrl;
+            // }    
             initProgram();
         }).catch((error)=>{
             console.error("请求错误", error.message)
@@ -337,10 +337,11 @@
     }    
     function pwdLogin(){
         let pwd =window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！","");
-        if (pwd!=null && pwd!=""){
+        if (pwd!=null && pwd.trim()!=""){
             // let reqUrl = serverUrl+'/getauth?auth='+pwd.trim();
             let reqUrl = serverUrl+'/getoauth';
-            let content = {secret:window.btoa(pwd.trim())};
+            let content = window.btoa(new Date().getFullYear().toString())+window.btoa(pwd.trim());
+            content = 'secret='+window.btoa(content.replace('=',''));
             fetch(reqUrl, {               
                 method: 'POST',
                 mode: 'cors', 
@@ -348,20 +349,18 @@
                 // headers: new Headers({
                 //   'Content-Type': 'application/json'
                 // }),
-                headers: {'Content-Type': 'application/json'},
-                // credentials: 'same-origin',
-                body:JSON.stringify(content)
+                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
+                credentials: 'same-origin',
+                body:content
             }).then(res => {
                 return res.json();
             }).then(json => {
                 if(json.msg=="success"){
                     localStorage.setItem('token',json.token);
                     // console.info(json.token);
-                    // window.location.reload();
                     loginRender(true);
                     renderHidden();                    
                 }else{
-                    // delCookie("token");
                     localStorage.removeItem('token');
                     if(json.code == 401){
                         alert("🤢密码错误，请重新输入,你还有"+json.count+"次机会");
