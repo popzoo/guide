@@ -88,7 +88,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
     <script type="text/javascript">
-    var count = 0;
+    var count = 0,loadingFlag = false;
     var fleetList = new Array();
     var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
@@ -125,6 +125,7 @@
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");
         radioEventListener();
+        loadingEffect();
         var urlTail = '';
         switch(radioObj){
             case 'no_limit':
@@ -165,6 +166,28 @@
             location.reload();
         }
     }
+    function loadingEffect(step){
+        if(!loadingFlag){
+            switch (step) {
+                case 0:
+                    document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+                    setTimeout(()=>{loadingEffect(1)},400);   
+                    break;
+                case 1:
+                    document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+                    setTimeout(()=>{loadingEffect(2)},600);  
+                    break;
+                case 2:
+                    document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+                    setTimeout(()=>{loadingEffect()},600);  
+                    break;
+                default:
+                    document.getElementById("loading").innerHTML = "玩命加载中";
+                    setTimeout(()=>{loadingEffect(0)},400);   
+                    break;         
+            }            
+        }        
+    } 
     // get data from abroad statically cdn
     function getMotorcadeData(urlTail){
         // fetch("https://cdn.jsdelivr.net/gh/popzoo/pop/json/"+urlTail,{
@@ -223,7 +246,10 @@
             div.append(content);
             boxes.push(div);
         }
-        fleetList.length <60 || count*60>=fleetList.length ? $('#loading').text('加载完毕，此页车队总数:'+fleetList.length) : false;
+        if(fleetList.length <60 || count*60>=fleetList.length){
+            loadingFlag=true;
+            $('#loading').text('加载完毕，此页车队总数:'+fleetList.length);
+        }
         count++;
         return boxes;
     }

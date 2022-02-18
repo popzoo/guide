@@ -78,7 +78,7 @@
         </thead>
         <tbody id = "render_table_cell">
             <tr>
-                <td colspan="16">正在加载中……</td>
+                <td id="loading" colspan="16">正在加载中……</td>
             </tr>
         </tbody>
     </table>
@@ -91,7 +91,7 @@
 <script type="text/javascript">
     const curDay = new Date();
     const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0)-1800*1000);//昨天23点 
-    var cos;//judge= 'kissyourvigina';
+    var cos,loadingFlag = false;//judge= 'kissyourvigina';
     var serverUrl = document.location.protocol+"//"+document.domain;
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "user_exp";
     (function ctrlBackEffect(){
@@ -105,6 +105,7 @@
     (function authCheck(){
         if(localStorage.getItem('token')!=null){
             getConfig();
+            loadingEffect();
         }else{
             location.href=document.location.protocol+"//"+document.domain+'/illegal.html';
         }   
@@ -184,6 +185,21 @@
         sessionStorage.setItem("showRank",msg);
         location.reload();
     }
+    function loadingEffect(){
+        if(!loadingFlag||document.getElementById("loading")!=null){
+            setTimeout(loadingEffect, 1800);//(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
+            document.getElementById("loading").innerHTML = "玩命加载中";
+            setTimeout(function(){
+               document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+            },400);
+            setTimeout(function(){
+                document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+            },800);
+            setTimeout(function(){
+                document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+            },1200);            
+        }
+    }        
     // get userList[i]
     function getUserNumber(isToday){
         var userList=[];
@@ -376,6 +392,7 @@
                 return b.accountWing - a.accountWing;
             });            
         }
+        loadingFlag=true;
         let tableCell = document.getElementById('render_table_cell');
         tableCell.firstElementChild.remove();//删除提示“正在加载”
         for(let i = 0;i<userList.length;i++){

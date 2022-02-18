@@ -175,7 +175,7 @@
         isMobileDevice();
         lazyLoadImg();
         changeImg();
-        oAuthCheck();         
+        verifyoAuth();         
         //     window.addEventListener('message', function (e) {  // 监听 message 事件
         //         console.debug('csrfOrigin===>'+e.origin);
         //         console.debug('csrfData===>'+e.data);
@@ -190,7 +190,7 @@
         //         // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
         //     }
     }
-    function oAuthCheck(){
+    function verifyoAuth(){
         if(localStorage.getItem('token')!=null){//?auth='+getCookie('auth');
             let reqUrl = serverUrl+'/getverify';
             fetch(reqUrl, {               

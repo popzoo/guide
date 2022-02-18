@@ -94,7 +94,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
 <script type="text/javascript">
 	var serverUrl = document.location.protocol+"//"+document.domain;
-    var count = 0, countNum = 0, roomList = [];// authStr = 'kissyourvigina';
+    var count = 0, countNum = 0, roomList = [], loadingFlag = false;// authStr = 'kissyourvigina';
     var radioObj = sessionStorage.getItem("shareNodeStatus")!=null ? sessionStorage.getItem("shareNodeStatus") : "effect_fire";
     // ===================================================================
     (function ctrlBackEffect(){
@@ -136,6 +136,7 @@
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");          
         radioEventListener();
+        loadingEffect();
         if(radioObj === "effect_fire"){
             getFireNodeList(true,false);
         }else if(radioObj === "effect_welfare"){
@@ -165,6 +166,28 @@
         }else{
             console.error("无法获取radio元素");
         }
+    }
+    function loadingEffect(step){
+        if(!loadingFlag){
+            switch (step) {
+                case 0:
+                    document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+                    setTimeout(()=>{loadingEffect(1)},400);   
+                    break;
+                case 1:
+                    document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+                    setTimeout(()=>{loadingEffect(2)},600);  
+                    break;
+                case 2:
+                    document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+                    setTimeout(()=>{loadingEffect()},600);  
+                    break;
+                default:
+                    document.getElementById("loading").innerHTML = "玩命加载中";
+                    setTimeout(()=>{loadingEffect(0)},400);   
+                    break;         
+            }            
+        }        
     }
     // listenning radio onchange event
     function radioFunc(msg){
@@ -289,6 +312,7 @@
            	countNum++; 
       	}
         setInterval(refreshRemainTime,1000);
+        loadingFlag = true;
         $('#loading').text('全部加载完毕，有效节点总数:'+ countNum);
         return boxes;
     }
@@ -344,7 +368,10 @@
         	div.append(content);
         	boxes.push(div);
         }
-        roomList.length<50 || count*50>=roomList.length ? $('#loading').text('全部加载完毕，今日节点总数:'+ roomList.length) : false;
+        if(roomList.length<50 || count*50>=roomList.length){
+            loadingFlag = true;
+            $('#loading').text('全部加载完毕，今日节点总数:'+ roomList.length);
+        }
         count++;
         return boxes;                                   
     }

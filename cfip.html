@@ -71,7 +71,7 @@
         </thead>
         <tbody id = "render_table_cell">
             <tr>
-                <td colspan="8">正在加载中……</td>
+                <td id="loading" colspan="8">正在加载中……</td>
             </tr>
         </tbody>
     </table>
@@ -85,7 +85,7 @@
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/zenorocha/clipboard.js/dist/clipboard.min.js"></script> -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
 <script type="text/javascript">
-    var sortNodeList = [];// judge= 'kissyourvigina';
+    var sortNodeList = [],loadingFlag = false;// judge= 'kissyourvigina';
     var serverUrl = document.location.protocol+"//"+document.domain;
     var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "gping";
     (function ctrlBackEffect(){
@@ -127,8 +127,24 @@
         document.getElementById("show_title").style.visibility="visible";
         document.getElementsByClassName('nav-link')[4].setAttribute('href','//popzoo.vercel.app/finesub');
         document.getElementsByClassName('nav-link')[5].setAttribute('href','//popzoo.vercel.app/quantum');
+        loadingEffect();
         getNodeList();
     }
+    function loadingEffect(){
+        if(!loadingFlag||document.getElementById("loading")!=null){
+            setTimeout(loadingEffect, 1800);//(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
+            document.getElementById("loading").innerHTML = "玩命加载中";
+            setTimeout(function(){
+               document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+            },400);
+            setTimeout(function(){
+                document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+            },800);
+            setTimeout(function(){
+                document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+            },1200);            
+        }
+    }       
     function getNodeList() {
         let reqUrl = serverUrl+'/getcfip';
         fetch(reqUrl, {
@@ -149,6 +165,7 @@
 
     function renderDataToTable(nodeList){
         sortNodeList = [].concat(nodeList);//获取排序数组，提供复制链接使用
+        loadingFlag=true;
         let tableCell = document.getElementById('render_table_cell');
         tableCell.firstElementChild.remove();//删除提示“正在加载”
         for(let i = 1;i<nodeList.length-2;i++){//去除第一个标题行,去除末尾空空行和时间戳

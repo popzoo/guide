@@ -132,23 +132,45 @@
         loadingEffect();
         getNovelData(labelObj);     
     }
-    function loadingEffect(){
+    function loadingEffect(step){
         if(!loadingFlag){
-            setTimeout(loadingEffect, 1800);//(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
-            document.getElementById("loading").innerHTML = "玩命加载中";
-            setTimeout(function(){
-               document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
-            },400);
-            setTimeout(function(){
-                document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
-            },800);
-            setTimeout(function(){
-                document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
-            },1200);            
-        }else{
-            $('#loading').text('本页小说:'+ novelList.length +'，全站小说:'+allNovels);
-        }
-    }
+            switch (step) {
+                case 0:
+                    document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+                    setTimeout(()=>{loadingEffect(1)},400);   
+                    break;
+                case 1:
+                    document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+                    setTimeout(()=>{loadingEffect(2)},600);  
+                    break;
+                case 2:
+                    document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+                    setTimeout(()=>{loadingEffect()},600);  
+                    break;
+                default:
+                    document.getElementById("loading").innerHTML = "玩命加载中";
+                    setTimeout(()=>{loadingEffect(0)},400);   
+                    break;         
+            }            
+        }        
+    }    
+    // function loadingEffect(){
+    //     if(!loadingFlag){
+    //         setTimeout(loadingEffect, 1800);//(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
+    //         document.getElementById("loading").innerHTML = "玩命加载中";
+    //         setTimeout(function(){
+    //            document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+    //         },400);
+    //         setTimeout(function(){
+    //             document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+    //         },800);
+    //         setTimeout(function(){
+    //             document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+    //         },1200);            
+    //     }else{
+    //         $('#loading').text('本页小说:'+ novelList.length +'，全站小说:'+allNovels);
+    //     }
+    // }
     // listenning radio onchange event
     function radioFunc(isRank,msg){
         if(isRank){

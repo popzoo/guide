@@ -27,70 +27,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/pop/css/pop_page.css"/>
 <div style="text-align:center;clear:both"></div>
 <style type="text/css">
-.search-form {
-  position: relative;
-  border: 1px solid #007474;
-  padding: 0.5em 0.5em;
-  display: inline-block;
-  border-radius: 2em;
-  background-color: darkcyan;
-}
-.search-form--centering {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.search-form__input {
-  border: 1px solid darkcyan;
-  transition: all .35s ease;
-  padding: 0.1em;
-  width: 180px;
-  border-radius: 15px;
-}
-.search-form__input:focus {
-  padding: 0.5em 0.5em 0.5em 0.5em;
-  width: 300px;
-  outline: none;
-}
-.search-form__input::placeholder {
-  transition: .35s ease;
-  padding-left: 0.5em;
-  font-size: 0.9em;
-}
-.search-form__input:focus::placeholder {
-  opacity: 0;
-}
-.search-form__search-btn {
-  cursor: pointer;
-  transition: .35s ease;
-  border-radius: 50%;
-  position: absolute;
-  right: 1.5%;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: 2.7em;
-  height: 2.7em;
-  font-weight: bold;
-  color: #fff;
-  background-color: darkcyan;
-  box-shadow: 1px 1px 2px #004646;
-}
-.search-form__search-btn:hover {
-  background-color: #004646;
-}
-@keyframes blink {
-  0% {
-    left: -23px;
-  }
-  50% {
-    left: -17px;
-  }
-  100% {
-    left: -22px;
-  }
-}
+.search-form{position:relative;border:1px solid #007474;padding:.5em .5em;display:inline-block;border-radius:2em;background-color:darkcyan}.search-form--centering{position:absolute;top:80px;left:50%;transform:translate(-50%,-50%)}.search-form__input{border:1px solid darkcyan;transition:all .35s ease;padding:.1em;width:180px;border-radius:15px}.search-form__input:focus{padding:.5em .5em .5em .5em;width:300px;outline:0}.search-form__input::placeholder{transition:.35s ease;padding-left:.5em;font-size:.9em}.search-form__input:focus::placeholder{opacity:0}.search-form__search-btn{cursor:pointer;transition:.35s ease;border-radius:50%;position:absolute;right:1.5%;top:50%;transform:translateY(-50%);border:0;width:2.7em;height:2.7em;font-weight:bold;color:#fff;background-color:darkcyan;box-shadow:1px 1px 2px #004646}.search-form__search-btn:hover{background-color:#004646}@keyframes blink{0%{left:-23px}50%{left:-17px}100%{left:-22px}}
 </style>
 </head>
 <body>
@@ -149,11 +86,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
     <script type="text/javascript">
-    var count = 0;
-    var picWidth = sessionStorage.getItem("comicStatus")=='big_view'?700:(sessionStorage.getItem("comicStatus")=='small_view')?320:500;//mid_view
+    var count = 0,loadingFlag = false;
+    var picWidth = localStorage.getItem("comicStatus")=='big_view'?700:(localStorage.getItem("comicStatus")=='small_view')?320:500;//mid_view
     var word = sessionStorage.getItem("comicWord");
     var comicList = new Array();
-    var baseUrlArr = sessionStorage.getItem("baseUrlArr");
+    var baseUrlArr = localStorage.getItem("baseUrlArr")!=null ? JSON.parse(localStorage.getItem("baseUrlArr")) : ['https://bbs.bbbh.cc'];
     var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
     //=================== Script init ======================
@@ -186,10 +123,8 @@
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
-            if(baseUrlArr==null){
+            if(baseUrlArr==null || baseUrlArr.length<3){
                 getAddrPage();
-            }else{
-                baseUrlArr = JSON.parse(baseUrlArr);
             }            
             initProgram();
         }).catch((error)=>{
@@ -207,9 +142,11 @@
             return res.json()
         }).then((json)=>{
             // baseUrl = json[parseInt(Math.random() * json.length)];
-            sessionStorage.setItem("baseUrlArr",JSON.stringify(json));
+            if(json.length>=3){
+               localStorage.setItem("baseUrlArr",JSON.stringify(json)); 
+            }
         }).catch((error)=>{
-            console.error("请求错误", error.message)
+            console.error("请求错误", error.message);
         });
     }
     function initProgram(){
@@ -217,16 +154,38 @@
         // btn.addEventListener('click', e => {
         //   e.preventDefault();//阻止表单提交
         // });             
-        let radioObj = sessionStorage.getItem("comicStatus")!=null ? sessionStorage.getItem("comicStatus") : "mid_view";
+        let radioObj = localStorage.getItem("comicStatus")!=null ? localStorage.getItem("comicStatus") : "mid_view";
         let radioNode = document.getElementById(radioObj);
         radioNode.setAttribute("checked","checked");
         radioEventListener();
+        loadingEffect();
         if(word!=null && word.trim()!=''){
             document.getElementsByClassName('search-form__input')[0].value = word;
         }
         getComicsData();
-    } 
-    // add Event Listener of radio onchange
+    }
+    function loadingEffect(step){
+        if(!loadingFlag){
+            switch (step) {
+                case 0:
+                    document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+                    setTimeout(()=>{loadingEffect(1)},400);   
+                    break;
+                case 1:
+                    document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+                    setTimeout(()=>{loadingEffect(2)},600);  
+                    break;
+                case 2:
+                    document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+                    setTimeout(()=>{loadingEffect()},600);  
+                    break;
+                default:
+                    document.getElementById("loading").innerHTML = "玩命加载中";
+                    setTimeout(()=>{loadingEffect(0)},400);   
+                    break;         
+            }            
+        }        
+    }
     function radioEventListener(){
         var anchor1 = document.getElementById("small_view");
         anchor1.addEventListener("change",(function(){radioFunc('small_view');}));
@@ -237,7 +196,7 @@
     }
     // listenning radio onchange event
     function radioFunc(msg){
-        sessionStorage.setItem("comicStatus",msg);
+        localStorage.setItem("comicStatus",msg);
         location.reload();
     }    
     function clearInputText(){
@@ -257,7 +216,7 @@
     function getComicsData(){
         // fetch("https://cdn.jsdelivr.net/gh/popzoo/pop/json/"+urlTail,{
         let wordStr = sessionStorage.getItem("comicWord")==null?"":sessionStorage.getItem("comicWord").trim();
-        let reqUrl = serverUrl+'/getcomic?word='+wordStr;
+        let reqUrl = wordStr==''?serverUrl+'/getcomic':serverUrl+'/getcomic?word='+wordStr;
         fetch(reqUrl, {           
             method: 'GET',
             mode: 'cors', 
@@ -287,7 +246,10 @@
             div.append(content);
             boxes.push(div);
         }
-        comicList.length <60 || count*60>=comicList.length ? $('#loading').text('加载完毕，总漫画数:'+comicList.length) : false;
+        if(comicList.length <60 || count*60>=comicList.length){
+            loadingFlag=true;
+            $('#loading').text('加载完毕，总漫画数:'+comicList.length);
+        }
         count++;
         return boxes;
     }

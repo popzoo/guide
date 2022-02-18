@@ -108,7 +108,7 @@
 <script src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
 <script type="text/javascript">
-    var count = 0;
+    var count = 0,loadingFlag = false;
     var giftList = new Array();
     var serverUrl = document.location.protocol+"//"+document.domain;
     //===============================================================
@@ -145,6 +145,7 @@
           let radioNode = document.getElementById(radioObj);
           radioNode.setAttribute("checked","checked");
           radioEventListener();
+          loadingEffect();
           if(radioObj == "dynamic_gift"){
               getDyanmicGiftDomestic();
           }else if(radioObj == "static_gift"){
@@ -215,6 +216,28 @@
               console.warn("无法获取radio元素");
           }
       }      
+      function loadingEffect(step){
+          if(!loadingFlag){
+              switch (step) {
+                  case 0:
+                      document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
+                      setTimeout(()=>{loadingEffect(1)},400);   
+                      break;
+                  case 1:
+                      document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+                      setTimeout(()=>{loadingEffect(2)},600);  
+                      break;
+                  case 2:
+                      document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+                      setTimeout(()=>{loadingEffect()},600);  
+                      break;
+                  default:
+                      document.getElementById("loading").innerHTML = "玩命加载中";
+                      setTimeout(()=>{loadingEffect(0)},400);   
+                      break;         
+              }            
+          }        
+      }     
       //===============================================================
       //======================== Get Data ============================
       //===============================================================
@@ -437,7 +460,10 @@
                 div.append(content);
                 boxes.push(div);
             }
-            giftList.length <60 || count*60 >=giftList.length ? $('#loading').text('全部加载完毕，页面图片总数:'+giftList.length) : false;
+            if(giftList.length <60 || count*60 >=giftList.length){
+               loadingFlag = true;
+               $('#loading').text('全部加载完毕，页面图片总数:'+giftList.length)
+            }
             count++;
             return boxes;
       }
