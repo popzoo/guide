@@ -1,4 +1,4 @@
-$(function() {
+(function() {
     const curDay = new Date();
     const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0) - 1800 * 1000); //昨天23点
     var initTime = new Date().getTime();
@@ -47,11 +47,9 @@ $(function() {
     //================ init config and check auth ================ 
     //============================================================     
     // get filter room and cos config
-    authCheck();
-
-    function authCheck() {
+    (function authCheck() {
         if (localStorage.getItem('token') != null) {
-            getServerConfig();
+            initParam();
             let signOut = document.querySelector('.signOut');
             if (signOut != null) {
                 signOut.addEventListener("click", function() {
@@ -94,27 +92,29 @@ $(function() {
                 })
             }
         }
-    }
-
-    function getServerConfig() {
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    })();
+    function initParam(){
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+        fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
-        }).then((res) => {
+            cache: 'default'
+        }).then((res)=>{
             return res.json()
-        }).then((json) => {
+        }).then((json)=>{
             let domainUrl = window.atob(json.domainUrl);
-            if (document.URL.indexOf(domainUrl) > -1) {
+            if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
             getCosKey();
-        }).catch((error) => {
-            console.error("网络异常", error.message)
+        }).catch((error)=>{
+            if(retry){
+                console.error("Param Request Failure", error);
+            }else{
+                initParam(true);
+            }            
         });
-    };
-
+    }   
     function getCosKey() {
         let reqUrl = serverUrl + '/getcoskey';
         fetch(reqUrl, {
@@ -2090,7 +2090,7 @@ $(function() {
         }, 800);
     });
 
-});
+})();
 
 //======================================================================================================================== 
 //+++++++++++++++++++++++++++++ 入口2（获取cnzz数据，今日与昨日跳转数和弹幕量和ip数，已废弃） ++++++++++++++++++++++++++++++++
