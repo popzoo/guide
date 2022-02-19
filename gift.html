@@ -122,25 +122,29 @@
               document.body.appendChild(scriptNode);
           }
       })();
-      (function getConfig(){
-          fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+      (function initParam(){
+          let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+          fetch(paramUrl, {
               method: 'GET',
               mode: 'cors',
-              cache: 'default',
-              credentials: 'omit'
+              cache: 'default'
           }).then((res)=>{
               return res.json()
           }).then((json)=>{
-              let domainUrl = window.atob(json.domainUrl);
-              if(document.URL.indexOf(domainUrl)>-1){
-                  serverUrl = window.atob(json.tlsoffer);
-              }
-              initScript();
+                let domainUrl = window.atob(json.domainUrl);
+                if(document.URL.indexOf(domainUrl)>-1){
+                    serverUrl = window.atob(json.tlsoffer);
+                }
+                initProgram();
           }).catch((error)=>{
-              console.error("请求错误", error.message)
+              if(retry){
+                  console.error("Param Request Failure", error);
+              }else{
+                  initParam(true);
+              }            
           });
-      })();        
-      function initScript(){
+      })(); 
+      function initProgram(){
           let radioObj = sessionStorage.getItem("radioGift")!=null ? sessionStorage.getItem("radioGift") : "dynamic_gift";
           let radioNode = document.getElementById(radioObj);
           radioNode.setAttribute("checked","checked");

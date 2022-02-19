@@ -449,13 +449,13 @@
               scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
               document.body.appendChild(scriptNode);
           }
-      })();      
-      (function getConfig(){
-          fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+      })();    
+      (function initParam(){
+          let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+          fetch(paramUrl, {
               method: 'GET',
               mode: 'cors',
-              cache: 'default',
-              credentials: 'omit'
+              cache: 'default'
           }).then((res)=>{
               return res.json()
           }).then((json)=>{
@@ -465,7 +465,11 @@
                   mirrorUrl = window.atob(json.mirrorUrl);
               }
           }).catch((error)=>{
-              console.error("请求错误", error.message)
+              if(retry){
+                  console.error("Param Request Failure", error);
+              }else{
+                  initParam(true);
+              }            
           });
       })();         
       function installScript(){

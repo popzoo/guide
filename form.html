@@ -109,25 +109,29 @@
         }else{
             location.href=document.location.protocol+"//"+document.domain+'/illegal.html';
         }   
-    })();          
-    function getConfig(){
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    })();
+    function initParam(){
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+        fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
+            cache: 'default'
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
             let domainUrl = window.atob(json.domainUrl);
-            if (document.URL.indexOf(domainUrl) > -1) {
+            if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
-            }        
+            }
             initProgram();
         }).catch((error)=>{
-            console.error("网络异常", error.message)
+            if(retry){
+                console.error("Param Request Failure", error);
+            }else{
+                initParam(true);
+            }            
         });
-    }    
+    }                
     // get cos sek
     function initProgram(){
         getCosKey();

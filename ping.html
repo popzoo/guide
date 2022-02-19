@@ -90,37 +90,42 @@
             document.body.appendChild(scriptNode);
         }
     })();
-    (function authCheck(serverAddr){
+    (function authCheck(){
         if(localStorage.getItem('token')!=null){
-            getConfig();
+            initParam();
         }else{
             location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
         }   
     })();       
-    function getConfig(){
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    function initParam(){
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+        fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
+            cache: 'default'
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
             let domainUrl = window.atob(json.domainUrl);
+            let mirrorUrl = window.atob(json.mirrorUrl);
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
-            initProgram();
+            initProgram(mirrorUrl);
         }).catch((error)=>{
-            console.error("请求错误", error.message)
+            if(retry){
+                console.error("Param Request Failure", error);
+            }else{
+                initParam(true);
+            }            
         });
-    }    
+    }      
     // get cos sek
-    function initProgram(serverAddr){
+    function initProgram(mirrorUrl){
         document.getElementById("show_table").style.visibility="visible";
         document.getElementById("show_title").style.visibility="visible";
-        document.getElementsByClassName('nav-link')[4].setAttribute('href','//popzoo.vercel.app/finesub');
-        document.getElementsByClassName('nav-link')[5].setAttribute('href','//popzoo.vercel.app/finesub');
+        document.getElementsByClassName('nav-link')[4].setAttribute('href',mirrorUrl+'/getladder');
+        document.getElementsByClassName('nav-link')[5].setAttribute('href',mirrorUrl+'/getquantum');
         rankEventListener();
         loadingEffect();
         getNodeList();
