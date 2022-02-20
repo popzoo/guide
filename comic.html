@@ -1,293 +1,346 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="zh-CN">
-<head>
-<title>3D漫画屋</title>
-<meta charset="UTF-8"/>
-<meta name="Keywords" content="3D,漫画" />
-<meta name="description" content="3D漫画屋"/>
-<meta name="robots" content="index,follow"/>
-<meta name="author" content="lvlanxing"/>
-<meta name="google" value="notranslate"/>
-<!-- 网页控制 -->
-<meta name="referrer" content="no-referrer"/>
-<!-- <meta http-equiv="cache-control" content="no-cache"/> -->
-<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<link rel="shortcut icon" href="/img/favicon.ico"/>
-<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
-<!-- iphone suitable -->
-<meta name="theme-color" content="#000000"/>
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3"/>
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
-<meta name="apple-mobile-web-app-title" content="POPZOO"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<meta name="format-detection" content="telephone=no"/>
-<meta name="format-detection" content="email=no"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/pop/css/pop_page.css"/>
-<div style="text-align:center;clear:both"></div>
-<style type="text/css">
-.search-form{position:relative;border:1px solid #007474;padding:.5em .5em;display:inline-block;border-radius:2em;background-color:darkcyan}.search-form--centering{position:absolute;top:80px;left:50%;transform:translate(-50%,-50%)}.search-form__input{border:1px solid darkcyan;transition:all .35s ease;padding:.1em;width:180px;border-radius:15px}.search-form__input:focus{padding:.5em .5em .5em .5em;width:300px;outline:0}.search-form__input::placeholder{transition:.35s ease;padding-left:.5em;font-size:.9em}.search-form__input:focus::placeholder{opacity:0}.search-form__search-btn{cursor:pointer;transition:.35s ease;border-radius:50%;position:absolute;right:1.5%;top:50%;transform:translateY(-50%);border:0;width:2.7em;height:2.7em;font-weight:bold;color:#fff;background-color:darkcyan;box-shadow:1px 1px 2px #004646}.search-form__search-btn:hover{background-color:#004646}@keyframes blink{0%{left:-23px}50%{left:-17px}100%{left:-22px}}
-</style>
-</head>
-<body>
-    <a id="left_link" href="#" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);z-index: 10;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-    <a id="right_link" href="#" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;z-index: 100;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> 
-    <div style="text-align: center; font-size: 30px;margin: 10px;0;">🎨3D漫画屋🎨</div> 
+  
+  <head>
+    <title>3D漫画屋</title>
+    <meta charset="UTF-8" />
+    <meta name="Keywords" content="3D,漫画" />
+    <meta name="description" content="3D漫画屋" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="lvlanxing" />
+    <meta name="google" value="notranslate" />
+    <!-- 网页控制 -->
+    <meta name="referrer" content="no-referrer" />
+    <!-- <meta http-equiv="cache-control" content="no-cache"/>-->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+    <!-- iphone suitable -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg" />
+    <meta name="apple-mobile-web-app-title" content="POPZOO" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/pop/css/pop_page.css" />
+    <div style="text-align:center;clear:both"></div>
+    <style type="text/css">.search-form{position:relative;border:1px solid #007474;padding:.5em .5em;display:inline-block;border-radius:2em;background-color:darkcyan}.search-form--centering{position:absolute;top:80px;left:50%;transform:translate(-50%,-50%)}.search-form__input{border:1px solid darkcyan;transition:all .35s ease;padding:.1em;width:180px;border-radius:15px}.search-form__input:focus{padding:.5em .5em .5em .5em;width:300px;outline:0}.search-form__input::placeholder{transition:.35s ease;padding-left:.5em;font-size:.9em}.search-form__input:focus::placeholder{opacity:0}.search-form__search-btn{cursor:pointer;transition:.35s ease;border-radius:50%;position:absolute;right:1.5%;top:50%;transform:translateY(-50%);border:0;width:2.7em;height:2.7em;font-weight:bold;color:#fff;background-color:darkcyan;box-shadow:1px 1px 2px #004646}.search-form__search-btn:hover{background-color:#004646}@keyframes blink{0%{left:-23px}50%{left:-17px}100%{left:-22px}}</style>
+  </head>
+  
+  <body>
+    <a id="left_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);z-index: 10;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <a id="right_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;z-index: 100;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <div style="text-align: center; font-size: 30px;margin: 10px;0;">🎨3D漫画屋🎨</div>
     <div style=" height:30px; color:#3C3C3C; line-height:30px; text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
-        <span class="collapse" style="float: left;white-space: nowrap; margin-left: 10%; font-size: 20px;color:#4D4D4D;">
+      <span class="collapse" style="float: left;white-space: nowrap; margin-left: 10%; font-size: 20px;color:#4D4D4D;">
         <dfn style="text-align:left;" data-info="【小图】： 小图预览模式 (本数据每日凌晨更新)&#10;【中图】：中图浏览模式 (本数据每日凌晨更新)&#10;【大图】：大图浏览模式 (本数据每日凌晨更新)">
-        <!-- 模式: -->
-        <label for="small_view" class="radio">
-            <span class="radio-bg"></span>
-            <input type="radio" name="radio_fire" id="small_view"  value="small_view" />小图
+          <!-- 模式: -->
+          <label for="small_view" class="radio">
+            <span class="radio-bg">
+            </span>
+            <input type="radio" name="radio_fire" id="small_view" value="small_view" />小图
             <span class="radio-on"></span>
-        </label>
-        <label for="mid_view" class="radio">
-            <span class="radio-bg"></span>
-            <input type="radio" name="radio_fire" id="mid_view"  value="mid_view" />中图
+          </label>
+          <label for="mid_view" class="radio">
+            <span class="radio-bg">
+            </span>
+            <input type="radio" name="radio_fire" id="mid_view" value="mid_view" />中图
             <span class="radio-on"></span>
-        </label>           
-        <label for="big_view" class="radio">
-            <span class="radio-bg"></span>
-            <input type="radio" name="radio_fire" id="big_view"  value="big_view" />大图
+          </label>
+          <label for="big_view" class="radio">
+            <span class="radio-bg">
+            </span>
+            <input type="radio" name="radio_fire" id="big_view" value="big_view" />大图
             <span class="radio-on"></span>
-        </label>        
+          </label>
         </dfn>
-        </span>
-        <span class="collapse" style="margin: 0 auto 0;white-space: nowrap; font-size: 20px;color:#4D4D4D;"> 
-            <form class="search-form search-form--centering">
-              <label class="search-form__label-input">
-                <input class="search-form__input" placeholder="search it!" ondblclick="clearInputText()" />
-              </label>
-              <button class="search-form__search-btn" type="submit" onclick="searchBtnSubmit()">Go!</button>
-            </form>               
-        </span>
+      </span>
+      <span class="collapse" style="margin: 0 auto 0;white-space: nowrap; font-size: 20px;color:#4D4D4D;">
+        <form class="search-form search-form--centering">
+          <label class="search-form__label-input">
+            <input class="search-form__input" placeholder="search it!" ondblclick="clearInputText()" />
+          </label>
+          <button class="search-form__search-btn" type="submit" onclick="searchBtnSubmit()">Go!</button>
+        </form>
+      </span>
     </div>
     <div class="content">
       <div id="device" class="gridalicious">
         <div class="galcolumn">
-    <!--    <div class="item"><img src="images/1.jpg" alt="响应式瀑布流布局插件"/><p>666</p></div>  -->
+          <!-- <div class="item"><img src="images/1.jpg" alt="响应式瀑布流布局插件"/><p>666</p></div>  -->
         </div>
       </div>
     </div>
     <div id="rocket-to-top">
-      <div style="opacity: 0; display: block;" class="level-2"></div>
-      <div class="level-3"></div>
+      <div style="opacity: 0; display: block;" class="level-2">
+      </div>
+      <div class="level-3">
+      </div>
     </div>
-        <!-- loading按钮自己通过样式调整 -->
-    <footer id="loading">
-        加载中...
-    </footer>
-    <script type="text/javascript" src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/jquery.grid-a-licious.min.js"></script>
+    <!-- loading按钮自己通过样式调整 -->
+    <footer id="loading">加载中...</footer>
+    <script type="text/javascript" src="https://libs.baidu.com/jquery/1.8.3/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/jquery.grid-a-licious.min.js">
+    </script>
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js"></script> 蛛网背景 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>  
-    <script type="text/javascript">
-    var count = 0,loadingFlag = false;
-    var picWidth = localStorage.getItem("comicStatus")=='big_view'?700:(localStorage.getItem("comicStatus")=='small_view')?320:500;//mid_view
-    var word = sessionStorage.getItem("comicWord");
-    var renewhjd = sessionStorage.getItem('renewhjd');
-    var comicList = new Array();
-    var baseUrlArr = localStorage.getItem("baseUrlArr")!=null ? JSON.parse(localStorage.getItem("baseUrlArr")) : ['https://bbs.bbbh.cc'];
-    var serverUrl = document.location.protocol+"//"+document.domain;
-    //======================================================
-    //=================== Script init ======================
-    //======================================================
-    (function ctrlBackEffect(){
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/pop/js/rocket.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js">
+    </script>
+    <script type="text/javascript">var count = 0,
+      loadingFlag = false;
+      var picWidth = localStorage.getItem("comicStatus") == 'big_view' ? 700 : (localStorage.getItem("comicStatus") == 'small_view') ? 320 : 500; //mid_view
+      var word = sessionStorage.getItem("comicWord");
+      var renewhjd = sessionStorage.getItem('renewhjd');
+      var comicList = new Array();
+      var baseUrlArr = localStorage.getItem("baseUrlArr") != null ? JSON.parse(localStorage.getItem("baseUrlArr")) : ['https://bbs.bbbh.cc'];
+      var serverUrl = document.location.protocol + "//" + document.domain;
+      //======================================================
+      //=================== Script init ======================
+      //======================================================
+      (function ctrlBackEffect() {
         var scriptNode = document.createElement("script");
         scriptNode.setAttribute("type", "text/javascript");
-        if(localStorage.getItem('showBack')!='off'){
-            scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
-            document.body.appendChild(scriptNode);
+        if (localStorage.getItem('showBack') != 'off') {
+          scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
+          document.body.appendChild(scriptNode);
         }
-    })();
-    (function authCheck(){
-        if(localStorage.getItem('token')!=null){
-            initParam();
-        }else{
-            location.href = document.location.protocol+"//"+document.domain+"/illegal.html";
-        }   
-    })();
-    function initParam(retry){
-        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+      })(); (function authCheck() {
+        if (localStorage.getItem('token') != null) {
+          initParam();
+        } else {
+          location.href = document.location.protocol + "//" + document.domain + "/illegal.html";
+        }
+      })();
+      function initParam(retry) {
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam': 'https://param.firenet.workers.dev';
         fetch(paramUrl, {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)>-1){
-                serverUrl = window.atob(json.tlsoffer);
-            }
-            if(sessionStorage.getItem('renewhjd')!='ok'){
-                getAddrPage();
-            }            
-            initProgram();
-        }).catch((error)=>{
-            if(retry){
-                console.error("Param Request Failure", error);
-            }else{
-                initParam(true);
-            }            
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default'
+        }).then((res) = >{
+          return res.json()
+        }).then((json) = >{
+          let domainUrl = window.atob(json.domainUrl);
+          if (document.URL.indexOf(domainUrl) > -1) {
+            serverUrl = window.atob(json.tlsoffer);
+          }
+          if (sessionStorage.getItem('renewhjd') != 'ok') {
+            getAddrPage();
+          }
+          initProgram();
+        }).
+        catch((error) = >{
+          if (retry) {
+            console.error("Param Request Failure", error);
+          } else {
+            initParam(true);
+          }
         });
-    }   
-    function getAddrPage(){
-        fetch(serverUrl+'/gethjd', {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-            headers: {'Authorization': localStorage.getItem('token')},
-            credentials: 'same-origin'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            // baseUrl = json[parseInt(Math.random() * json.length)];
-            if(json.length>=3){
-               localStorage.setItem("baseUrlArr",JSON.stringify(json)); 
-               sessionStorage.setItem('renewhjd','ok');
-            }
-        }).catch((error)=>{
-            console.error("请求错误", error.message);
+      }
+      function getAddrPage() {
+        fetch(serverUrl + '/gethjd', {
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default',
+          headers: {
+            'Authorization': localStorage.getItem('token')
+          },
+          credentials: 'same-origin'
+        }).then((res) = >{
+          return res.json()
+        }).then((json) = >{
+          // baseUrl = json[parseInt(Math.random() * json.length)];
+          if (json.length >= 3) {
+            localStorage.setItem("baseUrlArr", JSON.stringify(json));
+            sessionStorage.setItem('renewhjd', 'ok');
+          }
+        }).
+        catch((error) = >{
+          console.error("请求错误", error.message);
         });
-    }
-    function initProgram(){
+      }
+      function initProgram() {
         // let btn = document.querySelector('.search-form__search-btn');
         // btn.addEventListener('click', e => {
         //   e.preventDefault();//阻止表单提交
         // });             
-        let radioObj = localStorage.getItem("comicStatus")!=null ? localStorage.getItem("comicStatus") : "mid_view";
+        let radioObj = localStorage.getItem("comicStatus") != null ? localStorage.getItem("comicStatus") : "mid_view";
         let radioNode = document.getElementById(radioObj);
-        radioNode.setAttribute("checked","checked");
+        radioNode.setAttribute("checked", "checked");
         radioEventListener();
         loadingEffect();
-        if(word!=null && word.trim()!=''){
-            document.getElementsByClassName('search-form__input')[0].value = word;
+        if (word != null && word.trim() != '') {
+          document.getElementsByClassName('search-form__input')[0].value = word;
         }
         getComicsData();
-    }
-    function loadingEffect(step){
-        if(!loadingFlag){
-            switch (step) {
-                case 0:
-                    document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
-                    setTimeout(()=>{loadingEffect(1)},400);   
-                    break;
-                case 1:
-                    document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
-                    setTimeout(()=>{loadingEffect(2)},600);  
-                    break;
-                case 2:
-                    document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
-                    setTimeout(()=>{loadingEffect()},600);  
-                    break;
-                default:
-                    document.getElementById("loading").innerHTML = "玩命加载中";
-                    setTimeout(()=>{loadingEffect(0)},400);   
-                    break;         
-            }            
-        }        
-    }
-    function radioEventListener(){
+      }
+      function loadingEffect(step) {
+        if (!loadingFlag) {
+          switch (step) {
+          case 0:
+            document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡";
+            setTimeout(() = >{
+              loadingEffect(1)
+            },
+            400);
+            break;
+          case 1:
+            document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+            setTimeout(() = >{
+              loadingEffect(2)
+            },
+            600);
+            break;
+          case 2:
+            document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+            setTimeout(() = >{
+              loadingEffect()
+            },
+            600);
+            break;
+          default:
+            document.getElementById("loading").innerHTML = "玩命加载中";
+            setTimeout(() = >{
+              loadingEffect(0)
+            },
+            400);
+            break;
+          }
+        }
+      }
+      function radioEventListener() {
         var anchor1 = document.getElementById("small_view");
-        anchor1.addEventListener("change",(function(){radioFunc('small_view');}));
+        anchor1.addEventListener("change", (function() {
+          radioFunc('small_view');
+        }));
         var anchor2 = document.getElementById("mid_view");
-        anchor2.addEventListener("change",(function(){radioFunc('mid_view');}));
+        anchor2.addEventListener("change", (function() {
+          radioFunc('mid_view');
+        }));
         var anchor3 = document.getElementById("big_view");
-        anchor3.addEventListener("change",(function(){radioFunc('big_view');}));
-    }
-    // listenning radio onchange event
-    function radioFunc(msg){
-        localStorage.setItem("comicStatus",msg);
+        anchor3.addEventListener("change", (function() {
+          radioFunc('big_view');
+        }));
+      }
+      // listenning radio onchange event
+      function radioFunc(msg) {
+        localStorage.setItem("comicStatus", msg);
         location.reload();
-    }    
-    function clearInputText(){
-        document.getElementsByClassName('search-form__input')[0].value="";
-    }
-    function searchBtnSubmit(){
+      }
+      function clearInputText() {
+        document.getElementsByClassName('search-form__input')[0].value = "";
+      }
+      function searchBtnSubmit() {
         let wordStr = document.getElementsByClassName('search-form__input')[0].value;
-        if(wordStr.trim()!=''){
-            sessionStorage.setItem("comicWord",wordStr);
-            location.reload();
-        }else{
-            sessionStorage.removeItem("comicWord");
-            location.reload();
+        if (wordStr.trim() != '') {
+          sessionStorage.setItem("comicWord", wordStr);
+          location.reload();
+        } else {
+          sessionStorage.removeItem("comicWord");
+          location.reload();
         }
-    }
-    // get data
-    function getComicsData(){
+      }
+      // get data
+      function getComicsData() {
         // fetch("https://cdn.jsdelivr.net/gh/popzoo/pop/json/"+urlTail,{
-        let wordStr = sessionStorage.getItem("comicWord")==null?"":sessionStorage.getItem("comicWord").trim();
-        let reqUrl = wordStr==''?serverUrl+'/getcomic':serverUrl+'/getcomic?word='+wordStr;
-        fetch(reqUrl, {           
-            method: 'GET',
-            mode: 'cors', 
-            cache: 'default', 
-            headers: {'Authorization': localStorage.getItem('token')},
-            credentials: 'same-origin'
-        }).then(res => {
-            return res.json();
-        }).then(result => {
-            comicList = result;
-            console.info("漫画总数："+comicList.length);
-            $("#device").gridalicious('append', makeboxes());
-        }).catch(err => {
-            console.error('请求错误', err);
+        let wordStr = sessionStorage.getItem("comicWord") == null ? "": sessionStorage.getItem("comicWord").trim();
+        let reqUrl = wordStr == '' ? serverUrl + '/getcomic': serverUrl + '/getcomic?word=' + wordStr;
+        fetch(reqUrl, {
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default',
+          headers: {
+            'Authorization': localStorage.getItem('token')
+          },
+          credentials: 'same-origin'
+        }).then(res = >{
+          return res.json();
+        }).then(result = >{
+          comicList = result;
+          console.info("漫画总数：" + comicList.length);
+          $("#device").gridalicious('append', makeboxes());
+        }).
+        catch(err = >{
+          console.error('请求错误', err);
         })
-    }
-	//adding content with random way when scroll bar moved
-    function makeboxes(){
+      }
+      //adding content with random way when scroll bar moved
+      function makeboxes() {
         var boxes = new Array;
-        for(let i=count*60;i<Math.min((count+1)*60, comicList.length);i++){
-            // console.info(comicList[i]); encodeURIComponent(comicList[i].mcId)
-            let div = $('<div></div>').addClass('item');
-            let baseUrl = baseUrlArr[parseInt(Math.random() * baseUrlArr.length)];
-            var content = "<a href='"+baseUrl+'/2048/'+comicList[i].link+"' target='_blank'><img src='"+comicList[i].img+"'/>";
-            content += "<p>标题:<strong style='color:green;'>"+comicList[i].title+"</strong></p></a>";
-            content += "<p>时间:<strong style='color:blue;'>"+comicList[i].time+"</strong></p>";
-            div.append(content);
-            boxes.push(div);
+        for (let i = count * 60; i < Math.min((count + 1) * 60, comicList.length); i++) {
+          // console.info(comicList[i]); encodeURIComponent(comicList[i].mcId)
+          let div = $('<div></div>').addClass('item');
+          let baseUrl = baseUrlArr[parseInt(Math.random() * baseUrlArr.length)];
+          var content = "<a href='" + baseUrl + '/2048/' + comicList[i].link + "' target='_blank'><img src='" + comicList[i].img + "'/>";
+          content += "<p>标题:<strong style='color:green;'>" + comicList[i].title + "</strong></p></a>";
+          content += "<p>时间:<strong style='color:blue;'>" + comicList[i].time + "</strong></p>";
+          div.append(content);
+          boxes.push(div);
         }
-        if(comicList.length <60 || count*60>=comicList.length){
-            loadingFlag=true;
-            $('#loading').text('加载完毕，总漫画数:'+comicList.length);
+        if (comicList.length < 60 || count * 60 >= comicList.length) {
+          loadingFlag = true;
+          $('#loading').text('加载完毕，总漫画数:' + comicList.length);
         }
         count++;
         return boxes;
-    }
-	$(document).ready(function () {
-      //scroll event
-      $(window).scroll(function () {
-        if(($(window).scrollTop() + $(window).height()) >= $(document).height()-50){//&& makeboxes()!=undefined
-          $("#device").gridalicious('append', makeboxes());
-        }
-      });         
-	   //maintain
-       // console.info(picWidth);
-      $("#device").gridalicious({
-          gutter: 20,//缝隙宽度
-          width: picWidth,//图片宽度
-          animate: true,//启用动画
+      }
+      $(document).ready(function() {
+        //scroll event
+        $(window).scroll(function() {
+          if (($(window).scrollTop() + $(window).height()) >= $(document).height() - 50) { //&& makeboxes()!=undefined
+            $("#device").gridalicious('append', makeboxes());
+          }
+        });
+        //maintain
+        // console.info(picWidth);
+        $("#device").gridalicious({
+          gutter: 20,
+          //缝隙宽度
+          width: picWidth,
+          //图片宽度
+          animate: true,
+          //启用动画
           animationOptions: {
-              speed: 100,
-              duration: 200,
-              queue: false,//同步显示
-              complete:function(data){
-                // console.info(data);
-              }
+            speed: 100,
+            duration: 200,
+            queue: false,
+            //同步显示
+            complete: function(data) {
+              // console.info(data);
+            }
           },
+        });
       });
-    });
-    // get cookie
-    function getCookie(name){
+      // get cookie
+      function getCookie(name) {
         //document.cookie.setPath("/");
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
-    　　return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
-    }    
-</script>
-</body>
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");　　
+        return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+      }</script>
+  </body>
+
 </html>

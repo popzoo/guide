@@ -1,270 +1,338 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="zh-CN">
-<head>
-<title>薅羊毛BI统计</title>
-<meta charset="UTF-8"/>
-<meta name="keywords" content="BI"/>
-<meta name="description" content="BI商业智能统计"/>
-<meta name="robots" content="index,follow"/>
-<meta name="author" content="lvlanxing"/>
-<meta name="google" value="notranslate"/>
-<!-- 网页控制 -->
-<meta name="referrer" content="no-referrer"/>
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<link rel="shortcut icon" href="/img/favicon.ico"/>
-<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
-<!-- iphone suitable -->
-<meta name="theme-color" content="#000000"/>
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3"/>
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
-<meta name="apple-mobile-web-app-title" content="POPZOO"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<meta name="format-detection" content="telephone=no"/>
-<meta name="format-detection" content="email=no"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/scanboard.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/animsition.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/jquery.shCircleLoader.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.shCircleLoader-min.js"></script>
-</head>
-<body>
-	<div id="loader"></div>
-	<script type="text/javascript">
-		$('#loader').shCircleLoader({color: "#00deff"});//加载圆圈特效
-	</script>
-	<!--Top Start!-->
-	<div class="scanboardWp animsition" style="visibility:hidden">
-		<div id="top">
-			<div class="wp clearfix">
-				<div class="left pageTit">
-					<!-- <a class="summaryBtn">薅羊毛数据BI</a> -->
-				</div>
-				<div class="center topLogo">
-					<a href="#"><img src="https://cdn.jsdelivr.net/gh/popzoo/bi/images/logo.gif"></a>
-				</div>
-				<div class="right topBar">
-					<div class="topTime">时间加载中...</div>
-					<div class="clearfix">
-						<a href="#" class="signOut fr">注销登陆</a>
-						<div class="company fr">
-							<h3>羊毛目录</h3>
-							<div class="dropdown">
-        						<a id="own_time" href="https://www.popzoo.ga" target="_blank">时光轴</a>
-        						<a id="own_fire" href="https://www.popzoo.ga" target="_blank">火力房</a>
-        						<a id="own_danmu" href="https://www.popzoo.ga" target="_blank">云弹幕</a>
-        						<a id="own_gift" href="https://www.popzoo.ga" target="_blank">礼物秀</a>
-        						<a id="own_car" href="https://www.popzoo.ga" target="_blank">车队展</a>
-        						<a id="own_form" href="https://www.popzoo.ga" target="_blank">报表单</a>
-        						<a href="https://kefu.douyu.com/nx/prize.html" target="_blank">查红包</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Main Start!-->
-		<div id="main" class="wp clearfix">
-			<div class="left">
-				<!--今日运单数量-->
-				<div class="item waybill">
-					<div class="itemTit">
-						<span class="border-yellow">今昨对比分析</span>
-					</div>
-					<div class="itemCon itembg">
-						<div class="progress" id="today_user_progress" progress="100%">
-							<h3 class="clearfix"><span>今日用户/昨日用户</span><i id="today_user_num">0人</i></h3>
-							<div class="progressBar">
-								<span></span>
-							</div>
-							<h4>0%</h4>
-						</div>
-						<div class="progress" id="today_ball_progress" progress="100%">
-							<h3 class="clearfix"><span>今日鱼丸/昨日鱼丸</span><i id="total_fish_ball">0丸</i></h3>
-							<div class="progressBar">
-								<span></span>
-							</div>
-							<h4>0%</h4>
-						</div>
-						<div class="progress" id="today_cash_progress" progress="100%">
-							<h3 class="clearfix"><span>今日红包/昨日红包</span><i id="today_red_cash">0元</i></h3>
-							<div class="progressBar">
-								<span></span>
-							</div>
-							<h4>0%</h4>
-						</div>							
-					</div>
-				</div>
-				<!--各阶段平均用时统计-->
-				<div class="item">
-					<div class="itemTit">
-						<span class="border-green">昨日数据统计</span>
-					</div>
-					<div class="itemCon">
-						<ul class="listStyle">
-							<li class="clearfix">
-								<span>昨日总火力数</span>
-								<span><strong id="lastday_fire_num">0</strong>个</span>
-							</li>
-							<li class="clearfix">
-								<span>昨日总抽奖数</span>
-								<span><strong id="lastday_welfare_num">0</strong>次</span>
-							</li>
-							<li class="clearfix">
-								<span>昨日总跳转数</span>
-								<span><strong id="lastday_jump_num">0</strong>次</span>
-							</li>
-							<li class="clearfix">
-								<span>昨日总弹幕量</span>
-								<span><strong id="lastday_danmu_num">0</strong>条</span>
-							</li>
-							<li class="clearfix">
-								<span>昨日总丸子数</span>
-								<span><strong id="lastday_fishball_num">0</strong>丸</span>
-							</li>
-							<li class="clearfix">
-								<span>昨日总红包数</span>
-								<span><strong id="lastday_cash_num">0</strong>元/翅</span>
-							</li>							
-						</ul>
-					</div>
-				</div>
-				<!--人员信息-->
-				<div class="item">
-					<div class="itemTit">
-						<span class="border-blue">羊毛网站统计</span>
-					</div>
-					<div class="itemCon itembg">
-						<ul class="listStyle">
-							<li class="clearfix">
-								<span>访问IP：<strong id='web_today_ip'>0</strong>个</span>
-								<span>访问PV：<strong id='web_today_pv'>0</strong>页</span>
-								<span>弹幕库：<strong id='cloud_danmu_num'>0</strong>条</span>
-								<span>服务器：<strong id='server_delay_time'>-</strong></span>
-								<span>AI延迟：<strong id='robot_delay_time'>-</strong></span>
-								<span>GitHub：<strong id='github_delay_time'>-</strong></span>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+  
+  <head>
+    <title>薅羊毛BI统计</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="BI" />
+    <meta name="description" content="BI商业智能统计" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="lvlanxing" />
+    <meta name="google" value="notranslate" />
+    <!-- 网页控制 -->
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+    <!-- iphone suitable -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg" />
+    <meta name="apple-mobile-web-app-title" content="POPZOO" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/scanboard.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/animsition.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/bi/css/jquery.shCircleLoader.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.shCircleLoader-min.js">
+    </script>
+  </head>
+  
+  <body>
+    <div id="loader">
+    </div>
+    <script type="text/javascript">$('#loader').shCircleLoader({
+        color: "#00deff"
+      }); //加载圆圈特效
+      </script>
+    <!--Top Start!-->
+    <div class="scanboardWp animsition" style="visibility:hidden">
+      <div id="top">
+        <div class="wp clearfix">
+          <div class="left pageTit">
+            <!-- <a class="summaryBtn">薅羊毛数据BI</a> -->
+          </div>
+          <div class="center topLogo">
+            <a href="#">
+              <img src="https://cdn.jsdelivr.net/gh/popzoo/bi/images/logo.gif">
+            </a>
+          </div>
+          <div class="right topBar">
+            <div class="topTime">时间加载中...</div>
+            <div class="clearfix">
+              <a href="#" class="signOut fr">注销登陆</a>
+              <div class="company fr">
+                <h3>羊毛目录</h3>
+                <div class="dropdown">
+                  <a id="own_time" href="https://www.popzoo.ga" target="_blank">时光轴</a>
+                  <a id="own_fire" href="https://www.popzoo.ga" target="_blank">火力房</a>
+                  <a id="own_danmu" href="https://www.popzoo.ga" target="_blank">云弹幕</a>
+                  <a id="own_gift" href="https://www.popzoo.ga" target="_blank">礼物秀</a>
+                  <a id="own_car" href="https://www.popzoo.ga" target="_blank">车队展</a>
+                  <a id="own_form" href="https://www.popzoo.ga" target="_blank">报表单</a>
+                  <a href="https://kefu.douyu.com/nx/prize.html" target="_blank">查红包</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Main Start!-->
+      <div id="main" class="wp clearfix">
+        <div class="left">
+          <!--今日运单数量-->
+          <div class="item waybill">
+            <div class="itemTit">
+              <span class="border-yellow">今昨对比分析</span>
+            </div>
+            <div class="itemCon itembg">
+              <div class="progress" id="today_user_progress" progress="100%">
+                <h3 class="clearfix">
+                  <span>今日用户/昨日用户</span>
+                  <i id="today_user_num">0人</i>
+                </h3>
+                <div class="progressBar">
+                  <span>
+                  </span>
+                </div>
+                <h4>0%</h4>
+              </div>
+              <div class="progress" id="today_ball_progress" progress="100%">
+                <h3 class="clearfix">
+                  <span>今日鱼丸/昨日鱼丸</span>
+                  <i id="total_fish_ball">0丸</i>
+                </h3>
+                <div class="progressBar">
+                  <span>
+                  </span>
+                </div>
+                <h4>0%</h4>
+              </div>
+              <div class="progress" id="today_cash_progress" progress="100%">
+                <h3 class="clearfix">
+                  <span>今日红包/昨日红包</span>
+                  <i id="today_red_cash">0元</i>
+                </h3>
+                <div class="progressBar">
+                  <span>
+                  </span>
+                </div>
+                <h4>0%</h4>
+              </div>
+            </div>
+          </div>
+          <!--各阶段平均用时统计-->
+          <div class="item">
+            <div class="itemTit">
+              <span class="border-green">昨日数据统计</span>
+            </div>
+            <div class="itemCon">
+              <ul class="listStyle">
+                <li class="clearfix">
+                  <span>昨日总火力数</span>
+                  <span>
+                    <strong id="lastday_fire_num">0</strong>个</span>
+                </li>
+                <li class="clearfix">
+                  <span>昨日总抽奖数</span>
+                  <span>
+                    <strong id="lastday_welfare_num">0</strong>次</span>
+                </li>
+                <li class="clearfix">
+                  <span>昨日总跳转数</span>
+                  <span>
+                    <strong id="lastday_jump_num">0</strong>次</span>
+                </li>
+                <li class="clearfix">
+                  <span>昨日总弹幕量</span>
+                  <span>
+                    <strong id="lastday_danmu_num">0</strong>条</span>
+                </li>
+                <li class="clearfix">
+                  <span>昨日总丸子数</span>
+                  <span>
+                    <strong id="lastday_fishball_num">0</strong>丸</span>
+                </li>
+                <li class="clearfix">
+                  <span>昨日总红包数</span>
+                  <span>
+                    <strong id="lastday_cash_num">0</strong>元/翅</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--人员信息-->
+          <div class="item">
+            <div class="itemTit">
+              <span class="border-blue">羊毛网站统计</span>
+            </div>
+            <div class="itemCon itembg">
+              <ul class="listStyle">
+                <li class="clearfix">
+                  <span>访问IP：
+                    <strong id='web_today_ip'>0</strong>个</span>
+                  <span>访问PV：
+                    <strong id='web_today_pv'>0</strong>页</span>
+                  <span>弹幕库：
+                    <strong id='cloud_danmu_num'>0</strong>条</span>
+                  <span>服务器：
+                    <strong id='server_delay_time'>-</strong>
+                  </span>
+                  <span>AI延迟：
+                    <strong id='robot_delay_time'>-</strong>
+                  </span>
+                  <span>GitHub：
+                    <strong id='github_delay_time'>-</strong>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="center">
+          <div class="centerWp">
+            <!--中间大图-->
+            <div class="mapContainer">
+              <div class="btnLayer">
+                <a class="search">
+                  <span class="icoStat">
+                  </span>
+                </a>
+                <a class="infoBtn">
+                  <span class="icoCar">
+                  </span>
+                </a>
+              </div>
+              <div id="myMap" class="item">
+              </div>
+            </div>
+            <!--月运单量统计图-->
+            <div class="billChart">
+              <div class="itemTit">
+                <span class="border-green">抽奖时段分布图
+                  <small>(今日VS昨日)</small>
+                </span>
+              </div>
+              <div id="myChart1">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <!--总计运单数-->
+          <div class="item total itembg">
+            <div class="itemTit">
+              <span class="border-yellow">今日跳转数VS今日弹幕量</span>
+            </div>
+            <div class="itemCon">
+              <div class="totalNum">
+                <strong>🌐</strong>
+                <strong id="totalNum" total="10000">0</strong>
+                <span>次</span>
+                <br/>
+                <strong>💭</strong>
+                <strong id="totalDanmu" total="10000">0</strong>
+                <span>条</span>
+              </div>
+              <!-- <div class="totalNum"><strong id="totalNum" total="18082">0</strong><span>条</span></div> -->
+            </div>
+          </div>
+          <!--今日信息统计-->
+          <div class="item basicInfo">
+            <div class="itemTit">
+              <span class="border-green">今日实时统计</span>
+            </div>
+            <div class="itemCon itembg">
+              <div class="infoPie">
+                <ul class="clearfix">
+                  <li class="color-yellow">
+                    <span class="border-yellow" id="indicator1" total="10">0</span>
+                    <p>今日用户量</p>
+                  </li>
+                  <li class="color-green">
+                    <span class="border-green" id="indicator2" total="10">0</span>
+                    <p>火力节点数</p>
+                  </li>
+                  <li class="color-blue">
+                    <span class="border-blue" id="indicator3" total="10">0</span>
+                    <p>抽奖节点数</p>
+                  </li>
+                </ul>
+                <div id="indicatorContainer">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--共享信息轮播-->
+          <div class="item billState">
+            <div class="itemTit">
+              <span class="border-green">贡献节点信息</span>
+            </div>
+            <div class="itemCon">
+              <div class="StateBox">
+                <div class="StateTit">
+                  <span>礼物名称</span>
+                  <span>节点时间</span>
+                  <span>直播间号</span>
+                </div>
+                <div id="FontScroll">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Main End!-->
+    </div>
+    <div class="filterbg">
+    </div>
+    <div class="popup">
+      <a href="javascript:;" class="popupClose">
+      </a>
+      <div class="summary">
+        <div class="summaryTop">
+          <div id="summaryPie1" class="summaryPie">
+          </div>
+          <div id="summaryPie2" class="summaryPie">
+          </div>
+          <div id="summaryPie3" class="summaryPie">
+          </div>
+        </div>
+        <div class="summaryBottom">
+          <div id="summaryBar1" class="summaryBar">
+          </div>
+          <div id="summaryBar2" class="summaryBar">
+          </div>
+          <div id="summaryBar3" class="summaryBar">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carInfo">
+      <a href="javascript:;" class="carClose">
+      </a>
+      <div class="infoBox">
+        <p class="monthlyHeader">薅羊毛周期统计</p>
+        <div class="infoTop" id="trendChart">
+        </div>
+      </div>
+    </div>
+    <canvas id="canvas" style="position: absolute;top: 0;left: 0;">
+    </canvas>
+  </body>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/bg.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/cos-js-sdk-v5.min.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/fontscroll.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.animsition.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.nicescroll.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/echarts.min.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/scanBoard.js">
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js">
+  </script>
+  <!-- <script type="text/javascript" src="js/scanBoard.js"></script> -->
 
-			<div class="center">
-				<div class="centerWp">
-					<!--中间大图-->
-					<div class="mapContainer">
-						<div class="btnLayer">
-							<a class="search"><span class="icoStat"></span></a>
-							<a class="infoBtn"><span class="icoCar"></span></a>
-						</div>
-						<div id="myMap" class="item"></div>
-					</div>
-					<!--月运单量统计图-->
-					<div class="billChart">
-						<div class="itemTit">
-							<span class="border-green">抽奖时段分布图<small>(今日VS昨日)</small></span>
-						</div>
-						<div id="myChart1"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="right">
-				<!--总计运单数-->
-				<div class="item total itembg">
-					<div class="itemTit">
-						<span class="border-yellow">今日跳转数VS今日弹幕量</span>
-					</div>
-					<div class="itemCon">
-						<div class="totalNum">
-							<strong>🌐</strong><strong id="totalNum" total="10000">0</strong><span>次</span><br>
-							<strong>💭</strong><strong id="totalDanmu" total="10000">0</strong><span>条</span>
-						</div>
-						<!-- <div class="totalNum"><strong id="totalNum" total="18082">0</strong><span>条</span></div> -->
-					</div>
-				</div>
-				<!--今日信息统计-->
-				<div class="item basicInfo">
-					<div class="itemTit">
-						<span class="border-green">今日实时统计</span>
-					</div>
-					<div class="itemCon itembg">
-						<div class="infoPie">
-							<ul class="clearfix">
-								<li class="color-yellow">
-									<span class="border-yellow" id="indicator1" total="10">0</span>
-									<p>今日用户量</p>
-								</li>
-								<li class="color-green">
-									<span class="border-green" id="indicator2" total="10">0</span>
-									<p>火力节点数</p>
-								</li>
-								<li class="color-blue">
-									<span class="border-blue" id="indicator3" total="10">0</span>
-									<p>抽奖节点数</p>
-								</li>
-							</ul>
-							<div id="indicatorContainer"></div>
-						</div>
-					</div>
-				</div>
-				<!--共享信息轮播-->
-				<div class="item billState">
-					<div class="itemTit">
-						<span class="border-green">贡献节点信息</span>
-					</div>
-					<div class="itemCon">
-						<div class="StateBox">
-							<div class="StateTit">
-								<span>礼物名称</span>
-								<span>节点时间</span>
-								<span>直播间号</span>
-							</div>
-							<div id="FontScroll">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--Main End!-->
-	</div>
-
-	<div class="filterbg"></div>
-	<div class="popup">
-		<a href="javascript:;" class="popupClose"></a>
-		<div class="summary">
-			<div class="summaryTop">
-				<div id="summaryPie1" class="summaryPie"></div>
-				<div id="summaryPie2" class="summaryPie"></div>
-				<div id="summaryPie3" class="summaryPie"></div>
-			</div>
-			<div class="summaryBottom">
-				<div id="summaryBar1" class="summaryBar"></div>
-				<div id="summaryBar2" class="summaryBar"></div>
-				<div id="summaryBar3" class="summaryBar"></div>
-			</div>
-		</div>
-	</div>
-	<div class="carInfo">
-		<a href="javascript:;" class="carClose"></a>
-		<div class="infoBox">
-			<p class="monthlyHeader">薅羊毛周期统计</p>
-			<div class="infoTop" id="trendChart"></div>
-		</div>
-	</div>	
-	<canvas id="canvas" style="position: absolute;top: 0;left: 0;"></canvas>
-</body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/bg.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/cos-js-sdk-v5.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/fontscroll.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.animsition.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/jquery.nicescroll.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/bi/js/echarts.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/scanBoard.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
-<!-- <script type="text/javascript" src="js/scanBoard.js"></script> -->
 </html>

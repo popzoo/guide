@@ -1,164 +1,190 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="zh-CN">
-<head>
-<title>报表统计</title>
-<meta charset="UTF-8"/>
-<meta name="keywords" content="报表,表格,统计"/>
-<meta name="description" content="专属业务的报表统计界面"/>
-<meta name="robots" content="index,follow"/>
-<meta name="author" content="lvlanxing"/>
-<meta name="google" value="notranslate"/>
-<!-- 网页控制 -->
-<meta name="referrer" content="no-referrer"/>
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<link rel="shortcut icon" href="/img/favicon.ico"/>
-<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
-<!-- iphone suitable -->
-<meta name="theme-color" content="#000000"/>
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3"/>
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
-<meta name="apple-mobile-web-app-title" content="POPZOO"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<meta name="format-detection" content="telephone=no"/>
-<meta name="format-detection" content="email=no"/>
-<style type="text/css">
-    body{font:400 14px/21px Arial,serif}.example{width:100%;margin:36px auto;}table{font-size:1em;border-collapse:collapse;margin:0 auto;}tr{border-spacing:0;}table,td{text-align:center;padding:0 2px;height:50px;}th{background:#333;color:#FDFDFD;cursor:pointer;text-align:center;height:40px; padding:0 5px;}th.sorted,th:hover{background:black}
-</style>
-</head>
-<body>
-<a id="left_link" href="#" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);z-index: 10;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-<a id="right_link" href="#" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;z-index: 100;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> 
-<div style="text-align: center; font-size: 30px;font-weight: 600; margin: 30px;0;">🥦BI报表统计🥦</div>
-<div style=" height:30px; color:#3C3C3C; line-height:30px; text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
-<!--     <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-right:20px;">
-        <label for="effect_fire" class="radio">
-            <span class="radio-bg"></span>
-            <input type="radio" name="radio_node" id="public_version"  value="effect_fire"/>活跃度
-            <span class="radio-on"></span>
-        </label>
-        <label for="effect_welfare" class="radio">
-            <span class="radio-bg"></span>
-            <input type="radio" name="radio_node" id="private_version"  value="effect_welfare"/>红人榜
-            <span class="radio-on"></span>
-        </label>        
-    </span> -->
-    <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-left:20px;"> 
-        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_time" href="https://www.popzoo.ga/">时光轴</a> •
-        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_fire" href="https://www.popzoo.ga/">火力房</a> •
-        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_danmu" href="https://www.popzoo.ga/">云弹幕</a> •
-        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_gift" href="https://www.popzoo.ga/">礼物秀</a> •
+  
+  <head>
+    <title>报表统计</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="报表,表格,统计" />
+    <meta name="description" content="专属业务的报表统计界面" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="lvlanxing" />
+    <meta name="google" value="notranslate" />
+    <!-- 网页控制 -->
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+    <!-- iphone suitable -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=0.4,maximum-scale=1.0,minimum-scale=0.3" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg" />
+    <meta name="apple-mobile-web-app-title" content="POPZOO" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <style type="text/css">body{font:400 14px/21px Arial,serif}.example{width:100%;margin:36px auto;}table{font-size:1em;border-collapse:collapse;margin:0 auto;}tr{border-spacing:0;}table,td{text-align:center;padding:0 2px;height:50px;}th{background:#333;color:#FDFDFD;cursor:pointer;text-align:center;height:40px; padding:0 5px;}th.sorted,th:hover{background:black}</style>
+  </head>
+  
+  <body>
+    <a id="left_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);z-index: 10;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <a id="right_link" href="#" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;z-index: 100;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z">
+        </path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm">
+        </path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body">
+        </path>
+      </svg>
+    </a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <div style="text-align: center; font-size: 30px;font-weight: 600; margin: 30px;0;">🥦BI报表统计🥦</div>
+    <div style=" height:30px; color:#3C3C3C; line-height:30px; text-align: center; font-size:30px; font-family: Arial,Microsoft YaHei,'宋体';">
+      <!-- <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-right:20px;">
+      <label for="effect_fire" class="radio">
+      <span class="radio-bg"></span>
+      <input type="radio" name="radio_node" id="public_version"  value="effect_fire"/>活跃度
+      <span class="radio-on"></span>
+      </label>
+      <label for="effect_welfare" class="radio">
+      <span class="radio-bg"></span>
+      <input type="radio" name="radio_node" id="private_version"  value="effect_welfare"/>红人榜
+      <span class="radio-on"></span>
+      </label>        
+      </span> -->
+      <span class="collapse" style="white-space: nowrap; text-align: center; font-size: 20px;margin-left:20px;">
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_time" href="https://www.popzoo.ga/">时光轴</a>•
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_fire" href="https://www.popzoo.ga/">火力房</a>•
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_danmu" href="https://www.popzoo.ga/">云弹幕</a>•
+        <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_gift" href="https://www.popzoo.ga/">礼物秀</a>•
         <a class="nav-link" style="text-decoration:none;color:#4D4D4D;" id="own_car" href="https://www.popzoo.ga/">车队展</a>
-    </span>
-</div>
-<div class="example ex-1">
-    <table id="show_table" style="visibility:hidden">
+      </span>
+    </div>
+    <div class="example ex-1">
+      <table id="show_table" style="visibility:hidden">
         <thead>
-            <tr>
-                <th>用户头像</th>
-                <th>用户昵称</th>
-                <th>用户等级</th>
-                <th id="user_credit">用户信用</th>
-                <th id="user_exp">用户经验</th>
-                <th id="user_follow">用户关注</th>
-                <th>插件版本</th>
-                <th>弹幕异常</th>
-                <th id="jump_idle">跳转时隔</th>
-                <th id="jump_time">今日跳转</th>
-                <th id="user_danmu">今日弹幕</th>
-                <th id="ball_income">今日赚丸</th>
-                <th id="cash_income">今日红包</th>
-                <th id="fish_food">账户鱼粮</th>
-                <th id="user_ball">账户鱼丸</th>
-                <th id="user_wing">账户鱼翅</th>
-            </tr>
+          <tr>
+            <th>用户头像</th>
+            <th>用户昵称</th>
+            <th>用户等级</th>
+            <th id="user_credit">用户信用</th>
+            <th id="user_exp">用户经验</th>
+            <th id="user_follow">用户关注</th>
+            <th>插件版本</th>
+            <th>弹幕异常</th>
+            <th id="jump_idle">跳转时隔</th>
+            <th id="jump_time">今日跳转</th>
+            <th id="user_danmu">今日弹幕</th>
+            <th id="ball_income">今日赚丸</th>
+            <th id="cash_income">今日红包</th>
+            <th id="fish_food">账户鱼粮</th>
+            <th id="user_ball">账户鱼丸</th>
+            <th id="user_wing">账户鱼翅</th>
+          </tr>
         </thead>
-        <tbody id = "render_table_cell">
-            <tr>
-                <td id="loading" colspan="16">正在加载中……</td>
-            </tr>
+        <tbody id="render_table_cell">
+          <tr>
+            <td id="loading" colspan="16">正在加载中……</td>
+          </tr>
         </tbody>
-    </table>
-</div>
-<script type="text/javascript" src="https://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/jquery.tablesort.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/cos-js-sdk-v5.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/spider-background.js"></script> -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
-<script type="text/javascript">
-    const curDay = new Date();
-    const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0)-1800*1000);//昨天23点 
-    var cos,loadingFlag = false;//judge= 'kissyourvigina';
-    var serverUrl = document.location.protocol+"//"+document.domain;
-    var radioObj = sessionStorage.getItem("showRank")!=null ? sessionStorage.getItem("showRank") : "user_exp";
-    (function ctrlBackEffect(){
+      </table>
+    </div>
+    <script type="text/javascript" src="https://libs.baidu.com/jquery/1.9.0/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/jquery.tablesort.js">
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/cos-js-sdk-v5.min.js">
+    </script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/tableView/js/spider-background.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js">
+    </script>
+    <script type="text/javascript">const curDay = new Date();
+      const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0) - 1800 * 1000); //昨天23点 
+      var cos, loadingFlag = false; //judge= 'kissyourvigina';
+      var serverUrl = document.location.protocol + "//" + document.domain;
+      var radioObj = sessionStorage.getItem("showRank") != null ? sessionStorage.getItem("showRank") : "user_exp"; (function ctrlBackEffect() {
         var scriptNode = document.createElement("script");
         scriptNode.setAttribute("type", "text/javascript");
-        if(localStorage.getItem('showBack')!='off'){
-            scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
-            document.body.appendChild(scriptNode);
+        if (localStorage.getItem('showBack') != 'off') {
+          scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/pop/js/spider-background.js");
+          document.body.appendChild(scriptNode);
         }
-    })();
-    (function authCheck(){
-        if(localStorage.getItem('token')!=null){
-            getConfig();
-            loadingEffect();
-        }else{
-            location.href=document.location.protocol+"//"+document.domain+'/illegal.html';
-        }   
-    })();
-    function initParam(retry){
-        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+      })(); (function authCheck() {
+        if (localStorage.getItem('token') != null) {
+          initParam();
+          loadingEffect();
+        } else {
+          location.href = document.location.protocol + "//" + document.domain + '/illegal.html';
+        }
+      })();
+      function initParam(retry) {
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam': 'https://param.firenet.workers.dev';
         fetch(paramUrl, {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)>-1){
-                serverUrl = window.atob(json.tlsoffer);
-            }
-            initProgram();
-        }).catch((error)=>{
-            if(retry){
-                console.error("Param Request Failure", error);
-            }else{
-                initParam(true);
-            }            
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default'
+        }).then((res) = >{
+          return res.json()
+        }).then((json) = >{
+          let domainUrl = window.atob(json.domainUrl);
+          if (document.URL.indexOf(domainUrl) > -1) {
+            serverUrl = window.atob(json.tlsoffer);
+          }
+          initProgram();
+        }).
+        catch((error) = >{
+          if (retry) {
+            console.error("Param Request Failure", error);
+          } else {
+            initParam(true);
+          }
         });
-    }                
-    // get cos sek
-    function initProgram(){
+      }
+      // get cos sek
+      function initProgram() {
         getCosKey();
-        document.getElementById("show_table").style.visibility="visible";
+        document.getElementById("show_table").style.visibility = "visible";
         rankEventListener();
-    }
-    function getCosKey(){
-        let reqUrl = serverUrl+'/getcoskey';
+      }
+      function getCosKey() {
+        let reqUrl = serverUrl + '/getcoskey';
         fetch(reqUrl, {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-            headers: {'Authorization': localStorage.getItem('token')},
-            credentials: 'same-origin'
-        }).then(res => {
-            return res.json();
-        }).then(json => {
-            let secId = json.secId!=undefined ? window.atob(json.secId):'';
-            let secKy = json.secKy != undefined ? window.atob(json.secKy.substr(4)):'';
-            cos = new COS({SecretId: secId, SecretKey: secKy});  
-            getUserNumber(true);
-        }).catch(err => {
-            console.error('请求错误', err);
-        })       
-    }
-    // add Event Listener of radio onchange
-    function rankEventListener(){
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default',
+          headers: {
+            'Authorization': localStorage.getItem('token')
+          },
+          credentials: 'same-origin'
+        }).then(res = >{
+          return res.json();
+        }).then(json = >{
+          let secId = json.secId != undefined ? window.atob(json.secId) : '';
+          let secKy = json.secKy != undefined ? window.atob(json.secKy.substr(4)) : '';
+          cos = new COS({
+            SecretId: secId,
+            SecretKey: secKy
+          });
+          getUserNumber(true);
+        }).
+        catch(err = >{
+          console.error('请求错误', err);
+        })
+      }
+      // add Event Listener of radio onchange
+      function rankEventListener() {
         var anchor1 = document.getElementById("user_exp");
         var anchor2 = document.getElementById("user_follow");
         var anchor3 = document.getElementById("jump_idle");
@@ -169,167 +195,209 @@
         var anchor8 = document.getElementById("fish_food");
         var anchor9 = document.getElementById("user_ball");
         var anchor0 = document.getElementById("user_wing");
-        if(anchor1&&anchor5&&anchor0){   
-            anchor1.addEventListener("click",(function(){radioFunc('user_exp')})); 
-            anchor2.addEventListener("click",(function(){radioFunc('user_follow')}));
-            anchor3.addEventListener("click",(function(){radioFunc('jump_idle')}));
-            anchor4.addEventListener("click",(function(){radioFunc('jump_time')}));
-            anchor5.addEventListener("click",(function(){radioFunc('user_danmu')}));
-            anchor6.addEventListener("click",(function(){radioFunc('ball_income')}));
-            anchor7.addEventListener("click",(function(){radioFunc('cash_income')}));
-            anchor8.addEventListener("click",(function(){radioFunc('fish_food')}));
-            anchor9.addEventListener("click",(function(){radioFunc('user_ball')}));
-            anchor0.addEventListener("click",(function(){radioFunc('user_wing')}));
-        }else{
-            console.error("无法获取dom元素");
+        if (anchor1 && anchor5 && anchor0) {
+          anchor1.addEventListener("click", (function() {
+            radioFunc('user_exp')
+          }));
+          anchor2.addEventListener("click", (function() {
+            radioFunc('user_follow')
+          }));
+          anchor3.addEventListener("click", (function() {
+            radioFunc('jump_idle')
+          }));
+          anchor4.addEventListener("click", (function() {
+            radioFunc('jump_time')
+          }));
+          anchor5.addEventListener("click", (function() {
+            radioFunc('user_danmu')
+          }));
+          anchor6.addEventListener("click", (function() {
+            radioFunc('ball_income')
+          }));
+          anchor7.addEventListener("click", (function() {
+            radioFunc('cash_income')
+          }));
+          anchor8.addEventListener("click", (function() {
+            radioFunc('fish_food')
+          }));
+          anchor9.addEventListener("click", (function() {
+            radioFunc('user_ball')
+          }));
+          anchor0.addEventListener("click", (function() {
+            radioFunc('user_wing')
+          }));
+        } else {
+          console.error("无法获取dom元素");
         }
-    }
-    // listenning radio onchange event
-    function radioFunc(msg){
-        sessionStorage.setItem("showRank",msg);
+      }
+      // listenning radio onchange event
+      function radioFunc(msg) {
+        sessionStorage.setItem("showRank", msg);
         location.reload();
-    }
-    function loadingEffect(){
-        if(!loadingFlag||document.getElementById("loading")!=null){
-            setTimeout(loadingEffect, 1800);//(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
-            document.getElementById("loading").innerHTML = "玩命加载中";
-            setTimeout(function(){
-               document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡"; 
-            },400);
-            setTimeout(function(){
-                document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
-            },800);
-            setTimeout(function(){
-                document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
-            },1200);            
+      }
+      function loadingEffect() {
+        if (!loadingFlag || document.getElementById("loading") != null) {
+          setTimeout(loadingEffect, 1800); //(｡✪ᴗ✪｡) (*◕ᴗ◕*) ┗(▔_▔)┛
+          document.getElementById("loading").innerHTML = "玩命加载中";
+          setTimeout(function() {
+            document.getElementById("loading").innerHTML = "⚡嗑药加载中⚡";
+          },
+          400);
+          setTimeout(function() {
+            document.getElementById("loading").innerHTML = "⚡⚡吐血加载中⚡⚡";
+          },
+          800);
+          setTimeout(function() {
+            document.getElementById("loading").innerHTML = "⚡⚡⚡切腹加载中⚡⚡⚡";
+          },
+          1200);
         }
-    }        
-    // get userList[i]
-    function getUserNumber(isToday){
-        var userList=[];
-        loopUserList(isToday,"");
-        function loopUserList(isToday,NextMarker){
-            cos.getBucket({
-                Bucket: 'jumpstat-1253626683', 
-                Region: 'ap-beijing',
-                Marker:  NextMarker,
-                Prefix: 'JumpCount/'+dateFormat("YYYY-mm-dd",isToday ? curDay: lastDay) +'/',               
-            }, function(err, data) {
-                if(err){
-                    console.error(err);
-                    alert("网络请求失败，请刷新页面重试");
-                }else{
-                    dealUserList(data);
-                }               
-            });
-        }
-        function dealUserList(data){
-            let userPartList = data.Contents;
-            for(let m=0;m<userPartList.length;m++){// console.info(nodeList[m].Key);
-                let tempList = userPartList[m].Key.split("@");
-                // if(tempList.length>=7){//&& nodeList[m].indexof("#")>-1
-                var tempJson = {userAvatar:0,uid:0,uname:'***',jumpCount:0,fishBallIncome:0,cashIncome:0,danmuCount:0,version:0,accountBall:0,accountWing:0,userLevel:0,userExp:0,userFollow:0,activeTime:0,danmuError:0,fishFood:0,creditScore:0};
-                for(let n=0; n<tempList.length; n++){
-                    // switch tempList[n]
-                    if(tempList[n].indexOf("uid")>-1){
-                        tempJson.uid = tempList[n].split("#")[1];
-                    }else if(tempList[n].indexOf("uname")>-1){
-                        tempJson.uname = tempList[n].split("#")[1];
-                    }else if(tempList[n].indexOf("jumpCount")>-1){
-                        tempJson.jumpCount = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("fishBallIncome")>-1){
-                        tempJson.fishBallIncome = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("cashIncome")>-1){
-                        tempJson.cashIncome = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("danmuCount")>-1){
-                        tempJson.danmuCount = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("version")>-1){                        
-                        tempJson.version = (tempList[n].split("#")[1]).replace(/_/g,":");
-                    }else if(tempList[n].indexOf("accountBall")>-1){
-                        tempJson.accountBall = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("userLevel")>-1){
-                        tempJson.userLevel = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("userExp")>-1){
-                        tempJson.userExp = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("userFollow")>-1){
-                        tempJson.userFollow = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("userAvatar")>-1){
-                        tempJson.userAvatar = "https://apic.douyucdn.cn/upload/"+ (tempList[n].split("#")[1]).replace(/~/g,'/');
-                    }else if(tempList[n].indexOf("accountWing")>-1){
-                        tempJson.accountWing = parseFloat(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("activeTime")>-1){
-                        tempJson.activeTime = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("danmuError")>-1){
-                        tempJson.danmuError = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("fishFood")>-1){
-                        tempJson.fishFood = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("creditScore")>-1){
-                        tempJson.creditScore = parseInt(tempList[n].split("#")[1]);
-                    }
-                }
-                userList.push(tempJson);
+      }
+      // get userList[i]
+      function getUserNumber(isToday) {
+        var userList = [];
+        loopUserList(isToday, "");
+        function loopUserList(isToday, NextMarker) {
+          cos.getBucket({
+            Bucket: 'jumpstat-1253626683',
+            Region: 'ap-beijing',
+            Marker: NextMarker,
+            Prefix: 'JumpCount/' + dateFormat("YYYY-mm-dd", isToday ? curDay: lastDay) + '/',
+          },
+          function(err, data) {
+            if (err) {
+              console.error(err);
+              alert("网络请求失败，请刷新页面重试");
+            } else {
+              dealUserList(data);
             }
-            if(data.IsTruncated=="true"){
-                loopUserList(isToday,data.NextMarker);
-            }else{
-                console.info("用户未去重数目："+userList.length);
-                userList = [].concat(distinctUserList(userList));
-                console.debug(userList);
-                // renderDataToTable(userList);
-                requestUserAvatar(userList);
-            }           
-        }        
-    }
-    // distinct User
-    function distinctUserList(arr) {
-        arr.sort(function(a,b){//获取最新用户数据
-            return a.activeTime - b.activeTime;
+          });
+        }
+        function dealUserList(data) {
+          let userPartList = data.Contents;
+          for (let m = 0; m < userPartList.length; m++) { // console.info(nodeList[m].Key);
+            let tempList = userPartList[m].Key.split("@");
+            // if(tempList.length>=7){//&& nodeList[m].indexof("#")>-1
+            var tempJson = {
+              userAvatar: 0,
+              uid: 0,
+              uname: '***',
+              jumpCount: 0,
+              fishBallIncome: 0,
+              cashIncome: 0,
+              danmuCount: 0,
+              version: 0,
+              accountBall: 0,
+              accountWing: 0,
+              userLevel: 0,
+              userExp: 0,
+              userFollow: 0,
+              activeTime: 0,
+              danmuError: 0,
+              fishFood: 0,
+              creditScore: 0
+            };
+            for (let n = 0; n < tempList.length; n++) {
+              // switch tempList[n]
+              if (tempList[n].indexOf("uid") > -1) {
+                tempJson.uid = tempList[n].split("#")[1];
+              } else if (tempList[n].indexOf("uname") > -1) {
+                tempJson.uname = tempList[n].split("#")[1];
+              } else if (tempList[n].indexOf("jumpCount") > -1) {
+                tempJson.jumpCount = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("fishBallIncome") > -1) {
+                tempJson.fishBallIncome = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("cashIncome") > -1) {
+                tempJson.cashIncome = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("danmuCount") > -1) {
+                tempJson.danmuCount = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("version") > -1) {
+                tempJson.version = (tempList[n].split("#")[1]).replace(/_/g, ":");
+              } else if (tempList[n].indexOf("accountBall") > -1) {
+                tempJson.accountBall = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("userLevel") > -1) {
+                tempJson.userLevel = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("userExp") > -1) {
+                tempJson.userExp = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("userFollow") > -1) {
+                tempJson.userFollow = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("userAvatar") > -1) {
+                tempJson.userAvatar = "https://apic.douyucdn.cn/upload/" + (tempList[n].split("#")[1]).replace(/~/g, '/');
+              } else if (tempList[n].indexOf("accountWing") > -1) {
+                tempJson.accountWing = parseFloat(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("activeTime") > -1) {
+                tempJson.activeTime = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("danmuError") > -1) {
+                tempJson.danmuError = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("fishFood") > -1) {
+                tempJson.fishFood = parseInt(tempList[n].split("#")[1]);
+              } else if (tempList[n].indexOf("creditScore") > -1) {
+                tempJson.creditScore = parseInt(tempList[n].split("#")[1]);
+              }
+            }
+            userList.push(tempJson);
+          }
+          if (data.IsTruncated == "true") {
+            loopUserList(isToday, data.NextMarker);
+          } else {
+            console.info("用户未去重数目：" + userList.length);
+            userList = [].concat(distinctUserList(userList));
+            console.debug(userList);
+            // renderDataToTable(userList);
+            requestUserAvatar(userList);
+          }
+        }
+      }
+      // distinct User
+      function distinctUserList(arr) {
+        arr.sort(function(a, b) { //获取最新用户数据
+          return a.activeTime - b.activeTime;
         });
         result = [];
-        for(let i = 0; i < arr.length; i++){
-            for(let j = i + 1; j < arr.length; j++){
-                if(arr[i].uid === arr[j].uid){
-                    j = ++i;
-                }
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[i].uid === arr[j].uid) {
+              j = ++i;
             }
-            result.push(arr[i]);
+          }
+          result.push(arr[i]);
         }
         // console.info("用户去重数目："+result.length);
         return result.reverse();
-    }
-    // bojiang avatar
-    function requestUserAvatar(userList){//小熊猫专用区
+      }
+      // bojiang avatar
+      function requestUserAvatar(userList) { //小熊猫专用区
         loopGetAvatar(0);
-        function loopGetAvatar(num){
-            if(num==userList.length){
-                renderDataToTable(userList);
-            }else{
-                loopGetAvatar(++num);
-                // console.info(userList[num]);
-                // if( userList[num].userAvatar==undefined || userList[num].userAvatar==0 || userList[num].userAvatar == "https://apic.douyucdn.cn/upload/0"){
-                //     fetch('https://bojianger.com/data/api/common/search.do?keyword='+userList[num].uid, {
-                //         method: 'GET',
-                //         mode: 'cors',
-                //         cache: 'default',
-                //         credentials: 'omit'
-                //     }).then(result => {
-                //         return result.text();
-                //     }).then(txt => {
-                //         let json = JSON.parse(txt);
-                //         userList[num].userAvatar = json.data.audienceVo.audience_avator;
-                //         userList[num].userLevel = json.data.audienceVo.level;
-                //         loopGetAvatar(++num);
-                //     }).catch(err => {
-                //         console.warn('播酱数据获取失败');
-                //         loopGetAvatar(++num);
-                //     })                
-                // }else{
-                //     loopGetAvatar(++num);
-                // }                  
-            }
+        function loopGetAvatar(num) {
+          if (num == userList.length) {
+            renderDataToTable(userList);
+          } else {
+            loopGetAvatar(++num);
+            // console.info(userList[num]);
+            // if( userList[num].userAvatar==undefined || userList[num].userAvatar==0 || userList[num].userAvatar == "https://apic.douyucdn.cn/upload/0"){
+            //     fetch('https://bojianger.com/data/api/common/search.do?keyword='+userList[num].uid, {
+            //         method: 'GET',
+            //         mode: 'cors',
+            //         cache: 'default',
+            //         credentials: 'omit'
+            //     }).then(result => {
+            //         return result.text();
+            //     }).then(txt => {
+            //         let json = JSON.parse(txt);
+            //         userList[num].userAvatar = json.data.audienceVo.audience_avator;
+            //         userList[num].userLevel = json.data.audienceVo.level;
+            //         loopGetAvatar(++num);
+            //     }).catch(err => {
+            //         console.warn('播酱数据获取失败');
+            //         loopGetAvatar(++num);
+            //     })                
+            // }else{
+            //     loopGetAvatar(++num);
+            // }                  
+          }
         }
-    }   
-    function renderDataToTable(userList){
+      }
+      function renderDataToTable(userList) {
         var jumpCount = 0;
         var userNum = 0;
         var outTimeNum = 0;
@@ -354,186 +422,187 @@
         var anchor7 = document.getElementById("cash_income");
         var anchor8 = document.getElementById("fish_food");
         var anchor9 = document.getElementById("user_ball");
-        var anchor0 = document.getElementById("user_wing");        
-        if(sessionStorage.getItem("showRank")=="user_exp"){
-            userList.sort(function(a,b){
-                return b.userExp - a.userExp;
-            });
-        }else if(sessionStorage.getItem("showRank")=="user_follow"){
-            userList.sort(function(a,b){
-                return b.userFollow - a.userFollow;
-            });
-        }else if(sessionStorage.getItem("showRank")=="jump_idle"){
-            userList.sort(function(a,b){
-                return b.activeTime - a.activeTime;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="jump_time"){
-            userList.sort(function(a,b){
-                return b.jumpCount - a.jumpCount;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="user_danmu"){
-            userList.sort(function(a,b){
-                return b.danmuCount - a.danmuCount;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="ball_income"){
-            userList.sort(function(a,b){
-                return b.fishBallIncome - a.fishBallIncome;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="cash_income"){
-            userList.sort(function(a,b){
-                return b.cashIncome - a.cashIncome;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="fish_food"){
-            userList.sort(function(a,b){
-                return b.fishFood - a.fishFood;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="user_ball"){
-            userList.sort(function(a,b){
-                return b.accountBall - a.accountBall;
-            });            
-        }else if(sessionStorage.getItem("showRank")=="user_wing"){
-            userList.sort(function(a,b){
-                return b.accountWing - a.accountWing;
-            });            
+        var anchor0 = document.getElementById("user_wing");
+        if (sessionStorage.getItem("showRank") == "user_exp") {
+          userList.sort(function(a, b) {
+            return b.userExp - a.userExp;
+          });
+        } else if (sessionStorage.getItem("showRank") == "user_follow") {
+          userList.sort(function(a, b) {
+            return b.userFollow - a.userFollow;
+          });
+        } else if (sessionStorage.getItem("showRank") == "jump_idle") {
+          userList.sort(function(a, b) {
+            return b.activeTime - a.activeTime;
+          });
+        } else if (sessionStorage.getItem("showRank") == "jump_time") {
+          userList.sort(function(a, b) {
+            return b.jumpCount - a.jumpCount;
+          });
+        } else if (sessionStorage.getItem("showRank") == "user_danmu") {
+          userList.sort(function(a, b) {
+            return b.danmuCount - a.danmuCount;
+          });
+        } else if (sessionStorage.getItem("showRank") == "ball_income") {
+          userList.sort(function(a, b) {
+            return b.fishBallIncome - a.fishBallIncome;
+          });
+        } else if (sessionStorage.getItem("showRank") == "cash_income") {
+          userList.sort(function(a, b) {
+            return b.cashIncome - a.cashIncome;
+          });
+        } else if (sessionStorage.getItem("showRank") == "fish_food") {
+          userList.sort(function(a, b) {
+            return b.fishFood - a.fishFood;
+          });
+        } else if (sessionStorage.getItem("showRank") == "user_ball") {
+          userList.sort(function(a, b) {
+            return b.accountBall - a.accountBall;
+          });
+        } else if (sessionStorage.getItem("showRank") == "user_wing") {
+          userList.sort(function(a, b) {
+            return b.accountWing - a.accountWing;
+          });
         }
-        loadingFlag=true;
+        loadingFlag = true;
         let tableCell = document.getElementById('render_table_cell');
-        tableCell.firstElementChild.remove();//删除提示“正在加载”
-        for(let i = 0;i<userList.length;i++){
-            addTagItem(userList[i],i);
+        tableCell.firstElementChild.remove(); //删除提示“正在加载”
+        for (let i = 0; i < userList.length; i++) {
+          addTagItem(userList[i], i);
         }
         // add tag 
-        function addTagItem(userItem,i){
-            let outTr = document.createElement('tr');
-            if(i%2==0){
-                outTr.setAttribute("style","background-color:#DDD");
-            }else{
-                outTr.setAttribute("style","background-color:#F7F7F7");
-            }
-            let timeGap = userItem.activeTime!=0?parseInt((new Date().getTime() - userItem.activeTime)/1000):0;
-            let timeRest = timeGap;
-            if(timeGap>=3600){
-                timeGap = (timeGap/3600).toFixed(1)+"h";
-            }else{
-                timeGap += "s"; 
-            }
-            outTr.innerHTML = "<td><img src='"+userItem.userAvatar+"' width='50'></td>";
-            outTr.innerHTML += "<td>"+userItem.uname+"</td>";
-            outTr.innerHTML += "<td>Lv."+userItem.userLevel+"</td>";
-            if(userItem.creditScore<100){
-                outTr.innerHTML += "<td style='color:orange;'>"+userItem.creditScore+"分</td>";
-            }else{
-                outTr.innerHTML += "<td style='color:green;'>"+userItem.creditScore+"分</td>";
-            }
-            outTr.innerHTML += "<td>"+userItem.userExp+"点</td>";
-            if(userItem.userFollow>6000){
-                outTr.innerHTML += "<td style='color:green;'>"+userItem.userFollow+"个</td>";
-            }else{
-                outTr.innerHTML += "<td>"+userItem.userFollow+"个</td>";
-            }
-            outTr.innerHTML += "<td>V"+userItem.version+"</td>";
-            if(userItem.danmuError>=5){
-                outTr.innerHTML += "<td style='color:red;'>"+userItem.danmuError+"条</td>";
-            }else{
-                outTr.innerHTML += "<td>"+userItem.danmuError+"条</td>";
-            }
-            if(timeRest>=200){
-                outTr.innerHTML += "<td style='color:green;'>"+timeGap+"</td>";
-            }else{
-                outTr.innerHTML += "<td>"+timeGap+"</td>";
-            }
-            outTr.innerHTML += "<td>"+userItem.jumpCount+"次</td>";
-            outTr.innerHTML += "<td>"+userItem.danmuCount+"条</td>";
-            outTr.innerHTML += "<td>"+userItem.fishBallIncome+"丸</td>";
-            outTr.innerHTML += "<td>"+userItem.cashIncome+"元</td>";
-            outTr.innerHTML += "<td>"+userItem.fishFood+"粮</td>";
-            outTr.innerHTML += "<td>"+userItem.accountBall+"丸</td>";
-            outTr.innerHTML += "<td>"+userItem.accountWing.toFixed(1)+"翅</td>";
-            tableCell.appendChild(outTr);
-            //total statistics
-            userNum+=1;
-            totalVersion.add(userItem.version);
-            totalLevel+=userItem.userLevel;
-            totalCredit+=userItem.creditScore;
-            totalExp +=userItem.userExp;
-            totalFollow +=userItem.userFollow;
-            jumpCount +=userItem.jumpCount;
-            danmuCount +=userItem.danmuCount;
-            fishBallIncome += userItem.fishBallIncome;
-            cashIncome +=userItem.cashIncome;
-            accountBall +=userItem.accountBall;                
-            accountWing +=userItem.accountWing;
-            totalFishFood +=userItem.fishFood; 
-            timeGap>=150?++outTimeNum:0;          
-            userItem.danmuError>=3?++danmuErrorCount:0;   
+        function addTagItem(userItem, i) {
+          let outTr = document.createElement('tr');
+          if (i % 2 == 0) {
+            outTr.setAttribute("style", "background-color:#DDD");
+          } else {
+            outTr.setAttribute("style", "background-color:#F7F7F7");
+          }
+          let timeGap = userItem.activeTime != 0 ? parseInt((new Date().getTime() - userItem.activeTime) / 1000) : 0;
+          let timeRest = timeGap;
+          if (timeGap >= 3600) {
+            timeGap = (timeGap / 3600).toFixed(1) + "h";
+          } else {
+            timeGap += "s";
+          }
+          outTr.innerHTML = "<td><img src='" + userItem.userAvatar + "' width='50'></td>";
+          outTr.innerHTML += "<td>" + userItem.uname + "</td>";
+          outTr.innerHTML += "<td>Lv." + userItem.userLevel + "</td>";
+          if (userItem.creditScore < 100) {
+            outTr.innerHTML += "<td style='color:orange;'>" + userItem.creditScore + "分</td>";
+          } else {
+            outTr.innerHTML += "<td style='color:green;'>" + userItem.creditScore + "分</td>";
+          }
+          outTr.innerHTML += "<td>" + userItem.userExp + "点</td>";
+          if (userItem.userFollow > 6000) {
+            outTr.innerHTML += "<td style='color:green;'>" + userItem.userFollow + "个</td>";
+          } else {
+            outTr.innerHTML += "<td>" + userItem.userFollow + "个</td>";
+          }
+          outTr.innerHTML += "<td>V" + userItem.version + "</td>";
+          if (userItem.danmuError >= 5) {
+            outTr.innerHTML += "<td style='color:red;'>" + userItem.danmuError + "条</td>";
+          } else {
+            outTr.innerHTML += "<td>" + userItem.danmuError + "条</td>";
+          }
+          if (timeRest >= 200) {
+            outTr.innerHTML += "<td style='color:green;'>" + timeGap + "</td>";
+          } else {
+            outTr.innerHTML += "<td>" + timeGap + "</td>";
+          }
+          outTr.innerHTML += "<td>" + userItem.jumpCount + "次</td>";
+          outTr.innerHTML += "<td>" + userItem.danmuCount + "条</td>";
+          outTr.innerHTML += "<td>" + userItem.fishBallIncome + "丸</td>";
+          outTr.innerHTML += "<td>" + userItem.cashIncome + "元</td>";
+          outTr.innerHTML += "<td>" + userItem.fishFood + "粮</td>";
+          outTr.innerHTML += "<td>" + userItem.accountBall + "丸</td>";
+          outTr.innerHTML += "<td>" + userItem.accountWing.toFixed(1) + "翅</td>";
+          tableCell.appendChild(outTr);
+          //total statistics
+          userNum += 1;
+          totalVersion.add(userItem.version);
+          totalLevel += userItem.userLevel;
+          totalCredit += userItem.creditScore;
+          totalExp += userItem.userExp;
+          totalFollow += userItem.userFollow;
+          jumpCount += userItem.jumpCount;
+          danmuCount += userItem.danmuCount;
+          fishBallIncome += userItem.fishBallIncome;
+          cashIncome += userItem.cashIncome;
+          accountBall += userItem.accountBall;
+          accountWing += userItem.accountWing;
+          totalFishFood += userItem.fishFood;
+          timeGap >= 150 ? ++outTimeNum: 0;
+          userItem.danmuError >= 3 ? ++danmuErrorCount: 0;
         }
         let totalTr = document.createElement('tr');
-        totalTr.setAttribute("style","background-color: #B9D3EE");
+        totalTr.setAttribute("style", "background-color: #B9D3EE");
         totalTr.innerHTML += "<td>聚合统计</td>";
-        totalTr.innerHTML += "<td>"+userNum+"(总)</td>";
-        totalTr.innerHTML += "<td>"+parseInt(totalLevel/userNum)+"(均)</td>";
-        totalTr.innerHTML += "<td>"+parseInt(totalCredit/userNum)+"(均)</td>";
-        totalTr.innerHTML += "<td>"+parseInt(totalExp/userNum)+"(均)</td>";
-        totalTr.innerHTML += "<td>"+parseInt(totalFollow/userNum)+"(均)</td>";
-        totalTr.innerHTML += "<td>"+Array.from(totalVersion).length+"(总)</td>";
-        if(danmuErrorCount>0){
-            totalTr.innerHTML += "<td style='color:red;'>"+danmuErrorCount+"(错)</td>";
-        }else{
-            totalTr.innerHTML += "<td>"+danmuErrorCount+"(错)</td>";
+        totalTr.innerHTML += "<td>" + userNum + "(总)</td>";
+        totalTr.innerHTML += "<td>" + parseInt(totalLevel / userNum) + "(均)</td>";
+        totalTr.innerHTML += "<td>" + parseInt(totalCredit / userNum) + "(均)</td>";
+        totalTr.innerHTML += "<td>" + parseInt(totalExp / userNum) + "(均)</td>";
+        totalTr.innerHTML += "<td>" + parseInt(totalFollow / userNum) + "(均)</td>";
+        totalTr.innerHTML += "<td>" + Array.from(totalVersion).length + "(总)</td>";
+        if (danmuErrorCount > 0) {
+          totalTr.innerHTML += "<td style='color:red;'>" + danmuErrorCount + "(错)</td>";
+        } else {
+          totalTr.innerHTML += "<td>" + danmuErrorCount + "(错)</td>";
         }
-        totalTr.innerHTML += "<td>"+outTimeNum+"(人)</td>";
-        totalTr.innerHTML += "<td>"+jumpCount+"(总)</td>";
-        totalTr.innerHTML += "<td>"+danmuCount+"(总)</td>";
-        totalTr.innerHTML += "<td>"+fishBallIncome+"(总)</td>";
-        totalTr.innerHTML += "<td>"+cashIncome+"(总)</td>";
-        totalTr.innerHTML += "<td>"+totalFishFood+"(总)</td>";
-        totalTr.innerHTML += "<td>"+accountBall+"(总)</td>";
-        totalTr.innerHTML += "<td>"+accountWing.toFixed(1)+"(总)</td>";
+        totalTr.innerHTML += "<td>" + outTimeNum + "(人)</td>";
+        totalTr.innerHTML += "<td>" + jumpCount + "(总)</td>";
+        totalTr.innerHTML += "<td>" + danmuCount + "(总)</td>";
+        totalTr.innerHTML += "<td>" + fishBallIncome + "(总)</td>";
+        totalTr.innerHTML += "<td>" + cashIncome + "(总)</td>";
+        totalTr.innerHTML += "<td>" + totalFishFood + "(总)</td>";
+        totalTr.innerHTML += "<td>" + accountBall + "(总)</td>";
+        totalTr.innerHTML += "<td>" + accountWing.toFixed(1) + "(总)</td>";
         tableCell.appendChild(totalTr);
-    }
-    // set cookie
-    function setCookie(name,value){
+      }
+      // set cookie
+      function setCookie(name, value) {
         //document.cookie.setPath("/");
-        var exp = new Date(); 
-        exp.setTime(exp.getTime() + 365*24*60*60*1000); 
-        document.cookie = name + "="+ escape (value) + ";  path=/; expires=" + exp.toGMTString();//domain=popzoo.xyz;
-    }
-    // get cookie
-    function getCookie(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 365 * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";  path=/; expires=" + exp.toGMTString(); //domain=popzoo.xyz;
+      }
+      // get cookie
+      function getCookie(name) {
         //document.cookie.setPath("/");
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
-    　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
-    }
-    // del cookie
-    function delCookie(name){
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");　　
+        return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+      }
+      // del cookie
+      function delCookie(name) {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
-        var cval=getCookie(name);
-        if(cval!=null) document.cookie= name + "="+cval+";  path=/; expires="+exp.toGMTString();//domain=popzoo.xyz;
-    }
-    // time format util
-    function dateFormat(fmt, date) {
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + ";  path=/; expires=" + exp.toGMTString(); //domain=popzoo.xyz;
+      }
+      // time format util
+      function dateFormat(fmt, date) {
         let ret;
         let opt = {
-            "Y+": date.getFullYear().toString(),
-            "m+": (date.getMonth() + 1).toString(),
-            "d+": date.getDate().toString(),
-            "H+": date.getHours().toString(),
-            "M+": date.getMinutes().toString(),
-            "S+": date.getSeconds().toString()
-        };// 有其他格式化字符需求可以继续添加，必须转化成字符串
+          "Y+": date.getFullYear().toString(),
+          "m+": (date.getMonth() + 1).toString(),
+          "d+": date.getDate().toString(),
+          "H+": date.getHours().toString(),
+          "M+": date.getMinutes().toString(),
+          "S+": date.getSeconds().toString()
+        }; // 有其他格式化字符需求可以继续添加，必须转化成字符串
         for (let k in opt) {
-            ret = new RegExp("(" + k + ")").exec(fmt);
-            if (ret) {
-                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-            };
+          ret = new RegExp("(" + k + ")").exec(fmt);
+          if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+          };
         };
         return fmt;
-    }
-    // function isValidIP(ip) {
-    //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
-    //     return reg.test(ip);
-    // }         
-</script>
-</body>
+      }
+      // function isValidIP(ip) {
+      //     var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
+      //     return reg.test(ip);
+      // }         
+      </script>
+  </body>
+
 </html>

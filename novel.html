@@ -246,29 +246,29 @@
                 novelList.sort(function(a, b) {
                     return b.man - a.man;
                 });                
-            }else if(radioObj=='gengxin'){//================年份排序待解决
+            }else if(radioObj=='gengxin'){//================年份排序待解决,已解决
                 novelList.sort(function(a, b) {
                     var nn=0;
                     if(a.renew.indexOf('小时')>-1){
-                        nn=a.renew.replace(/[^0-9]/ig,"");
+                        nn=parseInt(180000000000/(a.renew.replace(/[^0-9]/ig,"")));
                     }else if(a.renew.indexOf('天')>-1){
-                        nn=a.renew.replace(/[^0-9]/ig,"")*24;
+                        nn=parseInt(7800000000/(a.renew.replace(/[^0-9]/ig,"")));
                     }else if(a.renew.indexOf('月')>-1){
-                        nn=a.renew.replace(/[^0-9]/ig,"")*24*31;
+                        nn=parseInt(250000000/(a.renew.replace(/[^0-9]/ig,"")));
                     }else{
                         nn=a.renew.replace(/[^0-9]/ig,"");
                     }                     
                     var mm=0;
                     if(b.renew.indexOf('小时')>-1){
-                        mm=b.renew.replace(/[^0-9]/ig,"");
+                        mm=parseInt(180000000000/(b.renew.replace(/[^0-9]/ig,"")));
                     }else if(b.renew.indexOf('天')>-1){
-                        mm=b.renew.replace(/[^0-9]/ig,"")*24;
+                        mm=parseInt(7800000000/(b.renew.replace(/[^0-9]/ig,"")));
                     }else if(b.renew.indexOf('月')>-1){
-                        mm=b.renew.replace(/[^0-9]/ig,"")*24*31;
+                        mm=parseInt(250000000/(b.renew.replace(/[^0-9]/ig,"")));
                     }else{
                         mm=b.renew.replace(/[^0-9]/ig,"");
                     }
-                    return nn - mm;
+                    return mm - nn;
                 });                 
             }else{//字数
                 novelList.sort(function(a, b) {

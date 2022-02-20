@@ -1,184 +1,195 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
 <html lang="zh-CN">
-<head>
-<!-- SEO优化 -->
-<title>POPZOO</title>
-<meta charset="UTF-8"/>
-<meta name="keywords" content="主页,导航,小说,车队,礼物,共享,测速,网盘,红包,福利姬,查水表"/>
-<meta name="description" content="POPZOO是一个资源分享网站，这里有斗鱼礼物车队的展示，有红包福利的专区，有完结小说排行榜，有云网盘共享存储，还有许多羞羞的专属福利等你呦！"/>
-<meta name="robots" content="index,follow"/>
-<meta name="author" content="lvlanxing"/>
-<meta name="google" value="notranslate"/>
-<!-- 网页控制 -->
-<meta name="referrer" content="no-referrer"/>
-<!-- <meta http-equiv="refresh" content="1; url=http://www.popzoo.ga" /> -->
-<meta http-equiv="cache-control" content="no-cache"/>
-<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>--><!-- 强制使用https请求，测试请关闭 -->
-<link rel="shortcut icon" href="/img/favicon.ico"/>
-<!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
-<!-- iphone suitable -->
-<meta name="theme-color" content="#000000"/>
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5"/>
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg"/>
-<meta name="apple-mobile-web-app-title" content="POPZOO"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-<meta name="format-detection" content="telephone=no"/>
-<meta name="format-detection" content="email=no"/>
-<!-- css style -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/buttons.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/showcase.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/home.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"/>
-</head>
-<body>
-<div id="top">
-<main id="top_main">
-<div><a id="login_show">❤️❤️❤️</a></div>
-<div id="top_logo"><img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="backBtnListen()" id="mainimg"></div>
-<div id="top_title"><img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png">
-    <!-- <br class="top_hr_style01">  float:right;margin: -15px 30px 0 0; -->
-</div>
-<div class="showcase-examples l-over l-center">
-  <a id="own_time" href="#" title="时光轴" class="button button-rounded button-plain button-small-caps button-border" target="_blank">时光轴</a>
-  <a id="own_gift" href="#" title="礼物秀" class="button button-rounded button-plain button-small-caps button-border" target="_blank">礼物秀</a>
-  <a id="own_car" href="#" title="车队展" class="button button-rounded button-plain button-small-caps button-border" target="_blank">车队展</a>
-  <a id="own_fire" href="#" title="火力房" class="button button-rounded button-plain button-small-caps button-border" target="_blank">火力房</a>
-  <a id="own_novel" href="#" title="小说集" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小说集</a>  
-  <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank">报表单</a>
-  <a id="own_data" href="#" title="看板台" class="button button-rounded button-plain button-small-caps button-border" target="_blank">看板台</a>
-  <a id="own_danmu" href="#" title="云弹幕" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云弹幕</a>
-<!--   <a id="own_fuli" href="#" onclick="javascript:{window.open(document.location.protocol+'//'+document.domain+'/novel.html')}" title="novel" class="button button-rounded button-plain button-small-caps button-border">小说集</a> -->
-  <!-- <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a> -->
-<!--   <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a> -->  
-  <a id="own_disk" href="https://popdisk.vercel.app" title="OneDrive" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云网盘</a>
-  <!-- <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
-  <a id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/" title="夸克搜索" class="button button-rounded button-plain button-small-caps button-border" target="_blank">夸克搜</a>
-  <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
-
-  <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋" class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
-  <a id="own_tire" href="https://www.popzoo.ga" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">主网站</a>
-<!--   <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>   -->  
-  <a id="own_999" href="#" onclick="checkBrowser(this)" title="漫表格" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">漫表格</a>  
-  <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">云修图</a>    
-  <!-- <a id="own_tire" href="https://popzoo.vercel.app" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">镜像站</a>  -->
-  <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云外访</a>
-  <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云新闻</a>
-  <a id="own_cfip" href="#" onclick="checkBrowser(this)" title="CFIP" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">找火萤</a>
-  <a id="own_ping" href="#" onclick="checkBrowser(this)" title="Speed" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">选节点</a>
-
-<!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
-  <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->
-</div>
-</main>
-</div>
-<footer id="top_footer" style="display:none;">
-    <span id="top_copyright">
-        Site has running:<span id='site-signal'>❤️</span><span id='site-time'>加载中</span><br>
-        <a href="https://icp.gov.moe" target="_blank">萌ICP备</a>·<a href="https://icp.gov.moe/?keyword=20201314" target="_blank">20201314号</a>
-        『江涵秋影枯万界,寒江孤舟驶星河』
+  
+  <head>
+    <!-- SEO优化 -->
+    <title>POPZOO</title>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="主页,导航,小说,车队,礼物,共享,测速,网盘,红包,福利姬,查水表" />
+    <meta name="description" content="POPZOO是一个资源分享网站，这里有斗鱼礼物车队的展示，有红包福利的专区，有完结小说排行榜，有云网盘共享存储，还有许多羞羞的专属福利等你呦！" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="lvlanxing" />
+    <meta name="google" value="notranslate" />
+    <!-- 网页控制 -->
+    <meta name="referrer" content="no-referrer" />
+    <!-- <meta http-equiv="refresh" content="1; url=http://www.popzoo.ga" />-->
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>-->
+    <!-- 强制使用https请求，测试请关闭 -->
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <!-- <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/popzoo/pop/images/favicon.ico"> -->
+    <!-- iphone suitable -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=0.5" />
+    <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/popzoo/guide/img/bird2.jpg" />
+    <meta name="apple-mobile-web-app-title" content="POPZOO" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <!-- css style -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/buttons.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/showcase.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" /></head>
+  
+  <body>
+    <div id="top">
+      <main id="top_main">
+        <div>
+          <a id="login_show">❤️😎❤️</a>
+        </div>
+        <div id="top_logo">
+          <img src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png" onmouseover="mouseOver()" onmouseout="mouseOut()" onclick="backBtnListen()" id="mainimg" />
+        </div>
+        <div id="top_title">
+          <img id="top_title01" alt="" src="https://cdn.jsdelivr.net/gh/popzoo/guide/img/toptitle01.png" />
+          <!-- <br class="top_hr_style01">  float:right;margin: -15px 30px 0 0; -->
+        </div>
+        <div class="showcase-examples l-over l-center">
+          <a id="own_time" href="#" title="时光轴" class="button button-rounded button-plain button-small-caps button-border" target="_blank">时光轴</a>
+          <a id="own_gift" href="#" title="礼物秀" class="button button-rounded button-plain button-small-caps button-border" target="_blank">礼物秀</a>
+          <a id="own_car" href="#" title="车队展" class="button button-rounded button-plain button-small-caps button-border" target="_blank">车队展</a>
+          <a id="own_fire" href="#" title="火力房" class="button button-rounded button-plain button-small-caps button-border" target="_blank">火力房</a>
+          <a id="own_novel" href="#" title="小说集" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小说集</a>
+          <a id="own_form" href="#" title="报表单" class="button button-rounded button-plain button-small-caps button-border" target="_blank">报表单</a>
+          <a id="own_data" href="#" title="看板台" class="button button-rounded button-plain button-small-caps button-border" target="_blank">看板台</a>
+          <a id="own_danmu" href="#" title="云弹幕" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云弹幕</a>
+          <!-- <a id="own_fuli" href="#" onclick="javascript:{window.open(document.location.protocol+'//'+document.domain+'/novel.html')}" title="novel" class="button button-rounded button-plain button-small-caps button-border">小说集</a> -->
+          <!-- <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a> -->
+          <!-- <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a> -->
+          <a id="own_disk" href="https://popdisk.vercel.app" title="OneDrive" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云网盘</a>
+          <!-- <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
+          <a id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/" title="夸克搜索" class="button button-rounded button-plain button-small-caps button-border" target="_blank">夸克搜</a>
+          <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
+          <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋" class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
+          <a id="own_tire" href="https://www.popzoo.ga" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">主网站</a>
+          <!-- <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>   -->
+          <a id="own_999" href="#" onclick="checkBrowser(this)" title="漫表格" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">漫表格</a>
+          <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">云修图</a>
+          <!-- <a id="own_tire" href="https://popzoo.vercel.app" title="CDN加速主站" class="button button-rounded button-plain button-small-caps button-border">镜像站</a>  -->
+          <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云外访</a>
+          <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">云新闻</a>
+          <a id="own_cfip" href="#" onclick="checkBrowser(this)" title="CFIP" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">找火萤</a>
+          <a id="own_ping" href="#" onclick="checkBrowser(this)" title="Speed" style="visibility:hidden;" class="button button-rounded button-plain button-small-caps button-border">选节点</a>
+          <!-- <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
+          <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->
+        </div>
+      </main>
+    </div>
+    <footer id="top_footer" style="display:none;">
+      <span id="top_copyright">Site has running:
+        <span id='site-signal'>❤️</span>
+        <span id='site-time'>加载中</span>
+        <br/>
+        <a href="https://icp.gov.moe" target="_blank">萌ICP备</a>
+        <a href="https://icp.gov.moe/?keyword=20201314" target="_blank">20201314号</a>『江涵秋影枯万界,寒江孤舟驶星河』
         <!-- <br>Copyright Reserved ©2021.Powered & CDN by Vercel -->
-        <br>Copyright Reserved ©2021-2021. Powered+CDN by CF
-        <br>侵权/举报/咨询等事宜请
-            <a href="mailto:lvlanxing@gmail.com?subject=邮件主题&amp;body=邮件内容" rel="nofollow" id="contact_mail" >发送邮件</a>，或使用<a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123137205" id="contact_qq">QQ联络</a><span id='site-emoji' style='color:orange;'></span>
-    </span>
-</footer>
-<div>
-    <!-- <meting-js server="netease" type="playlist" id="2054181801" autoplay="true" list-max-height=1200px></meting-js> -->
-    <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> -->
-    <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js>
-</div>
-<!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%"> -->
-<!--     <p>你的浏览器不支持iframe</p>
-</iframe> -->
-<script type="text/javascript">
-    let bodyEle = document.getElementsByTagName('body')[0];
-    let outerDiv = document.createElement("div");
-    outerDiv.setAttribute('id','iframe_div_tag')
-    let targetUrl = document.URL.indexOf('vercel')>-1?'https://www.popzoo.ga':'https://popzoo.vercel.app';
-    let iframeHtml = '<iframe id="login_auth" style="display:none;" src="'+targetUrl+'/cookie.html" width="100%" height="10%"><p>你的浏览器不支持iframe</p></iframe>';
-    outerDiv.innerHTML = iframeHtml;
-    bodyEle.appendChild(outerDiv);
-</script>
-<!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script> 
-<script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script>
-<script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/Browser.js"></script>
-<script type="text/javascript">
-    // localStorage.setItem("modelId",0)
-    // localStorage.setItem("modelTexturesId",0);   
-    var serverUrl = document.location.protocol+"//"+document.domain;
-    var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
-    var bodyBgs = ['nier_0.jpg'];
-    var mirrorUrl = 'https://popzoo.vercel.app';  
-    (function ctrlBackEffect(){
+        <br/>Copyright Reserved ©2020-2022. Powered+CDN by CF
+        <br/>侵权/举报/咨询等事宜请
+        <a href="mailto:lvlanxing@gmail.com?subject=邮件主题&amp;body=邮件内容" rel="nofollow" id="contact_mail">发送邮件</a>，或使用
+        <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123137205" id="contact_qq">QQ联络</a>
+        <span id='site-emoji' style='color:orange;'>
+        </span>
+      </span>
+    </footer>
+    <div>
+      <!-- <meting-js server="netease" type="playlist" id="2054181801" autoplay="true" list-max-height=1200px></meting-js> -->
+      <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> -->
+      <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103">
+      </meting-js>
+    </div>
+    <!-- <iframe name="loginAuth" id="login_auth" style="display:none;" src="https://popzoo.vervel.app/cookie.html" width="100%" height="10%"> -->
+    <!-- <p>你的浏览器不支持iframe</p>
+    </iframe> -->
+    <script type="text/javascript">let bodyEle = document.getElementsByTagName('body')[0];
+      let outerDiv = document.createElement("div");
+      outerDiv.setAttribute('id', 'iframe_div_tag') let targetUrl = document.URL.indexOf('vercel') > -1 ? 'https://www.popzoo.ga': 'https://popzoo.vercel.app';
+      let iframeHtml = '<iframe id="login_auth" style="display:none;" src="' + targetUrl + '/cookie.html" width="100%" height="10%"><p>你的浏览器不支持iframe</p></iframe>';
+      outerDiv.innerHTML = iframeHtml;
+      bodyEle.appendChild(outerDiv);</script>
+    <!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js">
+    </script>
+    <script src="https://libs.baidu.com/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/Browser.js">
+    </script>
+    <script type="text/javascript">// localStorage.setItem("modelId",0)
+      // localStorage.setItem("modelTexturesId",0);   
+      var serverUrl = document.location.protocol + "//" + document.domain;
+      var prefix = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/"; //"img/";
+      var bodyBgs = ['nier_0.jpg'];
+      var mirrorUrl = 'https://popzoo.vercel.app'; (function ctrlBackEffect() {
         // var linkNode = document.createElement("link");
         // linkNode.setAttribute("rel","stylesheet");
         // linkNode.setAttribute("type","text/css");
         var scriptNode = document.createElement("script");
         scriptNode.setAttribute("type", "text/javascript");
-        if(localStorage.getItem('showBack')!='off'){
-            scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/guide/js/snowy.js");
-            document.body.appendChild(scriptNode);
+        if (localStorage.getItem('showBack') != 'off') {
+          scriptNode.setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/guide/js/snowy.js");
+          document.body.appendChild(scriptNode);
         }
-    })();
-    function backBtnListen(){
-        localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack','on') : localStorage.setItem('showBack','off');
+      })();
+      function backBtnListen() {
+        localStorage.getItem('showBack') == 'off' ? localStorage.setItem('showBack', 'on') : localStorage.setItem('showBack', 'off');
         window.location.reload();
-    }
-    (function initParam(retry){
-        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+      } (function initParam(retry) {
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam': 'https://param.firenet.workers.dev';
         fetch(paramUrl, {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        }).then((res)=>{
-            return res.json()
-        }).then((json)=>{
-            let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)>-1){
-                serverUrl = window.atob(json.tlsoffer);
-                mirrorUrl = window.atob(json.mirrorUrl); 
-                document.getElementById('own_tire').setAttribute('href',mirrorUrl);
-                document.getElementById('own_tire').innerText = '镜像站';
-            }
-            // if(isValidIP(document.domain)){
-            //     location.href = domainUrl;
-            // }    
-            initProgram();
-        }).catch((error)=>{
-            if(retry){
-                console.error("Param Request Failure", error);
-            }else{
-                initParam(true);
-            }            
+          method: 'GET',
+          mode: 'cors',
+          cache: 'default'
+        }).then((res) = >{
+          return res.json()
+        }).then((json) = >{
+          let domainUrl = window.atob(json.domainUrl);
+          if (document.URL.indexOf(domainUrl) > -1) {
+            serverUrl = window.atob(json.tlsoffer);
+            mirrorUrl = window.atob(json.mirrorUrl);
+            document.getElementById('own_tire').setAttribute('href', mirrorUrl);
+            document.getElementById('own_tire').innerText = '镜像站';
+          }
+          // if(isValidIP(document.domain)){
+          //     location.href = domainUrl;
+          // }    
+          initProgram();
+        }).
+        catch((error) = >{
+          if (retry) {
+            console.error("Param Request Failure", error);
+          } else {
+            initParam(true);
+          }
         });
-    })(); 
-    // ===============================================================>>>
-    // 监听跨域事件
-    // (function getRemoteMsg(){
-    //     window.frames[0].postMessage('getAuth','https://www.popzoo.ga')
-    // }();
-    // window.addEventListener('message', function (e) {  // 监听 message 事件
-    //     console.debug('csrfOrigin===>'+e.origin);
-    //     console.debug('csrfData===>'+e.data);
-    //     if(e.data=='true'){
-    //         location.reload(true);
-    //     }
-    //     if(e.data!=null && e.data!='true' && e.data!=''){
-    //        initProgram(e.data); 
-    //     }
-    // }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
-    function initProgram(){
+      })();
+      // ===============================================================>>>
+      // 监听跨域事件
+      // (function getRemoteMsg(){
+      //     window.frames[0].postMessage('getAuth','https://www.popzoo.ga')
+      // }();
+      // window.addEventListener('message', function (e) {  // 监听 message 事件
+      //     console.debug('csrfOrigin===>'+e.origin);
+      //     console.debug('csrfData===>'+e.data);
+      //     if(e.data=='true'){
+      //         location.reload(true);
+      //     }
+      //     if(e.data!=null && e.data!='true' && e.data!=''){
+      //        initProgram(e.data); 
+      //     }
+      // }, false);//true - 事件句柄在捕获阶段执行,false- 默认。事件句柄在冒泡阶段执行
+      function initProgram() {
         isMobileDevice();
         lazyLoadImg();
         changeImg();
-        verifyoAuth();         
+        verifyoAuth();
         //     window.addEventListener('message', function (e) {  // 监听 message 事件
         //         console.debug('csrfOrigin===>'+e.origin);
         //         console.debug('csrfData===>'+e.data);
@@ -192,239 +203,244 @@
         //         window.frames[0].postMessage('hookMsg',originUrl);// 监听跨域事件 
         //         // setTimeout(()=>{window.frames[0].postMessage('hookMsg',originUrl);},1000);               
         //     }
-    }
-    function verifyoAuth(){
-        if(localStorage.getItem('token')!=null){//?auth='+getCookie('auth');
-            let reqUrl = serverUrl+'/getverify';
-            fetch(reqUrl, {               
-                method: 'GET',
-                mode: 'cors', 
-                cache: 'no-store', 
-                headers: {'Authorization': localStorage.getItem('token')},
-                credentials: 'same-origin'
-            }).then(res => {
-                return res.json();
-            }).then(json => {
-                if(json.code==1){
-                    console.debug(json.msg);
-                    loginRender(true);
-                    renderHidden();
-                }else{
-                    localStorage.removeItem('token');
-                    loginRender(false);
-                }                    
-            }).catch(err => {
-                console.error('请求错误', err);
-            })        
-        }else{
-            loginRender(false);
+      }
+      function verifyoAuth() {
+        if (localStorage.getItem('token') != null) { //?auth='+getCookie('auth');
+          let reqUrl = serverUrl + '/getverify';
+          fetch(reqUrl, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
+            headers: {
+              'Authorization': localStorage.getItem('token')
+            },
+            credentials: 'same-origin'
+          }).then(res = >{
+            return res.json();
+          }).then(json = >{
+            if (json.code == 1) {
+              console.debug(json.msg);
+              loginRender(true);
+              renderHidden();
+            } else {
+              localStorage.removeItem('token');
+              loginRender(false);
+            }
+          }).
+          catch(err = >{
+            console.error('请求错误', err);
+          })
+        } else {
+          loginRender(false);
         }
-    }
-    function renderHidden(){
+      }
+      function renderHidden() {
         // document.getElementById('own_bgrid').style.visibility='inherit'; 
-        document.getElementById('own_fixpic').style.visibility='inherit';           
-        document.getElementById('own_999').style.visibility='inherit';           
-        document.getElementById('own_cfip').style.visibility='inherit';
-        document.getElementById('own_ping').style.visibility='inherit';
-        document.getElementById('own_find').style.visibility='inherit';
-        document.getElementById('own_deit').style.visibility='inherit';   
+        document.getElementById('own_fixpic').style.visibility = 'inherit';
+        document.getElementById('own_999').style.visibility = 'inherit';
+        document.getElementById('own_cfip').style.visibility = 'inherit';
+        document.getElementById('own_ping').style.visibility = 'inherit';
+        document.getElementById('own_find').style.visibility = 'inherit';
+        document.getElementById('own_deit').style.visibility = 'inherit';
         // loginRender(true);     
-    }
-    function checkBrowser(obj){
+      }
+      function checkBrowser(obj) {
         var info = new Browser();
-        if(info.browser.indexOf('360')>-1 || info.browser.indexOf('QQ')>-1 || info.browser.indexOf('Wechat')>-1 || info.browser.indexOf('baidu')>-1 || info.browser.indexOf('sougou')>-1){
-            location.href = document.location.protocol+"//"+document.domain + "/illegal.html";
-        }else{
-            if(obj.id=="own_fuli"){
-                // window.open(document.location.protocol+'//rouman5.com/home');
-                window.open(document.location.protocol+"//"+document.domain+"/comic.html");
-            }else if(obj.id=='own_ping'){    
-                window.open(document.location.protocol+"//"+document.domain+"/ping.html");
-            }else if(obj.id=='own_cfip'){
-                window.open(document.location.protocol+"//"+document.domain+"/cfip.html");
-            }else if(obj.id=='own_find'){
-                window.open(document.location.protocol+'//wood.firenet.'+'workers.dev/');
-            }else if(obj.id=='own_deit'){
-                window.open(document.location.protocol+'//seed.firenet.'+'workers.dev/');
-            }else if(obj.id=='own_999'){
-                window.open(document.location.protocol+"//"+document.domain+"/999.html");                
-            }        
+        if (info.browser.indexOf('360') > -1 || info.browser.indexOf('QQ') > -1 || info.browser.indexOf('Wechat') > -1 || info.browser.indexOf('baidu') > -1 || info.browser.indexOf('sougou') > -1) {
+          location.href = document.location.protocol + "//" + document.domain + "/illegal.html";
+        } else {
+          if (obj.id == "own_fuli") {
+            // window.open(document.location.protocol+'//rouman5.com/home');
+            window.open(document.location.protocol + "//" + document.domain + "/comic.html");
+          } else if (obj.id == 'own_ping') {
+            window.open(document.location.protocol + "//" + document.domain + "/ping.html");
+          } else if (obj.id == 'own_cfip') {
+            window.open(document.location.protocol + "//" + document.domain + "/cfip.html");
+          } else if (obj.id == 'own_find') {
+            window.open(document.location.protocol + '//wood.firenet.' + 'workers.dev/');
+          } else if (obj.id == 'own_deit') {
+            window.open(document.location.protocol + '//seed.firenet.' + 'workers.dev/');
+          } else if (obj.id == 'own_999') {
+            window.open(document.location.protocol + "//" + document.domain + "/999.html");
+          }
         }
-    }
-    function loginRender(isLogin){
-        if(!isLogin){
-            document.getElementById("login_show").removeEventListener('click',logoutAcc,false);
-            document.getElementById("login_show").innerText = "📴登录";
-            document.getElementById("login_show").addEventListener('click',pwdLogin);
+      }
+      function loginRender(isLogin) {
+        if (!isLogin) {
+          document.getElementById("login_show").removeEventListener('click', logoutAcc, false);
+          document.getElementById("login_show").innerText = "📴登录";
+          document.getElementById("login_show").addEventListener('click', pwdLogin);
 
-        }else{
-            document.getElementById("login_show").removeEventListener('click',pwdLogin,false);
-            document.getElementById("login_show").innerText = "📳注销";
-            document.getElementById("login_show").addEventListener('click',logoutAcc);
+        } else {
+          document.getElementById("login_show").removeEventListener('click', pwdLogin, false);
+          document.getElementById("login_show").innerText = "📳注销";
+          document.getElementById("login_show").addEventListener('click', logoutAcc);
         }
-    }
-    function logoutAcc(){
+      }
+      function logoutAcc() {
         // delCookie("auth");
-        localStorage.removeItem('token');//======================todo:revorkedToken
+        localStorage.removeItem('token'); //======================todo:revorkedToken
         // sessionStorage.setItem('logout','true');        
-        location.reload();//这里要处理，防止从备用站获取cookie, 需要通信远程，删除cookie
-    }
-    function isMobileDevice(){
-        if(/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {// mobile模式
-            bodyBgs = ["hotgirl_0.jpg","hotgirl_1.jpg","hotgirl_2.jpg","hotgirl_3.jpg","hotgirl_4.jpg","hotgirl_5.jpg","hotgirl_6.jpg","hotgirl_7.jpg","hotgirl_8.jpg","hotgirl_9.jpg","hotgirl_10.jpg"];
-        } else {// PC模式
-            bodyBgs = ["nier_0.jpg","nier_1.jpg","nier_2.jpg","nier_3.jpg","nier_4.jpg","nier_5.jpg","nier_6.jpg","nier_7.jpg","nier_8.jpg","nier_9.jpg"];
-            document.getElementById('top_footer').setAttribute('style','display:inherit');
-            siteSignal();
-            siteTime();
+        location.reload(); //这里要处理，防止从备用站获取cookie, 需要通信远程，删除cookie
+      }
+      function isMobileDevice() {
+        if (/Android|webOS|ucweb|midp|MicroMessenger|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) { // mobile模式
+          bodyBgs = ["hotgirl_0.jpg", "hotgirl_1.jpg", "hotgirl_2.jpg", "hotgirl_3.jpg", "hotgirl_4.jpg", "hotgirl_5.jpg", "hotgirl_6.jpg", "hotgirl_7.jpg", "hotgirl_8.jpg", "hotgirl_9.jpg", "hotgirl_10.jpg"];
+        } else { // PC模式
+          bodyBgs = ["nier_0.jpg", "nier_1.jpg", "nier_2.jpg", "nier_3.jpg", "nier_4.jpg", "nier_5.jpg", "nier_6.jpg", "nier_7.jpg", "nier_8.jpg", "nier_9.jpg"];
+          document.getElementById('top_footer').setAttribute('style', 'display:inherit');
+          siteSignal();
+          siteTime();
         }
-    }
-    function siteSignal(){
-        setTimeout(siteSignal, 2000);//(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
+      }
+      function siteSignal() {
+        setTimeout(siteSignal, 2000); //(｡✪ᴗ✪｡) (*◕ᴗ◕*)  ┗(▔_▔)┛   ❤️💔💘
         document.getElementById("site-signal").innerHTML = "💔";
         document.getElementById("site-emoji").innerHTML = "(*◐ᴗ◑*)";
-        setTimeout(function(){
-           document.getElementById("site-signal").innerHTML = "❤️"; 
-           document.getElementById("site-emoji").innerHTML = "(*✪ᴗ✪*)";
-        },500);
-        setTimeout(function(){
-            document.getElementById("site-signal").innerHTML = "💝";
-            document.getElementById("site-emoji").innerHTML = "┗(^_^)┛";
-        },1000);
-    }
-    function siteTime() {
+        setTimeout(function() {
+          document.getElementById("site-signal").innerHTML = "❤️";
+          document.getElementById("site-emoji").innerHTML = "(*✪ᴗ✪*)";
+        },
+        500);
+        setTimeout(function() {
+          document.getElementById("site-signal").innerHTML = "💝";
+          document.getElementById("site-emoji").innerHTML = "┗(^_^)┛";
+        },
+        1000);
+      }
+      function siteTime() {
         window.setTimeout("siteTime()", 1000);
         var seconds = 1000
         var minutes = seconds * 60
         var hours = minutes * 60
         var days = hours * 24
         var years = days * 365
-        var today = new Date()
-        var todayYear = today.getFullYear()
-        var todayMonth = today.getMonth()
-        var todayDate = today.getDate()
-        var todayHour = today.getHours()
-        var todayMinute = today.getMinutes()
-        var todaySecond = today.getSeconds()
-        var t1 = Date.UTC(2019, 12, 12, 13, 36, 00)
-        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond)
-        var diff = t2 - t1
-        var diffYears = Math.floor(diff / years)
-        var diffDays = Math.floor((diff / days) - diffYears * 365)
-        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours)
-        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes)
-        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds)
-        document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
-    }
-    function lazyLoadImg(){
+        var today = new Date() var todayYear = today.getFullYear() var todayMonth = today.getMonth() var todayDate = today.getDate() var todayHour = today.getHours() var todayMinute = today.getMinutes() var todaySecond = today.getSeconds() var t1 = Date.UTC(2019, 12, 12, 13, 36, 00) var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond) var diff = t2 - t1
+        var diffYears = Math.floor(diff / years) var diffDays = Math.floor((diff / days) - diffYears * 365) var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours) var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes) var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds) document.getElementById("site-time").innerHTML = "" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒"
+      }
+      function lazyLoadImg() {
         preLoadImg(0);
-        function preLoadImg(index){
-            $.get(prefix + bodyBgs[index]);
-            if(index<bodyBgs.length-1){
-                setTimeout(()=>{preLoadImg(++index)},1000);
-            }
+        function preLoadImg(index) {
+          $.get(prefix + bodyBgs[index]);
+          if (index < bodyBgs.length - 1) {
+            setTimeout(() = >{
+              preLoadImg(++index)
+            },
+            1000);
+          }
         }
         preLoadAvatar(1);
-        function preLoadAvatar(index){
-            $.get("https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+[index]+".png");
-            if(index<8){
-                setTimeout(()=>{preLoadAvatar(++index)},1200);
-            }
-        }                 
-    }
-    function changeImg(){
-        let rdIndex = Math.floor( Math.random() * bodyBgs.length );
-        let img1= document.getElementsByTagName('html')[0];
-        img1.style.backgroundImage='url(' + prefix + bodyBgs[rdIndex] + ')';
-        window.setTimeout(()=>{changeImg()},10000);
-    }    
-    function pwdLogin(){
-        let pwd =window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！","");
-        if (pwd!=null && pwd.trim()!=""){
-            let reqUrl = serverUrl+'/getoauth';
-            let content = window.btoa(new Date().getFullYear().toString())+window.btoa(pwd.trim());
-            content = 'secret='+window.btoa(content.replace('=',''));
-            fetch(reqUrl, {               
-                method: 'POST',
-                mode: 'cors', 
-                cache: 'no-store', 
-                // headers: new Headers({'Content-Type': 'application/json'}),
-                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
-                credentials: 'same-origin',
-                body:content
-            }).then(res => {
-                return res.json();
-            }).then(json => {
-                if(json.msg=="success"){
-                    localStorage.setItem('token',json.token);
-                    // console.info(json.token);
-                    loginRender(true);
-                    renderHidden();                    
-                }else{
-                    localStorage.removeItem('token');
-                    if(json.code == 401){
-                        alert("🤢密码错误，请重新输入,你还有"+json.count+"次机会");
-                    }else if(json.code == 402){
-                        alert("😡密码错误超过5次，请30min后重试");
-                    }
-                }                    
-            }).catch(err => {
-                console.error('请求错误', err);
-            })        
+        function preLoadAvatar(index) {
+          $.get("https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx" + [index] + ".png");
+          if (index < 8) {
+            setTimeout(() = >{
+              preLoadAvatar(++index)
+            },
+            1200);
+          }
         }
-    }
-    function mouseOver(){
-        document.getElementById("mainimg").src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx"+parseInt(Math.random()*8+1)+".png";//鼠标悬浮时的旋转图标
-    }
-    function mouseOut(){
-        document.getElementById('mainimg').src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png";//默认的旋转图标
-    }
-    // date util
-    function dateFormat(fmt, date) {
+      }
+      function changeImg() {
+        let rdIndex = Math.floor(Math.random() * bodyBgs.length);
+        let img1 = document.getElementsByTagName('html')[0];
+        img1.style.backgroundImage = 'url(' + prefix + bodyBgs[rdIndex] + ')';
+        window.setTimeout(() = >{
+          changeImg()
+        },
+        10000);
+      }
+      function pwdLogin() {
+        let pwd = window.prompt("🔔郑重警告：\n🔊此页面保密级别为【㊙绝密】，仅供特职人员专用！\n🔊闲杂人等禁止入内浏览，否则触发上门查水表业务！", "");
+        if (pwd != null && pwd.trim() != "") {
+          let reqUrl = serverUrl + '/getoauth';
+          let content = window.btoa(new Date().getFullYear().toString()) + window.btoa(pwd.trim());
+          content = 'secret=' + window.btoa(content.replace('=', ''));
+          fetch(reqUrl, {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-store',
+            // headers: new Headers({'Content-Type': 'application/json'}),
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+            },
+            credentials: 'same-origin',
+            body: content
+          }).then(res = >{
+            return res.json();
+          }).then(json = >{
+            if (json.msg == "success") {
+              localStorage.setItem('token', json.token);
+              // console.info(json.token);
+              loginRender(true);
+              renderHidden();
+            } else {
+              localStorage.removeItem('token');
+              if (json.code == 401) {
+                alert("🤢密码错误，请重新输入,你还有" + json.count + "次机会");
+              } else if (json.code == 402) {
+                alert("😡密码错误超过5次，请30min后重试");
+              }
+            }
+          }).
+          catch(err = >{
+            console.error('请求错误', err);
+          })
+        }
+      }
+      function mouseOver() {
+        document.getElementById("mainimg").src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx" + parseInt(Math.random() * 8 + 1) + ".png"; //鼠标悬浮时的旋转图标
+      }
+      function mouseOut() {
+        document.getElementById('mainimg').src = "https://cdn.jsdelivr.net/gh/popzoo/guide/img/tx.png"; //默认的旋转图标
+      }
+      // date util
+      function dateFormat(fmt, date) {
         let ret;
         let opt = {
-            "Y+": date.getFullYear().toString(),
-            "m+": (date.getMonth() + 1).toString(),
-            "d+": date.getDate().toString(),
-            "H+": date.getHours().toString(),
-            "M+": date.getMinutes().toString(),
-            "S+": date.getSeconds().toString()
+          "Y+": date.getFullYear().toString(),
+          "m+": (date.getMonth() + 1).toString(),
+          "d+": date.getDate().toString(),
+          "H+": date.getHours().toString(),
+          "M+": date.getMinutes().toString(),
+          "S+": date.getSeconds().toString()
         };
         for (let k in opt) {
-            ret = new RegExp("(" + k + ")").exec(fmt);
-            if (ret) {
-                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-            };
+          ret = new RegExp("(" + k + ")").exec(fmt);
+          if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+          };
         };
         return fmt;
-    }        
-    // set cookie
-    function setCookie(name,value){
+      }
+      // set cookie
+      function setCookie(name, value) {
         //document.cookie.setPath("/");
-        var exp = new Date(); 
-        exp.setTime(exp.getTime() + 365*24*60*60*1000); 
-        document.cookie = name + "="+ escape (value) + "; path=/; expires=" + exp.toGMTString()+"; secure=true; samesite=none; ";
-    }
-    // get cookie
-    function getCookie(name){
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 365 * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + "; path=/; expires=" + exp.toGMTString() + "; secure=true; samesite=none; ";
+      }
+      // get cookie
+      function getCookie(name) {
         //document.cookie.setPath("/");
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
-    　　return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
-    }
-    // del cookie
-    function delCookie(name){
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");　　
+        return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
+      }
+      // del cookie
+      function delCookie(name) {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
-        var cval=getCookie(name);
-        if(cval!=null) document.cookie= name + "="+cval+"; path=/; expires="+exp.toGMTString();
-    }
-    function isValidIP(ip) {
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + "; path=/; expires=" + exp.toGMTString();
+      }
+      function isValidIP(ip) {
         var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/
         return reg.test(ip);
-    }      
-    // createSnow('src/', 150);
-</script>
-<!-- <style type="text/css">.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style> -->
-<div class="snow-container"></div>
-</body>
+      }
+      // createSnow('src/', 150);
+      </script>
+    <!-- <style type="text/css">.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style> -->
+    <div class="snow-container">
+    </div>
+  </body>
+
 </html>
