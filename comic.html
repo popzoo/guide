@@ -89,9 +89,9 @@
     var count = 0,loadingFlag = false;
     var picWidth = localStorage.getItem("comicStatus")=='big_view'?700:(localStorage.getItem("comicStatus")=='small_view')?320:500;//mid_view
     var word = sessionStorage.getItem("comicWord");
-    var renewhjd = sessionStorage.getItem('renewhjd');
+    // var renewhjd = sessionStorage.getItem('renewhjd');
     var comicList = new Array();
-    var baseUrlArr = localStorage.getItem("baseUrlArr")!=null ? JSON.parse(localStorage.getItem("baseUrlArr")) : ['https://bbs.bbbh.cc'];
+    var baseUrlArr = sessionStorage.getItem("baseUrlArr")!=null ? JSON.parse(window.atob(sessionStorage.getItem("baseUrlArr"))):null;
     var serverUrl = document.location.protocol+"//"+document.domain;
     //======================================================
     //=================== Script init ======================
@@ -124,10 +124,11 @@
             if(document.URL.indexOf(domainUrl)>-1){
                 serverUrl = window.atob(json.tlsoffer);
             }
-            if(sessionStorage.getItem('renewhjd')!='ok'){
+            if(baseUrlArr==null){
                 getAddrPage();
+            }else{
+                initProgram();
             }            
-            initProgram();
         }).catch((error)=>{
             if(retry){
                 console.error("Param Request Failure", error);
@@ -147,9 +148,10 @@
             return res.json()
         }).then((json)=>{
             // baseUrl = json[parseInt(Math.random() * json.length)];
-            if(json.length>=3){
-               localStorage.setItem("baseUrlArr",JSON.stringify(json)); 
-               sessionStorage.setItem('renewhjd','ok');
+            if(json.length>=1){
+               sessionStorage.setItem("baseUrlArr",window.btoa(JSON.stringify(json))); 
+               baseUrlArr = json;
+               initProgram();
             }
         }).catch((error)=>{
             console.error("请求错误", error.message);
