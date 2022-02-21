@@ -10,16 +10,17 @@
 			} else {
 				if (e.data == 'hookmsg') {
 					if (localStorage.getItem('token') != null) {
-						window.parent.postMessage(localStorage.getItem('token'), e.origin);
+						// window.parent.postMessage(localStorage.getItem('token'), e.origin);
+						e.source.postMessage(localStorage.getItem('token'), e.origin);
 					}else{
-						window.parent.postMessage('lost', e.origin);
+						e.source.postMessage('lost', e.origin);
 					}
 					// window.parent.postMessage(authStr,'*');//*为返回任意网址
 				} else if(e.data == 'delmsg'){	
 					localStorage.removeItem('token');
-					window.parent.postMessage('delok', e.origin);
+					e.source.postMessage('delok', e.origin);
 				} else {
-					window.parent.postMessage('lost', e.origin);
+					e.source.postMessage('lost', e.origin);
 				}
 			}
 		})
