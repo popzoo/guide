@@ -15,8 +15,11 @@
 						window.parent.postMessage('lost', e.origin);
 					}
 					// window.parent.postMessage(authStr,'*');//*为返回任意网址
+				} else if(e.data == 'delmsg'){	
+					localStorage.removeItem('token');
+					window.parent.postMessage('delok', e.origin);
 				} else {
-					window.parent.postMessage('illegal request', e.origin);
+					window.parent.postMessage('lost', e.origin);
 				}
 			}
 		})
