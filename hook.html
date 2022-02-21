@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>Hook</title>
+	<meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />	
+	<script type="text/javascript">
+		window.addEventListener('message', function (e) {
+			if (e.source != window.parent) {//safari不支持父子页面通讯
+				return ;
+			} else {
+				if (e.data == 'hookmsg') {
+					if (localStorage.getItem('token') != null) {
+						window.parent.postMessage(localStorage.getItem('token'), e.origin);
+					}else{
+						window.parent.postMessage('lost', e.origin);
+					}
+					// window.parent.postMessage(authStr,'*');//*为返回任意网址
+				} else {
+					window.parent.postMessage('illegal request', e.origin);
+				}
+			}
+		})
+	</script>
+</head>
+<body>
+	<h1>Hello Olympics!</h1>
+</body>
+</html>
