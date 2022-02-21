@@ -127,7 +127,7 @@
         let outerDiv = document.createElement("div");
         outerDiv.setAttribute('id', 'iframe_div_tag')
         let targetUrl = document.URL.indexOf('vercel') > -1 ? 'https://www.popzoo.ga' : 'https://popzoo.vercel.app';
-        let iframeHtml = '<iframe id="hookInfo" style="margin: 0 atuo" src="' + targetUrl + '/hook.html" width="100%" height="10%" frameborder="0"><p>你的浏览器不支持iframe</p></iframe>';
+        let iframeHtml = '<iframe id="hookInfo" src="' + targetUrl + '/hook.html" width="0" height="0" frameborder="0"><p>你的浏览器不支持iframe</p></iframe>';
         outerDiv.innerHTML = iframeHtml;
         bodyEle.append(outerDiv);
     </script>      
