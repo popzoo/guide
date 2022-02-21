@@ -204,7 +204,7 @@
                 webToken = e.data;
                 verifyoAuth();
             } else if (e.data == 'delok') {
-                location.reload();
+                location.reload(true);
             } else {
                 console.debug(`Origin:${e.origin} || Data:${e.data}`);
             }
