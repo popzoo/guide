@@ -32,21 +32,21 @@
     <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>     
     <h1 style="color: lime;text-align: center;">音乐脉冲炮</h1>
     <div id="top" style="text-align: center;margin: 40px;">
-        <audio id="audio_play" controls autoplay="autoplay" preload="auto" src="audio/glassbomb.mp3"/>
-            <!-- 您的浏览器不支持 video 标签！</audio> -->
+        <audio id="audio_play" controls autoplay="autoplay" preload="auto" src="audio/fireworks.mp3"/>
+            <!-- 您的浏览器不支持 audio 标签！</audio> -->
     </div>
     <div style="text-align: center;color: blue;font-size: 25px;font-weight: 500;background-color: #FDFDFD;width: 300px;height:54px;line-height: 54px; margin: 0 auto 0;border-radius: 27px;">播放间隔:<input id="control_time" type="text" name="audioTime" value="10" style="width:90px;height:30px;font-size: 25px;">(秒)
     </div>
     <p style="text-align: center;margin-top:10%;"><img src="https://cdn.jsdelivr.net/gh/popzoo/pop/images/homeGirl.gif" width="270px"></p>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/popzoo/guide/js/renewLink.js"></script> 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     var serverUrl = document.location.protocol+"//"+document.domain;//WARNING：访问*.html,因为浏览器禁用自动播放
-    (function getConfig(){
-        fetch('https://cdn.jsdelivr.net/gh/popzoo/pop/json/paramConfig.json', {
+    (function initParam(retry){
+        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+        fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
-            cache: 'default',
-            credentials: 'omit'
+            cache: 'default'
         }).then((res)=>{
             return res.json()
         }).then((json)=>{
@@ -56,9 +56,13 @@
             }
             runControl();
         }).catch((error)=>{
-            console.error("请求错误", error.message)
+            if(retry){
+                console.error("Param Request Failure", error);
+            }else{
+                initParam(true);
+            }            
         });
-    })();  
+    })();        
     function runControl() {
         // let curHour = parseInt(dateFormat("HH",new Date()));
         // if(curHour>=3&&curHour<=6){//3~7点
@@ -75,7 +79,7 @@
         }).then((res) => {
             return res.text();
         }).then((txt) => {
-            document.getElementById('audio_play').setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/guide@master/audio/" + txt); //play new audio name
+            document.getElementById('audio_play').setAttribute("src", "https://cdn.jsdelivr.net/gh/popzoo/guide/audio/" + txt); //play new audio name
             document.getElementById('audio_play').play();
             setTimeout(function(){runControl()}, timeGap);
             console.info("播放文件【"+txt+"】-|+|-播放间隔【" + timeGap / 1000 + "s】-|+|-播放时间【" + new Date().toLocaleString() + "】");
@@ -106,6 +110,6 @@
         };
         return fmt;
     }
-    </script>
+    </script> -->
   </body>
 </html>

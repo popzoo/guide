@@ -114,9 +114,9 @@
         </span>
     </footer>
     <div>
-        <!-- <meting-js server="netease" type="playlist" id="2054181801" autoplay="true" list-max-height=1200px></meting-js> -->
+        <meting-js server="netease" type="playlist" fixed="true" id="2054181801" autoplay="true" order="list"></meting-js>
         <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> -->
-        <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js>
+        <!-- <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js> -->
     </div>
     <!-- <iframe name="hookInfo" id="hookInfo" frameborder="0" style="visibility:inherit; margin: 0 atuo 0;" src="https://www.popzoo.ga/hook.html" width="1px"
         height="1px">
@@ -176,9 +176,9 @@
                     document.getElementById('own_tire').setAttribute('href', mirrorUrl);
                     document.getElementById('own_tire').innerText = '镜像站';
                 }
-                // if(isValidIP(document.domain)){
-                //     location.href = domainUrl;
-                // }    
+                if(isValidIP(document.domain)){
+                    location.href = domainUrl;
+                }
                 initProgram();
             }).catch((error) => {
                 if (retry) {
