@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/popzoo/guide/css/home.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" />
 </head>
+
 <body>
     <div id="top">
         <main id="top_main">
@@ -67,23 +68,24 @@
                     class="button button-rounded button-plain button-small-caps button-border" target="_blank">云弹幕</a>
                 <!--   <a id="own_fuli" href="#" onclick="javascript:{window.open(document.location.protocol+'//'+document.domain+'/novel.html')}" title="novel" class="button button-rounded button-plain button-small-caps button-border">小说集</a> -->
                 <!-- <a id="own_audio" href="#" title="音乐炮" class="button button-rounded button-plain button-small-caps button-border" target="_blank">音乐炮</a> -->
-                <!--   <a id="own_daji" href="https://xnm.703747.xyz/" title="小妲己" class="button button-rounded button-plain button-small-caps button-border" target="_blank">小妲己</a> -->
                 <a id="own_disk" href="https://popdisk.vercel.app" title="OneDrive"
                     class="button button-rounded button-plain button-small-caps button-border" target="_blank">云网盘</a>
                 <!-- <a id="own_seek" href="https://seek.popzoo.ga/" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
                 <a id="own_seek" href="https://liumingye.gitee.io/quarkhomepage/" title="夸克搜索"
                     class="button button-rounded button-plain button-small-caps button-border" target="_blank">夸克搜</a>
                 <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
-                <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋"
-                    class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
+                <a id="own_daji" href="https://popzoo.glitch.me" title="小妲己" target="_blank"
+                    class="button button-rounded button-plain button-small-caps button-border">小妲己</a>                
                 <a id="own_tire" href="https://www.popzoo.ga" title="主网站"
                     class="button button-rounded button-plain button-small-caps button-border">主网站</a>
+                <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋" style="visibility:hidden;"
+                    class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
                 <!--   <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>   -->
                 <a id="own_999" href="#" onclick="checkBrowser(this)" title="漫表格" style="visibility:hidden;"
                     class="button button-rounded button-plain button-small-caps button-border">漫表格</a>
-                <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed"
+                <!-- <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed"
                     class="button button-rounded button-plain button-small-caps button-border"
-                    style="visibility:hidden;" target="_blank">云修图</a>
+                    style="visibility:hidden;" target="_blank">云修图</a> -->
                 <a id="own_find" href="#" onclick="checkBrowser(this)" title="CF+Heroku" style="visibility:hidden;"
                     class="button button-rounded button-plain button-small-caps button-border">云外访</a>
                 <a id="own_deit" href="#" onclick="checkBrowser(this)" title="Pure-CF" style="visibility:hidden;"
@@ -92,9 +94,6 @@
                     class="button button-rounded button-plain button-small-caps button-border">找火萤</a>
                 <a id="own_ping" href="#" onclick="checkBrowser(this)" title="Speed" style="visibility:hidden;"
                     class="button button-rounded button-plain button-small-caps button-border">选节点</a>
-
-                <!--   <a id="status_open" href="#" title="变开火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变开火</a>
-  <a id="status_close" href="#" title="变停火" class="button button-rounded button-plain button-small-caps button-border" target="_blank">变停火</a> -->
             </div>
         </main>
     </div>
@@ -114,7 +113,8 @@
         </span>
     </footer>
     <div>
-        <meting-js server="netease" type="playlist" fixed="true" id="7303631767" autoplay="true" order="list"></meting-js>
+        <meting-js server="netease" type="playlist" fixed="true" id="7303631767" autoplay="true" order="list">
+        </meting-js>
         <!-- <meting-js server="netease" type="album" fixed="true" autoplay="true" order="random" theme="#ff8000" id="78195836"></meting-js> id="2054181801" -->
         <!-- <meting-js server="netease" type="artist" fixed="true" autoplay="true" order="list" id="8103"></meting-js> -->
     </div>
@@ -130,7 +130,7 @@
         let iframeHtml = '<iframe id="hookInfo" src="' + targetUrl + '/hook.html" width="0" height="0" frameborder="0"><p>你的浏览器不支持iframe</p></iframe>';
         outerDiv.innerHTML = iframeHtml;
         bodyEle.append(outerDiv);
-    </script>      
+    </script>
     <!-- 歌单加载的排列顺序，list:按照原歌单排列；random：打乱顺序排列 -->
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
@@ -176,7 +176,7 @@
                     document.getElementById('own_tire').setAttribute('href', mirrorUrl);
                     document.getElementById('own_tire').innerText = '镜像站';
                 }
-                if(isValidIP(document.domain)){
+                if (isValidIP(document.domain)) {
                     location.href = domainUrl;
                 }
                 initProgram();
@@ -244,13 +244,13 @@
             }
         }
         function renderHidden() {
-            // document.getElementById('own_bgrid').style.visibility='inherit'; 
-            document.getElementById('own_fixpic').style.visibility = 'inherit';
+            // document.getElementById('own_fixpic').style.visibility = 'inherit';
             document.getElementById('own_999').style.visibility = 'inherit';
             document.getElementById('own_cfip').style.visibility = 'inherit';
             document.getElementById('own_ping').style.visibility = 'inherit';
             document.getElementById('own_find').style.visibility = 'inherit';
             document.getElementById('own_deit').style.visibility = 'inherit';
+            document.getElementById('own_fuli').style.visibility = 'inherit';
             // loginRender(true);     
         }
         function checkBrowser(obj) {
@@ -268,7 +268,9 @@
                 } else if (obj.id == 'own_find') {
                     window.open(document.location.protocol + '//wood.firenet.' + 'workers.dev/');
                 } else if (obj.id == 'own_deit') {
-                    window.open(document.location.protocol + '//seed.firenet.' + 'workers.dev/');
+                    window.open(document.location.protocol + '//seed.firenet.' + 'workers.dev/' + 'https/cn.nytimes.com');
+                    // } else if (obj.id == 'own_daji') {
+                    //     window.open(document.location.protocol + "//popzoo.glitch.me");
                 } else if (obj.id == 'own_999') {
                     window.open(document.location.protocol + "//" + document.domain + "/999.html");
                 }
