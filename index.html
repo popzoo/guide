@@ -75,13 +75,13 @@
                     class="button button-rounded button-plain button-small-caps button-border" target="_blank">夸克搜</a>
                 <!-- <a id="own_seek" href="https://liumingye.github.io/quarkHomePage/index.html" title="Whoo+gle" class="button button-rounded button-plain button-small-caps button-border" target="_blank">云搜索</a> -->
                 <a id="own_daji" href="https://popzoo.glitch.me" title="小妲己" target="_blank"
-                    class="button button-rounded button-plain button-small-caps button-border">小妲己</a>                
+                    class="button button-rounded button-plain button-small-caps button-border">小妲己</a>
                 <a id="own_tire" href="https://www.popzoo.ga" title="主网站"
                     class="button button-rounded button-plain button-small-caps button-border">主网站</a>
-                <a id="own_fuli" href="#" onclick="checkBrowser(this)" title="漫画屋" style="visibility:hidden;"
+                <a id="own_fuli" href="/comic.html" title="漫画屋" style="visibility:hidden;" target="_blank"
                     class="button button-rounded button-plain button-small-caps button-border">漫画屋</a>
                 <!--   <a id="own_bgrid" href="https://www.remove.bg/zh" title="Speed" class="button button-rounded button-plain button-small-caps button-border" style="visibility:hidden;" target="_blank">消背景</a>   -->
-                <a id="own_999" href="#" onclick="checkBrowser(this)" title="漫表格" style="visibility:hidden;"
+                <a id="own_999" href="/999.html" title="漫表格" style="visibility:hidden;" target="_blank"
                     class="button button-rounded button-plain button-small-caps button-border">漫表格</a>
                 <!-- <a id="own_fixpic" href="https://photokit.com/editor/?lang=zh" title="Speed"
                     class="button button-rounded button-plain button-small-caps button-border"
@@ -251,17 +251,13 @@
             document.getElementById('own_find').style.visibility = 'inherit';
             document.getElementById('own_deit').style.visibility = 'inherit';
             document.getElementById('own_fuli').style.visibility = 'inherit';
-            // loginRender(true);     
         }
         function checkBrowser(obj) {
             var info = new Browser();
             if (info.browser.indexOf('360') > -1 || info.browser.indexOf('QQ') > -1 || info.browser.indexOf('Wechat') > -1 || info.browser.indexOf('baidu') > -1 || info.browser.indexOf('sougou') > -1) {
                 location.href = document.location.protocol + "//" + document.domain + "/illegal.html";
             } else {
-                if (obj.id == "own_fuli") {
-                    // window.open(document.location.protocol+'//rouman5.com/home');
-                    window.open(document.location.protocol + "//" + document.domain + "/comic.html");
-                } else if (obj.id == 'own_ping') {
+                if (obj.id == 'own_ping') {
                     window.open(document.location.protocol + "//" + document.domain + "/ping.html");
                 } else if (obj.id == 'own_cfip') {
                     window.open(document.location.protocol + "//" + document.domain + "/cfip.html");
@@ -269,10 +265,10 @@
                     window.open(document.location.protocol + '//wood.firenet.' + 'workers.dev/');
                 } else if (obj.id == 'own_deit') {
                     window.open(document.location.protocol + '//seed.firenet.' + 'workers.dev/' + 'https/cn.nytimes.com');
-                    // } else if (obj.id == 'own_daji') {
-                    //     window.open(document.location.protocol + "//popzoo.glitch.me");
-                } else if (obj.id == 'own_999') {
-                    window.open(document.location.protocol + "//" + document.domain + "/999.html");
+                // } else if (obj.id == "own_fuli") {
+                //     window.open(document.location.protocol + "//" + document.domain + "/comic.html");//rouman5.com/home
+                // } else if (obj.id == 'own_999') {
+                //     window.open(document.location.protocol + "//" + document.domain + "/999.html");
                 }
             }
         }
