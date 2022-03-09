@@ -71,14 +71,14 @@
                 <th id="user_danmu">今日弹幕</th>
                 <th id="ball_income">今日赚丸</th>
                 <th id="cash_income">今日红包</th>
-                <th id="fish_food">账户鱼粮</th>
+                <!-- <th id="fish_food">账户鱼粮</th> -->
                 <th id="user_ball">账户鱼丸</th>
                 <th id="user_wing">账户鱼翅</th>
             </tr>
         </thead>
         <tbody id = "render_table_cell">
             <tr>
-                <td id="loading" colspan="16">正在加载中……</td>
+                <td id="loading" colspan="15">正在加载中……</td>
             </tr>
         </tbody>
     </table>
@@ -166,7 +166,7 @@
         var anchor5 = document.getElementById("user_danmu");
         var anchor6 = document.getElementById("ball_income");
         var anchor7 = document.getElementById("cash_income");
-        var anchor8 = document.getElementById("fish_food");
+        // var anchor8 = document.getElementById("fish_food");
         var anchor9 = document.getElementById("user_ball");
         var anchor0 = document.getElementById("user_wing");
         if(anchor1&&anchor5&&anchor0){   
@@ -177,7 +177,7 @@
             anchor5.addEventListener("click",(function(){radioFunc('user_danmu')}));
             anchor6.addEventListener("click",(function(){radioFunc('ball_income')}));
             anchor7.addEventListener("click",(function(){radioFunc('cash_income')}));
-            anchor8.addEventListener("click",(function(){radioFunc('fish_food')}));
+            // anchor8.addEventListener("click",(function(){radioFunc('fish_food')}));
             anchor9.addEventListener("click",(function(){radioFunc('user_ball')}));
             anchor0.addEventListener("click",(function(){radioFunc('user_wing')}));
         }else{
@@ -228,7 +228,7 @@
             for(let m=0;m<userPartList.length;m++){// console.info(nodeList[m].Key);
                 let tempList = userPartList[m].Key.split("@");
                 // if(tempList.length>=7){//&& nodeList[m].indexof("#")>-1
-                var tempJson = {userAvatar:0,uid:0,uname:'***',jumpCount:0,fishBallIncome:0,cashIncome:0,danmuCount:0,version:0,accountBall:0,accountWing:0,userLevel:0,userExp:0,userFollow:0,activeTime:0,danmuError:0,fishFood:0,creditScore:0};
+                var tempJson = {userAvatar:0,uid:0,uname:'***',jumpCount:0,fishBallIncome:0,cashIncome:0,danmuCount:0,version:0,accountBall:0,accountWing:0,userLevel:0,userExp:0,userFollow:0,activeTime:0,danmuError:0,creditScore:0};
                 for(let n=0; n<tempList.length; n++){
                     // switch tempList[n]
                     if(tempList[n].indexOf("uid")>-1){
@@ -261,8 +261,8 @@
                         tempJson.activeTime = parseInt(tempList[n].split("#")[1]);
                     }else if(tempList[n].indexOf("danmuError")>-1){
                         tempJson.danmuError = parseInt(tempList[n].split("#")[1]);
-                    }else if(tempList[n].indexOf("fishFood")>-1){
-                        tempJson.fishFood = parseInt(tempList[n].split("#")[1]);
+                    // }else if(tempList[n].indexOf("fishFood")>-1){
+                    //     tempJson.fishFood = parseInt(tempList[n].split("#")[1]);
                     }else if(tempList[n].indexOf("creditScore")>-1){
                         tempJson.creditScore = parseInt(tempList[n].split("#")[1]);
                     }
@@ -343,7 +343,7 @@
         var totalFollow = 0;
         var accountWing = 0;
         var danmuErrorCount = 0;
-        var totalFishFood = 0;
+        // var totalFishFood = 0;
         var totalCredit = 0;
         var anchor1 = document.getElementById("user_exp");
         var anchor2 = document.getElementById("user_follow");
@@ -352,7 +352,7 @@
         var anchor5 = document.getElementById("user_danmu");
         var anchor6 = document.getElementById("ball_income");
         var anchor7 = document.getElementById("cash_income");
-        var anchor8 = document.getElementById("fish_food");
+        // var anchor8 = document.getElementById("fish_food");
         var anchor9 = document.getElementById("user_ball");
         var anchor0 = document.getElementById("user_wing");        
         if(sessionStorage.getItem("showRank")=="user_exp"){
@@ -383,10 +383,10 @@
             userList.sort(function(a,b){
                 return b.cashIncome - a.cashIncome;
             });            
-        }else if(sessionStorage.getItem("showRank")=="fish_food"){
-            userList.sort(function(a,b){
-                return b.fishFood - a.fishFood;
-            });            
+        // }else if(sessionStorage.getItem("showRank")=="fish_food"){
+        //     userList.sort(function(a,b){
+        //         return b.fishFood - a.fishFood;
+        //     });            
         }else if(sessionStorage.getItem("showRank")=="user_ball"){
             userList.sort(function(a,b){
                 return b.accountBall - a.accountBall;
@@ -446,7 +446,7 @@
             outTr.innerHTML += "<td>"+userItem.danmuCount+"条</td>";
             outTr.innerHTML += "<td>"+userItem.fishBallIncome+"丸</td>";
             outTr.innerHTML += "<td>"+userItem.cashIncome+"元</td>";
-            outTr.innerHTML += "<td>"+userItem.fishFood+"粮</td>";
+            // outTr.innerHTML += "<td>"+userItem.fishFood+"粮</td>";
             outTr.innerHTML += "<td>"+userItem.accountBall+"丸</td>";
             outTr.innerHTML += "<td>"+userItem.accountWing.toFixed(1)+"翅</td>";
             tableCell.appendChild(outTr);
@@ -463,7 +463,7 @@
             cashIncome +=userItem.cashIncome;
             accountBall +=userItem.accountBall;                
             accountWing +=userItem.accountWing;
-            totalFishFood +=userItem.fishFood; 
+            // totalFishFood +=userItem.fishFood; 
             timeGap>=150?++outTimeNum:0;          
             userItem.danmuError>=3?++danmuErrorCount:0;   
         }
@@ -486,7 +486,7 @@
         totalTr.innerHTML += "<td>"+danmuCount+"(总)</td>";
         totalTr.innerHTML += "<td>"+fishBallIncome+"(总)</td>";
         totalTr.innerHTML += "<td>"+cashIncome+"(总)</td>";
-        totalTr.innerHTML += "<td>"+totalFishFood+"(总)</td>";
+        // totalTr.innerHTML += "<td>"+totalFishFood+"(总)</td>";
         totalTr.innerHTML += "<td>"+accountBall+"(总)</td>";
         totalTr.innerHTML += "<td>"+accountWing.toFixed(1)+"(总)</td>";
         tableCell.appendChild(totalTr);

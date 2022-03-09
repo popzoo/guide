@@ -57,13 +57,13 @@
           <h1 align="center">斗鱼自动开火——脚本安装
             <span class="title-tip" style="vertical-align: top;">正式版</span>
           </h1>
-          <div class="layui-elem-quote offset2rem">🔔温馨提示：用户使用此JS脚本，需要预先安装Tampermokey(油猴)或violentmonkey(暴力猴)浏览器插件。</div>          
+          <div class="layui-elem-quote offset2rem">🔔温馨提示：用户使用此JS脚本，需要预先安装Tampermokey(油猴)或violentmonkey(暴力猴)等JS脚本浏览器插件。</div>          
           <!-- <blockquote> -->
           <div class="layui-elem-quote offset2rem">  
-            <span>作者：lvlanxing</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>更新时间：2020-09-23</span><br/>
-            <span>兼容：chrome内核</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>许可协议：AGPL-3.0</span>
+            <span>作者：lvlanxing</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>更新时间：<label id="renew_date">2020-09-23</label></span><br/>
+            <span>兼容：Chrome内核</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>许可协议：GPL-3.0</span>
             </div>
           <!-- </blockquote> -->
           <div class="offset2rem">
@@ -414,7 +414,7 @@
               <blockquote>
                 <p>希望各位老爷财主们，能打赏下撒(1毛也是爱)，教程不易，撸码更难，如有不佳，还望海涵。</p>
               </blockquote>
-              <table>
+              <table id="hide_reward_QR" style="display: none;">
                 <tr>
                   <td>
                     <img src="https://lvlanxing.coding.net/p/popzoo/d/popzoo/git/raw/master/pics/WeChatPay.png" width="100%">
@@ -464,6 +464,7 @@
               if(document.URL.indexOf(domainUrl)>-1){
                   serverUrl = window.atob(json.tlsoffer);
               }
+              getRenewDate();
           }).catch((error)=>{
               if(retry){
                   console.error("Param Request Failure", error);
@@ -471,7 +472,32 @@
                   initParam(true);
               }            
           });
-      })();         
+      })();
+      function getRenewDate(){
+        if(localStorage.getItem('token')!=null){
+            let reqUrl = serverUrl+'/getscriptrenew';
+            fetch(reqUrl, {          
+                method: 'GET',
+                mode: 'cors',
+                cache: 'default',
+                headers: {'Authorization': localStorage.getItem('token')},
+                credentials: 'same-origin'
+            }).then(res => {
+                return res.json();
+            }).then(json => {
+                if(json.code==1){
+                  // console.info(mirrorUrl);
+                  let dateStr = new Date(json.msg).toLocaleString();
+                  document.getElementById('renew_date').innerText = dateStr;
+                  document.getElementById('hide_reward_QR').style.display = 'inherit';
+                }else{
+                  alert('登录信息错误，请重新登录！');
+                }
+            }).catch(err => {
+                console.error('bad request', err);
+            })           
+         }        
+      }         
       function installScript(){
          if(localStorage.getItem('token')!=null){
             let reqUrl = serverUrl+'/getscript';
