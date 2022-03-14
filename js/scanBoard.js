@@ -1,4 +1,4 @@
-(function() {
+(function () {
     const curDay = new Date();
     const lastDay = new Date(new Date(curDay.getTime()).setHours(0, 0, 0, 0) - 1800 * 1000); //昨天23点
     var initTime = new Date().getTime();
@@ -13,7 +13,6 @@
     var cos = "";
     // var envFlag = true; //false test, true product
     var serverUrl = document.location.protocol + "//" + document.domain;
-    var authStr = 'test_string';
     //============================================================ 
     //========================= 加载等待效果 ====================== 
     //============================================================     
@@ -52,7 +51,7 @@
             initParam();
             let signOut = document.querySelector('.signOut');
             if (signOut != null) {
-                signOut.addEventListener("click", function() {
+                signOut.addEventListener("click", function () {
                     localStorage.removeItem('token')
                     location.reload();
                 })
@@ -93,28 +92,28 @@
             }
         }
     })();
-    function initParam(retry){
+    function initParam(retry) {
         let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
         fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
-        }).then((res)=>{
+        }).then((res) => {
             return res.json()
-        }).then((json)=>{
+        }).then((json) => {
             let domainUrl = window.atob(json.domainUrl);
-            if(document.URL.indexOf(domainUrl)>-1){
+            if (document.URL.indexOf(domainUrl) > -1) {
                 serverUrl = window.atob(json.tlsoffer);
             }
             getCosKey();
-        }).catch((error)=>{
-            if(retry){
+        }).catch((error) => {
+            if (retry) {
                 console.error("Param Request Failure", error);
-            }else{
+            } else {
                 initParam(true);
-            }            
+            }
         });
-    }   
+    }
     function getCosKey() {
         let reqUrl = serverUrl + '/getcoskey';
         fetch(reqUrl, {
@@ -151,7 +150,7 @@
     //========================== util area ======================= 
     //============================================================ 
     //右上角时间
-    setInterval(function() {
+    setInterval(function () {
         let myDate = new Date();
         var myDay = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
         var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
@@ -164,7 +163,7 @@
         var timer;
         var totalNum = obj.attr('total');
         if (totalNum) {
-            timer = setInterval(function() {
+            timer = setInterval(function () {
                 singalNum += speed;
                 if (singalNum >= totalNum) {
                     singalNum = totalNum;
@@ -203,7 +202,7 @@
     // get cookie
     function getCookie(name) {
         //document.cookie.setPath("/");
-        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");　　
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
         return (arr = document.cookie.match(reg)) ? unescape(arr[2]) : null;
     }
     // del cookie
@@ -219,7 +218,7 @@
     var myChart0 = echarts.init(document.getElementById('myMap'));
 
     function renderFishBallRank(newArr) {
-        newArr.sort(function(a, b) {
+        newArr.sort(function (a, b) {
             return b.fishBallIncome - a.fishBallIncome;
         });
         var dataX = [],
@@ -273,7 +272,7 @@
                 axisPointer: {
                     type: 'none'
                 },
-                formatter: function(params) {
+                formatter: function (params) {
                     return params[0].name + ' : 获丸' + params[0].value + '个';
                 }
             },
@@ -381,7 +380,7 @@
         };
         if (option && typeof option === "object") {
             myChart0.setOption(option, true);
-            myChart0.on('click', function(e) {
+            myChart0.on('click', function (e) {
                 window.open('https://bojianger.com/anchor-search-result.html?keyword=' + e.data.url);
             });
         }
@@ -479,7 +478,7 @@
                     data: [{
                         type: 'average',
                         name: '平均值'
-                    }, ]
+                    },]
                 },
                 itemStyle: {
                     normal: {
@@ -538,7 +537,7 @@
                         ),
                     },
                 },
-            }, ]
+            },]
         }
         if (option1 && typeof option1 === "object") {
             myChart1.setOption(option1, true);
@@ -557,7 +556,7 @@
                 Region: 'ap-beijing',
                 Marker: NextMarker,
                 Prefix: 'JumpCount/' + dateFormat("YYYY-mm-dd", isToday ? curDay : lastDay) + '/',
-            }, function(err, data) {
+            }, function (err, data) {
                 if (err) {
                     console.error(err);
                     alert("网络请求失败，请刷新页面重试");
@@ -639,7 +638,7 @@
     }
     // 用户排序去重
     function distinctUserList(arr) {
-        arr.sort(function(a, b) {
+        arr.sort(function (a, b) {
             return a.jumpCount - b.jumpCount;
             // return a.fishBallIncome - b.fishBallIncome;
         });
@@ -814,22 +813,26 @@
                 "count": newArr2[m]
             });
         }
-        newArr3.sort(function(a, b) { //排序
+        newArr3.sort(function (a, b) { //排序
             return b.count - a.count;
         });
         firePieData.fireRoom = newArr3.length; //火力房间数
-        if (newArr3.length >= 10) {
-            renderFireRoomRank(newArr3);
-        }
+        renderFireRoomRank(newArr3);
         // console.log(newArr3);//火力房间排行榜数据
     }
     // 渲染十大火力房间排行（内图1-1）
     function renderFireRoomRank(fireRoomList) {
         let xData = [];
         let yData = [];
+        console.info(fireRoomList);
         for (let i = 0; i < 10; i++) {
-            xData.push(fireRoomList[i].count);
-            yData.push(fireRoomList[i].roomId);
+            if(fireRoomList[i]==undefined){
+                xData.push(1);
+                yData.push('缺席');                
+            }else{
+                xData.push(fireRoomList[i].count);
+                yData.push(fireRoomList[i].roomId);
+            }
         }
         // fireRoomList = [];//用完置空
         fireRankChart.setOption({
@@ -841,7 +844,7 @@
                 data: xData,
             }]
         });
-        fireRankChart.on('click', function(e) {
+        fireRankChart.on('click', function (e) {
             window.open('https://bojianger.com/anchor-search-result.html?keyword=' + e.name);
         });
     }
@@ -874,7 +877,7 @@
                 "count": newArr2[m]
             });
         }
-        newArr3.sort(function(a, b) { //排序
+        newArr3.sort(function (a, b) { //排序
             return b.count - a.count;
         });
         // firePieData.fireRoom = newArr3.length; //火力房间数
@@ -886,8 +889,13 @@
         let xData = [];
         let yData = [];
         for (let i = 0; i < 10; i++) {
-            xData.push(lottRoomList[i].count);
-            yData.push(lottRoomList[i].roomId);
+            if(lottRoomList[i]==undefined){
+                xData.push(1);
+                yData.push('缺席');
+            }else{
+                xData.push(lottRoomList[i].count);
+                yData.push(lottRoomList[i].roomId);
+            }
         }
         // fireRoomList = [];//用完置空
         lottRankChart.setOption({
@@ -899,13 +907,13 @@
                 data: xData,
             }]
         });
-        lottRankChart.on('click', function(e) {
+        lottRankChart.on('click', function (e) {
             window.open('https://bojianger.com/anchor-search-result.html?keyword=' + e.name);
         });
     }
     // 渲染跳转次数榜(内图1-3)
     function renderJumpTimesRank(todayUserList) {
-        todayUserList.sort(function(a, b) {
+        todayUserList.sort(function (a, b) {
             return b.jumpCount - a.jumpCount;
         });
         let xData = [];
@@ -919,7 +927,7 @@
                 yData.push(todayUserList[i].uname);
             } else {
                 xData.push({
-                    value: 0,
+                    value: 1,
                     url: 99999
                 });
                 yData.push('缺席');
@@ -934,13 +942,13 @@
                 data: xData
             }]
         });
-        jumpRankChart.on('click', function(e) {
+        jumpRankChart.on('click', function (e) {
             window.open('https://bojianger.com/anchor-search-result.html?keyword=' + e.data.url);
         });
     }
     //开始渲染progress bar（进度条左上）
     function renderProgressEffect() {
-        $('.progress').each(function(i, ele) {
+        $('.progress').each(function (i, ele) {
             var PG = $(ele).attr('progress');
             var PGNum = parseInt(PG);
             var zero = 0;
@@ -963,7 +971,7 @@
             $(ele).find('.progressBar span').animate({
                 width: PG
             }, PGNum * speed);
-            timer = setInterval(function() {
+            timer = setInterval(function () {
                 $(ele).find('h4').html(zero + '%');
                 if (zero == PGNum) {
                     clearInterval(timer);
@@ -1008,21 +1016,21 @@
     // 服务器延迟测试
     function getServerDelay() {
         let startTime = new Date().getTime();
-        let reqUrl = serverUrl + '/getverify';
+        let reqUrl = serverUrl + '/getpoetry';
         fetch(reqUrl, {
-            method: 'OPTION',
+            method: 'GET',
             mode: 'cors',
             cache: 'no-store',
             credentials: 'omit'
         }).then(res => {
-            //     return res.json();
-            // }).then(json => {
-            // if (json.msg != null) {
-            let delayTime = ((new Date().getTime() - startTime) / 1000).toFixed(1);
-            $('#server_delay_time').text(delayTime + 's');
-            // } else {
-            //     $('#server_delay_time').text('异常');
-            // }
+            return res.json();
+        }).then(json => {
+            if (json.code == 1) {
+                let delayTime = ((new Date().getTime() - startTime) / 1000).toFixed(1);
+                $('#server_delay_time').text(delayTime + 's');
+            } else {
+                $('#server_delay_time').text('异常');
+            }
         }).catch(err => {
             $('#server_delay_time').text("挂了");
         })
@@ -1151,7 +1159,7 @@
         }).then(result => {
             return result.json();
         }).then(json => {
-            if (json != undefined && json != []) {
+            if (json != undefined) {
                 roomList = [].concat(json);
                 if (isToday) {
                     renderTodayNodeData(roomList, isFire); //出口
@@ -1166,8 +1174,6 @@
                         // putLastDayStatNode(roomList,false);
                     }
                 }
-            } else {
-                console.error('JSON数组为空');
             }
         }).catch(err => {
             console.error('ERROR', err);
@@ -1252,7 +1258,7 @@
                 axisPointer: {
                     type: "shadow"
                 },
-                formatter: function(params) {
+                formatter: function (params) {
                     const param = params[0];
                     const marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#FFB90F;"></span>';
                     // const suffix = '<span style="margin-left:5px;font-size:12px;">次</span>';
@@ -1352,7 +1358,7 @@
                 axisPointer: {
                     type: "shadow"
                 },
-                formatter: function(params) {
+                formatter: function (params) {
                     const param = params[0];
                     const marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#e6b600;"></span>';
                     // const suffix = '<span style="margin-left:5px;font-size:12px;">次</span>';
@@ -1452,7 +1458,7 @@
                 axisPointer: {
                     type: "shadow"
                 },
-                formatter: function(params) {
+                formatter: function (params) {
                     const param = params[0];
                     const marker = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#E066FF;"></span>';
                     // const suffix = '<span style="margin-left:5px;font-size:12px;">次</span>';
@@ -1787,20 +1793,20 @@
     }
 
     // 弹窗
-    $('.search').on('click', function() {
+    $('.search').on('click', function () {
         $('.filterbg').show();
         $('.popup').show();
         $('.popup').width('3px');
         $('.popup').animate({
             height: '76%'
-        }, 400, function() {
+        }, 400, function () {
             $('.popup').animate({
                 width: '82%'
             }, 400);
         });
         setTimeout(summaryShow, 800);
     });
-    $('.popupClose').on('click', function() {
+    $('.popupClose').on('click', function () {
         $('.popupClose').css('display', 'none');
         $('.summary').hide();
         fireRankChart.clear();
@@ -1811,7 +1817,7 @@
         summaryPie3.clear();
         $('.popup').animate({
             width: '3px'
-        }, 400, function() {
+        }, 400, function () {
             $('.popup').animate({
                 height: 0
             }, 400);
@@ -1832,7 +1838,7 @@
     };
 
     // 尺寸自适应调整
-    $(window).resize(function() {
+    $(window).resize(function () {
         myChart0.resize();
         myChart1.resize();
         // trendChart.resize();
@@ -1864,7 +1870,7 @@
                 axisPointer: {
                     type: "none"
                 },
-                formatter: function(params) {
+                formatter: function (params) {
                     return '鱼丸数：' + params[0].value + '万丸<br/>红包数：' + params[1].value + '元<br/>用户数：' + params[2].value + '人';
                 }
             },
@@ -1967,7 +1973,7 @@
                 symbol: 'path://d="M150 50 L130 130 L170 130  Z"',
                 barCategoryGap: "40%",
                 itemStyle: {
-                    color: function(params) {
+                    color: function (params) {
                         if (params.dataIndex >= 10) {
                             return "rgba(119, 96, 246, 1)";
                         }
@@ -2005,7 +2011,7 @@
                 symbol: 'path://d="M150 50 L130 130 L170 130  Z"',
                 barCategoryGap: "40%",
                 itemStyle: {
-                    color: function(params) {
+                    color: function (params) {
                         if (params.dataIndex >= 10) {
                             return "rgba(230, 182, 0, 1)";
                         }
@@ -2048,17 +2054,17 @@
     }
     // 处理月度数据
     // {date:0,fishBall:0,cashIncome:0,jumpCount:0,danmuCount:0,dailyJumpNum:0,dailyDanmuNum:0,newVersionUser:0,fireNode:0,welfareNode:0};     
-    function handleMonthlyData() {}
+    function handleMonthlyData() { }
 
     //信息弹出框的显示隐藏效果
-    $('.infoBtn').on('click', function() {
+    $('.infoBtn').on('click', function () {
         // if(adminCheck == "💡🔒💡" || userCheck =="⛑👩‍⚕️⛑"){
         $('.filterbg').show();
         $('.carInfo').show();
         $('.carInfo').width('3px');
         $('.carInfo').animate({
             height: '76%'
-        }, 400, function() {
+        }, 400, function () {
             $('.carInfo').animate({
                 width: '82%'
             }, 400);
@@ -2072,18 +2078,18 @@
         $('.carClose').css('display', 'block');
         setMonthlyChart();
     }
-    $('.carClose').on('click', function() {
+    $('.carClose').on('click', function () {
         $('.carClose').css('display', 'none');
         $('.infoBox').hide();
         trendChart.clear();
         $('.carInfo').animate({
             width: '3px'
-        }, 400, function() {
+        }, 400, function () {
             $('.carInfo').animate({
                 height: 0
             }, 400);
         });
-        setTimeout(function() {
+        setTimeout(function () {
             $('.filterbg').hide();
             $('.carInfo').hide();
             $('.carInfo').width(0);
@@ -2092,9 +2098,9 @@
 
 })();
 
-//======================================================================================================================== 
+//========================================================================================================================
 //+++++++++++++++++++++++++++++ 入口2（获取cnzz数据，今日与昨日跳转数和弹幕量和ip数，已废弃） ++++++++++++++++++++++++++++++++
-//========================================================================================================================     
+//========================================================================================================================
 // 获取今日和昨日跳转pv次数
 // function getCnzzJumpTimes() {
 //     let cnzzTxt = $('#cnzz_stat_icon_1278051049');
@@ -2110,7 +2116,7 @@
 //         getCnzzDanmuCount(todayJumpIp); //获取今日和昨日总弹幕数量pv
 //         document.getElementById("lastday_jump_num").innerText = yesterdayJumpPV;
 //         // document.getElementById("totalNum").setAttribute("total", todayJumpPV);
-//         // totalNum($('#totalNum'), 500); //跳动渲染数据           
+//         // totalNum($('#totalNum'), 500); //跳动渲染数据
 //     } else {
 //         delayCallback(1, 0);
 //     }
@@ -2188,9 +2194,9 @@
 // function getCnzzJumpTimes(){
 //     fetch("https://online.cnzz.com/online/online_v3.php?id=1278051049&h=z3.cnzz.com&on=1&s=line",{
 //         method: 'GET',
-//         mode: 'cors', 
-//         cache: 'default', 
-//         credentials: 'omit', 
+//         mode: 'cors',
+//         cache: 'default',
+//         credentials: 'omit',
 //     }).then(res => {
 //         return res.text();
 //     }).then(cnzzTxt => {
@@ -2216,9 +2222,9 @@
 //  function getCnzzDanmuCount(todayJumpIp){
 //      fetch("https://online.cnzz.com/online/online_v3.php?id=1278115154&h=z6.cnzz.com&on=1&s=line",{
 //          method: 'GET',
-//          mode: 'cors', 
-//          cache: 'default', 
-//          credentials: 'omit', 
+//          mode: 'cors',
+//          cache: 'default',
+//          credentials: 'omit',
 //      }).then(res => {
 //          return res.text();
 //      }).then(cnzzTxt => {
@@ -2246,9 +2252,9 @@
 //    function getCnzzWebSiteData(){
 //        fetch("https://online.cnzz.com/online/online_v3.php?id=1278032070&h=z6.cnzz.com&on=1&s=line",{
 //            method: 'GET',
-//            mode: 'cors', 
-//            cache: 'default', 
-//            credentials: 'omit', 
+//            mode: 'cors',
+//            cache: 'default',
+//            credentials: 'omit',
 //        }).then(res => {
 //            return res.text();
 //        }).then(cnzzTxt => {
@@ -2263,7 +2269,7 @@
 //          let todayWebIp =  cnzzTxt[1].trim();
 //          todayWebIp = todayWebIp.substring(todayWebIp.indexOf("今日IP[")+5,todayWebIp.length-1);
 //          let yesterdayWebIp =  cnzzTxt[3].trim();
-//          yesterdayWebIp = yesterdayWebIp.substring(yesterdayWebIp.indexOf("昨日IP[")+5,yesterdayWebIp.length-1);           
+//          yesterdayWebIp = yesterdayWebIp.substring(yesterdayWebIp.indexOf("昨日IP[")+5,yesterdayWebIp.length-1);
 //      // console.info(todayDanmu +"---"+yesterdayDanmuPV);
 //          $('#web_today_ip').text(todayWebIp);
 //          $('#web_today_pv').text(todayWebPV);
