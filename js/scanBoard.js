@@ -93,7 +93,7 @@
         }
     })();
     function initParam(retry) {
-        let paramUrl = retry ? 'https://popzoo.glitch.me/initparam' : 'https://param.firenet.workers.dev';
+        let paramUrl = retry ? 'https://popglitch.popsee.repl.co/initparam' : 'https://popbob.ml/initparam';//'https://param.firenet.workers.dev';
         fetch(paramUrl, {
             method: 'GET',
             mode: 'cors',
